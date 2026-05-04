@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Six numbers for one program: How Advance Peace Sacramento's evaluation produced a different headline for every audience</title>
+<meta name="description" content="An investigative read of the Advance Peace Sacramento evaluation record. The program's own peer-reviewed papers contain six different reduction percentages for the same intervention window. The contract called for 20 to 25 percent. Sacramento PD recorded its deadliest year since 2006 while the program was operating.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
+
+<style>
+:root {
+  --bg: #f3ede0;
+  --bg-card: #faf6ec;
+  --ink: #1a1612;
+  --ink-soft: #3d3833;
+  --ink-faint: #6b6259;
+  --rule: #c9bfac;
+  --rule-soft: #ddd3bf;
+  --accent: #8b1e1e;
+  --accent-soft: #a83a3a;
+  --highlight: #f0d878;
+  --good: #2d5a3d;
+  --serif-display: "Fraunces", Georgia, serif;
+  --serif-body: "Source Serif 4", Georgia, serif;
+  --mono: "JetBrains Mono", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif-body);
+  font-size: 19px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.wrap-wide {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+header.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 24px 0 18px;
+  margin-bottom: 80px;
+}
+
+.masthead-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.masthead-title { font-weight: 500; color: var(--ink); }
+
+.hero {
+  text-align: center;
+  padding: 60px 0 100px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 80px;
+}
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+
+h1.title {
+  font-family: var(--serif-display);
+  font-weight: 300;
+  font-size: clamp(56px, 9vw, 112px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 36px;
+  font-variation-settings: "opsz" 144;
+}
+
+h1.title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.dek {
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin: 0 auto 48px;
+}
+
+.byline {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 60px;
+}
+
+.byline strong { color: var(--ink); font-weight: 500; }
+
+section {
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+
+h2 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(32px, 4.5vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  font-variation-settings: "opsz" 100;
+}
+
+h2 em { font-style: italic; color: var(--accent); }
+
+h3 {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 40px 0 16px;
+  letter-spacing: -0.01em;
+}
+
+p { margin-bottom: 22px; }
+p + p { text-indent: 1.4em; }
+
+p.lead {
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+
+p.lead + p { text-indent: 0; }
+
+a.inline {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+a.inline:hover { color: var(--accent-soft); }
+
+strong { font-weight: 600; color: var(--ink); }
+em { font-style: italic; }
+
+.bignum-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 40px 0;
+  border: 1px solid var(--rule);
+  background: var(--bg-card);
+}
+
+.bignum-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+
+.bignum {
+  padding: 36px 24px;
+  text-align: center;
+  position: relative;
+}
+
+.bignum + .bignum { border-left: 1px solid var(--rule); }
+
+.bignum-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+}
+
+.bignum-value {
+  font-family: var(--serif-display);
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 14px;
+  font-variation-settings: "opsz" 144;
+}
+
+.bignum-value.red { color: var(--accent); }
+.bignum-value.small { font-size: 48px; }
+
+.bignum-cap {
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 700px) {
+  .bignum-grid, .bignum-grid.three { grid-template-columns: 1fr; }
+  .bignum + .bignum { border-left: 0; border-top: 1px solid var(--rule); }
+  .bignum-value { font-size: 52px; }
+}
+
+.pull {
+  margin: 50px -20px;
+  padding: 36px 30px;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  text-align: center;
+}
+
+.pull-text {
+  font-family: var(--serif-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 100;
+}
+
+.pull-attr {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 600px) {
+  .pull-text { font-size: 20px; }
+}
+
+.parallel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 50px 0;
+  border: 2px solid var(--ink);
+  background: var(--bg-card);
+}
+
+.parallel-col {
+  padding: 32px 28px;
+  position: relative;
+}
+
+.parallel-col + .parallel-col { border-left: 2px solid var(--ink); }
+
+.parallel-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+}
+
+.parallel-col.story1 .parallel-label { color: var(--accent); border-color: var(--accent); }
+.parallel-col.story2 .parallel-label { color: var(--good); border-color: var(--good); }
+
+.parallel-quote {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--ink);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 24;
+}
+
+.parallel-attr {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  line-height: 1.5;
+}
+
+.parallel-attr a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+@media (max-width: 700px) {
+  .parallel { grid-template-columns: 1fr; }
+  .parallel-col + .parallel-col { border-left: 0; border-top: 2px solid var(--ink); }
+}
+
+.table-wrap {
+  margin: 36px 0;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  overflow-x: auto;
+}
+
+.table-cap {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.table-cap strong { color: var(--ink); font-weight: 500; }
+
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+
+th {
+  text-align: left;
+  padding: 14px 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-bottom: 1px solid var(--rule);
+  background: rgba(0,0,0,0.02);
+}
+
+th.num, td.num { text-align: right; font-family: var(--mono); font-weight: 500; }
+
+td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+}
+
+tr:last-child td { border-bottom: 0; }
+tr.highlight { background: rgba(139, 30, 30, 0.06); }
+tr.highlight td { font-weight: 500; }
+
+td .pos { color: var(--accent); font-weight: 600; }
+td .neg { color: var(--good); font-weight: 600; }
+td .neutral { color: var(--ink-faint); }
+
+.chart-wrap {
+  margin: 40px 0;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 24px 20px 20px;
+}
+
+.chart-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 4px;
+}
+
+.chart-title strong { color: var(--ink); font-weight: 500; }
+
+.chart-sub {
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.chart-container { position: relative; height: 340px; }
+
+@media (max-width: 600px) { .chart-container { height: 280px; } }
+
+.chart-source {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule-soft);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+
+.receipt {
+  margin: 40px 0;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 28px 28px 24px;
+  position: relative;
+}
+
+.receipt::before {
+  content: "RECEIPT";
+  position: absolute;
+  top: -10px;
+  left: 24px;
+  background: var(--bg);
+  padding: 0 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.receipt-quote {
+  font-family: var(--serif-body);
+  font-size: 17px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 14px;
+  position: relative;
+  padding-left: 20px;
+  border-left: 3px solid var(--accent);
+}
+
+.receipt-cite {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.receipt-cite a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
+
+figure.shot {
+  margin: 36px 0;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 20px;
+}
+
+figure.shot a {
+  display: block;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  background: #fff;
+  transition: border-color 0.25s;
+}
+
+figure.shot a:hover { border-color: var(--accent); }
+
+figure.shot img { width: 100%; height: auto; display: block; }
+
+figure.shot figcaption {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  line-height: 1.5;
+}
+
+figure.shot figcaption strong { color: var(--ink); font-weight: 500; }
+
+figure.shot figcaption a {
+  display: inline;
+  border: 0;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
+
+.divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80px 0;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+
+.divider-line { width: 1px; height: 40px; background: var(--rule); }
+
+.divider-arrow {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px 0;
+  transition: all 0.3s ease;
+  animation: arrow-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes arrow-pulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.divider:hover .divider-arrow {
+  border-color: var(--accent);
+  background: var(--accent);
+  animation-play-state: paused;
+}
+
+.divider:hover .divider-arrow svg path { stroke: var(--bg); }
+.divider-arrow svg { width: 14px; height: 14px; }
+.divider-arrow svg path { stroke: var(--ink); transition: stroke 0.3s; }
+
+.divider-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.note {
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--rule);
+  padding: 4px 0 4px 18px;
+  margin: 28px 0;
+}
+
+footer {
+  border-top: 2px solid var(--ink);
+  margin-top: 120px;
+  padding: 60px 0 80px;
+}
+
+.sources-title {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-weight: 700;
+}
+
+.sources-list { list-style: none; counter-reset: src; }
+
+.sources-list li {
+  counter-increment: src;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+  padding-left: 36px;
+  position: relative;
+}
+
+.sources-list li::before {
+  content: counter(src, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.sources-list a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: all 0.2s;
+}
+
+.sources-list a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.colophon {
+  margin-top: 60px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-faint);
+  line-height: 1.7;
+}
+
+.colophon a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+.colophon a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+sup.cite {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-left: 1px;
+  vertical-align: super;
+  line-height: 0;
+}
+
+sup.cite a { color: inherit; text-decoration: none; }
+sup.cite a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap-wide masthead-inner">
+    <div class="masthead-title">Don't Shoot the Data</div>
+    <div>An investigative read</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Sacramento &middot; Advance Peace &middot; The numbers</div>
+  <h1 class="title">Six numbers,<br>one <em>program.</em></h1>
+  <p class="dek">Sacramento contracted with Advance Peace for a 20 to 25 percent reduction in gun-related assaults and homicides over two years. The program's own evaluators have published at least six different reduction percentages for that window. Sacramento Police recorded the deadliest year since 2006 while the program was operating. Both stories belong to the same program.</p>
+  <div class="byline"><strong>dont-shoot-the-data</strong></div>
+</div>
+
+<section id="s1">
+  <span class="section-num">&sect; 01 &middot; The pitch</span>
+  <h2>What the city was promised.</h2>
+
+  <p class="lead">On August 29, 2017, the Sacramento City Council voted nine to zero to bring the Advance Peace Peacemaker Fellowship to Sacramento.<sup class="cite"><a href="#src1">01</a></sup> The contract was signed in December 2017. The first cohort of fellows began the program in mid-2018.</p>
+
+  <p>The program was sold on a specific number. ABC10 News, reporting on the December 2017 contract signing, quoted the city's own media materials: <a class="inline" href="https://www.abc10.com/article/news/local/controversial-advance-peace-contract-signed-in-hopes-of-reducing-gun-violence/103-498716367">"The Advance Peace organization has committed to a reduction of 20-25 percent in gun violence by the completion of the program by the first group of participants."</a><sup class="cite"><a href="#src2">02</a></sup></p>
+
+  <p>The City of Sacramento's own news service, in an August 2017 article previewing the council vote, was even more specific. It described the precedent the city was buying into: <a class="inline" href="https://sacramentocityexpress.com/2017/08/28/sacramento-city-council-to-consider-a-new-gun-violence-reduction-strategy-at-tuesday-nights-council-meeting/">"Richmond experienced a 50 percent reduction in firearm assaults and 54 percent reduction in related homicides over a five-year period after the program launch."</a><sup class="cite"><a href="#src3">03</a></sup></p>
+
+  <p>Two numbers, then. A 20 to 25 percent reduction by year two as the floor. A 50-plus percent reduction over five years as the destination.</p>
+
+  <div class="receipt">
+    <div class="receipt-quote">"The Advance Peace organization has committed to a reduction of 20-25 percent in gun violence by the completion of the program by the first group of participants."</div>
+    <div class="receipt-cite">ABC10 News, December 2017, quoting the City of Sacramento &middot; <a href="#src2">source 02</a></div>
+  </div>
+
+  <p>At the same August 2017 council meeting, then-Councilwoman Angelique Ashby flagged a discrepancy that would matter four years later. The resolution authorized a four-year agreement; the contract itself was written for three years. Per Fox40's coverage of the meeting: <a class="inline" href="https://fox40.com/news/sacramento-city-council-approves-advance-peace-program/">"In multiple places in the resolution, we say it's a four-year contract, in the contract, we call it a three-year contract, those are key critical terms, they don't agree."</a><sup class="cite"><a href="#src4">04</a></sup> The discrepancy was never publicly resolved. The program ended in December 2021, roughly four calendar years after the contract was signed but with city funding flowing for closer to three.</p>
+</section>
+
+<a href="#s2" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">The number</div>
+</a>
+
+<section id="s2">
+  <span class="section-num">&sect; 02 &middot; The number that did not move</span>
+  <h2>One fewer homicide. <em>Then it spiked.</em></h2>
+
+  <p class="lead">Before working through the academic tables and per-zone breakdowns, look at the simplest possible test: did Sacramento have fewer murders during the program than before it?</p>
+
+  <p>The Sacramento Police Department's own homicide records, including the department's January 2022 video news release on 2021 crime statistics, are unambiguous. Per SacPD spokesperson Sgt. Chad Lewis on that release: <a class="inline" href="https://www.abc10.com/article/news/local/sacramento/sacamento-crime-statistics-2021/103-6885d8a8-9f25-4c9c-b640-a32186d95730">"In 2021, there were 58 homicides in Sacramento which was the highest number of homicides in the city since 2006."</a><sup class="cite"><a href="#src5">05</a></sup></p>
+
+  <div class="table-wrap">
+    <div class="table-cap"><strong>Sacramento homicides, 2016 to 2023.</strong> Total cases, citywide, by calendar year.</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th class="num">Homicides</th>
+          <th>Program status</th>
+          <th class="num">vs. 2017 baseline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>2016</td><td class="num">41</td><td>Before AP</td><td class="num neutral">+5</td></tr>
+        <tr><td>2017</td><td class="num">36</td><td>Before AP (baseline year)</td><td class="num neutral">0</td></tr>
+        <tr><td>2018</td><td class="num">36</td><td>AP launched July (partial year)</td><td class="num neutral">0</td></tr>
+        <tr class="highlight"><td>2019</td><td class="num">35</td><td>Original Peacemaker Fellowship full year</td><td class="num"><span class="neg">&minus;1</span></td></tr>
+        <tr><td>2020</td><td class="num">41</td><td>State-funded extension; Youth Fellowship begins</td><td class="num"><span class="pos">+5</span></td></tr>
+        <tr class="highlight"><td>2021</td><td class="num">58</td><td>Final year of program; city funding expires Dec 31</td><td class="num"><span class="pos">+22</span></td></tr>
+        <tr><td>2022</td><td class="num">47</td><td>After AP</td><td class="num"><span class="pos">+11</span></td></tr>
+        <tr><td>2023</td><td class="num">37</td><td>After AP</td><td class="num"><span class="pos">+1</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Sacramento had 36 homicides in 2017, the year before Advance Peace launched. It had 35 homicides in 2019, the final year of the original 18-month Peacemaker Fellowship. The change was one fewer killing.</p>
+
+  <div class="bignum-grid">
+    <div class="bignum">
+      <div class="bignum-label">Required by contract</div>
+      <div class="bignum-value">20&ndash;25%</div>
+      <div class="bignum-cap">Reduction in gun-related assaults and homicides over two years, per the December 2017 contract announcement</div>
+    </div>
+    <div class="bignum">
+      <div class="bignum-label">Actual change in homicides</div>
+      <div class="bignum-value red">&minus;1</div>
+      <div class="bignum-cap">36 in 2017, 35 in 2019. Roughly 2.8 percent. Below noise.</div>
+    </div>
+  </div>
+
+  <p>One fewer homicide is roughly 2.8 percent. The contract called for 20 to 25 percent. The shortfall is approximately an order of magnitude.</p>
+
+  <p>Then the trajectory inverted. In 2020, while Advance Peace was still operating in Sacramento under a state-funded extension and a newly launched Youth Peacemaker Fellowship,<sup class="cite"><a href="#src6">06</a></sup> homicides climbed to 41. In 2021, the program's final operational year, they climbed to 58. That is the highest single-year homicide count Sacramento has recorded since 2006, and it happened during the program, not after it.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title"><strong>Sacramento homicides, 2016 through 2023.</strong></div>
+    <div class="chart-sub">The Advance Peace program operated continuously from mid-2018 through December 2021. The deadliest year of the period falls inside that window.</div>
+    <div class="chart-container"><canvas id="chartHomicidesAll"></canvas></div>
+    <div class="chart-source">Source: Sacramento Police Department crime statistics; ABC10 reporting on the SacPD 2021 year-end release.</div>
+  </div>
+
+  <p>The narrative that survived in public memory was that Sacramento had two consecutive years without a juvenile homicide in 2018 and 2019, that the program produced this result, and that politicians abandoned the program just as it was working. The narrative does not survive contact with 2020 and 2021. If the program was responsible for the flat homicide line in 2018 and 2019, the program is also responsible for the spike to 58 in 2021. The program was operational the entire time.</p>
+
+  <p>Defenders did not present 2020 and 2021 as a program failure. They continued to cite the 2018 and 2019 number as evidence of program success and described the December 2021 non-renewal as the cause of post-program violence. The post-program violence, by the time the program ended, had already happened.</p>
+</section>
+
+<a href="#s3" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">Six numbers</div>
+</a>
+
+<section id="s3">
+  <span class="section-num">&sect; 03 &middot; The menu</span>
+  <h2>Six numbers <em>for one program.</em></h2>
+
+  <p class="lead">The strongest documentation that the Advance Peace evaluation has been mathematically negotiated rather than methodologically determined sits inside the program's own evaluation documents. The same intervention window has been reported with at least six different reduction percentages, depending on which document the reader is holding.</p>
+
+  <p>All seven figures below describe the same calendar period, the same program, the same city, and the same evaluator. None of them are wrong on their face. They simply produce different headlines for different audiences.</p>
+
+  <div class="table-wrap">
+    <div class="table-cap"><strong>Reported reductions in Sacramento gun violence, July 2018 through December 2019.</strong> Same program, same window, same lead author.</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Reported figure</th>
+          <th>Methodology</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num"><span class="neg">10.1%</span></td>
+          <td>Raw mean monthly comparison, citywide</td>
+          <td>Corburn &amp; Fukutome-Lopez, March 2020 working paper<sup class="cite"><a href="#src7">07</a></sup></td>
+        </tr>
+        <tr>
+          <td class="num"><span class="neg">18%</span></td>
+          <td>Interrupted time series, citywide</td>
+          <td>Corburn et al. 2022, Urban Science abstract<sup class="cite"><a href="#src8">08</a></sup></td>
+        </tr>
+        <tr>
+          <td class="num"><span class="neg">21%</span></td>
+          <td>Eighteen-month treatment vs. 4-year pre-period average</td>
+          <td>Corburn et al. 2021, Humanities and Social Sciences Communications<sup class="cite"><a href="#src9">09</a></sup></td>
+        </tr>
+        <tr>
+          <td class="num"><span class="neg">22%</span></td>
+          <td>Per Berkeley News attribution to "March 2020 study"</td>
+          <td>UC Berkeley News, March 17, 2021<sup class="cite"><a href="#src10">10</a></sup></td>
+        </tr>
+        <tr>
+          <td class="num"><span class="neg">27%</span></td>
+          <td>Interrupted time series counterfactual, AP zones only</td>
+          <td>Corburn &amp; Fukutome-Lopez 2020 working paper<sup class="cite"><a href="#src7">07</a></sup></td>
+        </tr>
+        <tr>
+          <td class="num"><span class="neg">29%</span></td>
+          <td>Maximum per-zone reduction reported in peer-reviewed paper</td>
+          <td>Corburn et al. 2022, Urban Science abstract<sup class="cite"><a href="#src8">08</a></sup></td>
+        </tr>
+        <tr class="highlight">
+          <td class="num"><span class="neg">39%</span></td>
+          <td>Reduction "in Del Paso Heights"</td>
+          <td>UC Berkeley News, March 17, 2021<sup class="cite"><a href="#src10">10</a></sup></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The 39 percent figure is the one that traveled. It anchored the press release. It anchored the case for renewing and expanding the program. It does not appear in the peer-reviewed paper that the press release was promoting. The peer-reviewed paper says the maximum reduction in any single neighborhood was 29 percent.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title"><strong>The same intervention. The same window. Seven different headlines.</strong></div>
+    <div class="chart-sub">Each bar represents a percentage reported by Advance Peace's own evaluators or its host institution for the July 2018 to December 2019 window in Sacramento.</div>
+    <div class="chart-container"><canvas id="chartFramings"></canvas></div>
+    <div class="chart-source">Sources: Corburn &amp; Fukutome-Lopez 2020 working paper; Corburn et al. 2021 Humanities and Social Sciences Communications; Corburn et al. 2022 Urban Science; UC Berkeley News, March 17, 2021.</div>
+  </div>
+
+  <p>This pattern, of selecting the comparison window and the geographic unit and the statistical method that produces the largest favorable number, is sometimes called HARKing in the methodology literature, short for Hypothesizing After the Results are Known. In the Advance Peace literature, the hypothesis was settled by contract: a 20 to 25 percent reduction citywide. None of the figures above that come from peer-reviewed sources reach the contractual threshold using the contractual scope. The figures that do reach it are the ones in the press release.</p>
+</section>
+
+<a href="#s4" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">Two stories</div>
+</a>
+
+<section id="s4">
+  <span class="section-num">&sect; 04 &middot; Two stories, same paper</span>
+  <h2>White institutions caused this. <em>Pay these Black men.</em></h2>
+
+  <p class="lead">The strangest feature of the Advance Peace literature is that it tells two completely different stories about the cause of urban gun violence, and both stories appear in the same paper, by the same authors, on the same pages.</p>
+
+  <p>The 2021 paper in <em>Humanities and Social Sciences Communications</em>, a Nature Portfolio journal, is the program's flagship academic publication. Its authors include Jason Corburn (the lead evaluator), DeVone Boggan (Advance Peace founder and CEO), Khaalid Muttaqi (Advance Peace COO and former Sacramento Director of Gang Prevention), and program managers from Sacramento, Stockton, and Richmond. Per the paper's own abstract, the program is described as serving "Black and brown communities that have been ravaged by racism, incarceration, and heavy-handed state violence."</p>
+
+  <p>That is story one. Story two is the operational mechanism, described later in the same paper.</p>
+
+  <div class="parallel">
+    <div class="parallel-col story1">
+      <div class="parallel-label">Story 1 &middot; The cause</div>
+      <div class="parallel-quote">"The traumas from state-sanction violence, including heavy-handed policing, racially segregated neighborhoods, displacement, and lack of educational and economic opportunities, combine to contribute to urban gun violence and victimization."</div>
+      <div class="parallel-attr">Corburn, Boggan &amp; Muttaqi (2021), Hum Soc Sci Commun 8:142, Introduction &middot; <a href="https://www.nature.com/articles/s41599-021-00820-y">nature.com</a></div>
+    </div>
+    <div class="parallel-col story2">
+      <div class="parallel-label">Story 2 &middot; The mechanism</div>
+      <div class="parallel-quote">"Once a fellow is working on their LifeMAP for at least 6 months and achieves 65% progress toward a goal (as determined by their NCA mentor and the AP leadership), that fellow is eligible for a milestone allowance of up to $1000 USD per month... the majority of fellows are indeed African&ndash;American males under 24 years old."</div>
+      <div class="parallel-attr">Corburn, Boggan &amp; Muttaqi (2021), same paper, sections "Milestone allowance" and "Community-wide transformations" &middot; <a href="https://www.nature.com/articles/s41599-021-00820-y">nature.com</a></div>
+    </div>
+  </div>
+
+  <p>Both passages are in the same paper. The cause is structural and historical and racial, enacted by state institutions ravaging Black communities. The mechanism is identifying African-American men under 24 and paying them up to $1,000 a month if a mentor signs off on their progress. The same authors describe both the cause and the mechanism. They do not reconcile them.</p>
+
+  <p>If the cause is structural racism enacted by white-controlled institutions, the operational solution should target those institutions. Defund the police, redistribute housing and educational resources, prosecute discrimination. The Advance Peace operational mechanism does none of those things. It identifies, in each city, the small number of individual men most likely to shoot. It enrolls them in an 18-month fellowship. After six months of compliance, fellows become eligible for monthly stipends of up to $1,000.<sup class="cite"><a href="#src9">09</a></sup></p>
+
+  <p>The two stories cannot both be operative. Either the violence is caused by structural conditions that affect everyone in the affected community equally, in which case targeting individual men cannot address the cause; or the violence is caused by the choices of a small number of individual men, in which case structural racism is not the operative variable. They are deployed simultaneously anyway, because they serve different purposes. The structural framing supplies the moral case for the program: communities have been wronged, this is a remedy. The individual-targeting mechanism supplies the operational case: violence is concentrated, we know how to interrupt it. Together they let the program claim moral authority and operational legitimacy without ever having to choose.</p>
+
+  <h3>The same pivot, in the press release</h3>
+
+  <p>What the Nature paper says in academic language, the UC Berkeley News press release of March 17, 2021 says more directly. The press release was written to promote the Sacramento evaluation, and quotes the same authors:</p>
+
+  <div class="receipt">
+    <div class="receipt-quote">"The foundation of that racist structure in American law enforcement... contributes to the underfunding of programs like Advance Peace, as cities have historically been beholden to funding their police departments and police unions over investing in Black communities."</div>
+    <div class="receipt-cite">Jason Corburn, lead evaluator &middot; UC Berkeley News, March 17, 2021 &middot; <a href="#src10">source 10</a></div>
+  </div>
+
+  <div class="receipt">
+    <div class="receipt-quote">"A program like Advance Peace can be somewhat of a litmus test for whether cities really believe Black lives matter. We empower Black and Brown men to put the public at the center of public safety."</div>
+    <div class="receipt-cite">Khaalid Muttaqi, COO Advance Peace &middot; UC Berkeley News, March 17, 2021 &middot; <a href="#src10">source 10</a></div>
+  </div>
+
+  <div class="receipt">
+    <div class="receipt-quote">"Success to us is not whether or not he becomes a model citizen. Success, to us, is about whether or not he uses a firearm to address conflict."</div>
+    <div class="receipt-cite">DeVone Boggan, Founder/CEO Advance Peace &middot; PBS NewsHour &middot; <a href="#src11">source 11</a></div>
+  </div>
+
+  <p>Three speakers in three publications, framing the program along the same axis. Corburn names the cause as racist policing. Muttaqi names the mechanism as paying Black and Brown men. Boggan names the success criterion as whether an individual man chooses not to fire a gun. Each speaker is consistent with himself. The combination of the three is incoherent.</p>
+
+  <p>UC Berkeley's School of Public Health, in promoting the 2025 MIT Press book co-authored by Corburn and Boggan, distills the same pattern. Corburn: "the root causes of urban gun violence include racism, discrimination, redlining, and eugenics." Boggan, in the same interview: "We've already solved 99% of the problem. Less than 1% of a city's population is at the center of driving gun violence."<sup class="cite"><a href="#src12">12</a></sup> The cause is structural and historical and racial. The solution is to find the one percent and pay them.</p>
+
+  <figure class="shot">
+    <a href="https://www.nature.com/articles/s41599-021-00820-y" title="Open the Corburn, Boggan and Muttaqi 2021 paper at nature.com">
+      <img src="corburn-2021-structural-racism.png" alt="Screenshot of Corburn, Boggan and Muttaqi 2021 paper showing the structural racism quote">
+    </a>
+    <figcaption><strong>Corburn, Boggan &amp; Muttaqi (2021)</strong> &middot; published in <em>Humanities and Social Sciences Communications</em>, a Nature Portfolio journal &middot; <a href="https://www.nature.com/articles/s41599-021-00820-y">read the full paper</a></figcaption>
+  </figure>
+
+  <figure class="shot">
+    <a href="https://news.berkeley.edu/2021/03/17/berkeley-study-california-gun-violence-program-saves-lives-taxpayers-millions/" title="Open the UC Berkeley News article">
+      <img src="muttaqi-empower-quote.png" alt="Screenshot of UC Berkeley News article quoting Khaalid Muttaqi">
+    </a>
+    <figcaption><strong>UC Berkeley News, March 17, 2021</strong> &middot; quoting Khaalid Muttaqi, then Chief Operating Officer of Advance Peace &middot; <a href="https://news.berkeley.edu/2021/03/17/berkeley-study-california-gun-violence-program-saves-lives-taxpayers-millions/">read the full article</a></figcaption>
+  </figure>
+</section>
+
+<a href="#s5" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">Inside the program</div>
+</a>
+
+<section id="s5">
+  <span class="section-num">&sect; 05 &middot; What happened inside the program</span>
+  <h2>Five gun arrests. <em>One dead fellow.</em></h2>
+
+  <p class="lead">Marketing materials for Advance Peace lead with system-level statistics. Inside the program, the operational reality was less abstract.</p>
+
+  <p>Per Khaalid Muttaqi in an August 2022 interview with The Appeal, summarizing fellow outcomes during the original Sacramento Peacemaker Fellowship: <a class="inline" href="https://theappeal.org/advance-peace-stockton-gun-violence-prevention/">"In Sacramento, five fellows were arrested on gun-related charges during the 18-month fellowship. More than half were arrested on other charges. One fellow was shot and killed."</a><sup class="cite"><a href="#src13">13</a></sup></p>
+
+  <div class="bignum-grid three">
+    <div class="bignum">
+      <div class="bignum-label">Sacramento fellows</div>
+      <div class="bignum-value small">50</div>
+      <div class="bignum-cap">Per cohort, identified as the most likely to shoot or be shot</div>
+    </div>
+    <div class="bignum">
+      <div class="bignum-label">Arrested on gun charges</div>
+      <div class="bignum-value small red">5</div>
+      <div class="bignum-cap">During the 18-month fellowship</div>
+    </div>
+    <div class="bignum">
+      <div class="bignum-label">Shot and killed</div>
+      <div class="bignum-value small red">1</div>
+      <div class="bignum-cap">A program participant, during the program</div>
+    </div>
+  </div>
+
+  <p>Muttaqi's framing in the same interview: "They're hard to reach. And to be quite honest with you, they can be very hard to serve." This is the program's COO, describing the program's participants. The "98% alive at evaluation" headline figure that appeared in many press accounts of Advance Peace Sacramento is consistent with this picture only because the alternative reference class (men identified by police as most likely to be shot, in a city with a stable annual homicide rate) was already characterized by very high one-year survival, before any intervention.</p>
+
+  <p>Across the four-year Sacramento program, no published evaluation has reconciled these participant-level outcomes with the program's claimed 21 percent citywide reduction. Five fellows arrested for gun charges during a fellowship designed to interrupt their gun use is not a small number relative to the program's scale.</p>
+
+  <p>In Fresno, the program's operational mechanism produced a more direct failure mode. In April 2022, Leonard Smith, a Neighborhood Change Agent for Advance Peace Fresno, was arrested in a multi-agency gang takedown announced by California Attorney General Rob Bonta. Court documents allege Smith leaked information to gang members about a police murder investigation and conspired in two murders.<sup class="cite"><a href="#src14">14</a></sup></p>
+
+  <p>Fresno Police Chief Paco Balderrama, per the city's official statement: <a class="inline" href="https://sjvsun.com/news/fresno/fresno-pulls-support-of-advance-peace-over-staff-arrests-in-gang-sweep-threats-against-lawmakers/">"Due to the criminal indictment of an Advance Peace member for conspiracy to commit murder, threats made to at least one city council member, and the misuse of sensitive information provided to Advance Peace, Fresno PD could no longer partner, share information, or work with Advance Peace under the current model."</a><sup class="cite"><a href="#src15">15</a></sup></p>
+
+  <p>Mayor Jerry Dyer, who had supported the program at launch, told ABC30 he could not continue to support it under the current model.<sup class="cite"><a href="#src16">16</a></sup> Fresno's Advance Peace contract was terminated in 2022.</p>
+
+  <p>The Fresno failure is structural, not idiosyncratic. The program's core operational premise is to hire formerly incarcerated people with gang-adjacent credibility to mentor active gang members. The credibility that makes the model work is the same credibility that creates the conditions in which an active employee can leak police information to gang members. There is no version of Advance Peace that resolves this without becoming a different program.</p>
+</section>
+
+<a href="#s6" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">NYC</div>
+</a>
+
+<section id="s6">
+  <span class="section-num">&sect; 06 &middot; The expansion that did not happen</span>
+  <h2>New York City: <em>zero participants.</em></h2>
+
+  <p class="lead">In March 2021, Mayor Bill de Blasio and Public Advocate Jumaane Williams announced that New York City would launch a five-precinct Advance Peace pilot.</p>
+
+  <p>The press release leading the announcement cited Sacramento's evaluated outcomes as the basis for the expansion: <a class="inline" href="https://advocate.nyc.gov/press/nyc-public-advocate-mayor-announce-pilot-program-advance-peace-prevent-gun-violence">"A peer-reviewed study of the implementation of Advance Peace in Sacramento demonstrates a 27% reduction in gun violence in the program's catchment area over 2 years."</a><sup class="cite"><a href="#src17">17</a></sup></p>
+
+  <p>The 27 percent figure is the AP-zone-only interrupted time series counterfactual estimate from the 2020 working paper. It is one of seven figures in the menu above. It is not the citywide figure. It was selected because it produced the strongest case for expansion.</p>
+
+  <p>Nineteen months later, in November 2022, The Trace published a follow-up. Per its reporting:</p>
+
+  <div class="receipt">
+    <div class="receipt-quote">"More than 19 months since New York officials said the city would be launching the pilot, and there's little progress to show for it. No participants have been enrolled, and Advance Peace is pulling out of New York City altogether after what Boggan called a 'toxic' experience."</div>
+    <div class="receipt-cite">The Trace, November 2022 &middot; <a href="#src18">source 18</a></div>
+  </div>
+
+  <p>Boggan's withdrawal letter to the New York City Mayor's Office of Criminal Justice, dated September 2022 and quoted by The Trace: <a class="inline" href="https://www.thetrace.org/2022/11/new-york-gun-violence-advance-peace/">"We have decided to forego any payment from the city of New York. We have experienced a process that has lacked good character and integrity as to the intention of your local government."</a></p>
+
+  <p>The pilot was sold on Sacramento's outcome. The pilot enrolled no one. The collapse received a fraction of the press coverage that the launch received. The 27 percent figure remains in circulation.</p>
+</section>
+
+<a href="#s7" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">The pandemic table</div>
+</a>
+
+<section id="s7">
+  <span class="section-num">&sect; 07 &middot; The pandemic paper</span>
+  <h2>Plus thirty-nine percent. <em>In the same paper.</em></h2>
+
+  <p class="lead">In June 2022, Corburn, Boggan and Muttaqi published a follow-up paper in the Journal of Urban Health, titled "Preventing Urban Firearm Homicides during COVID-19: Preliminary Results from Three Cities with the Advance Peace Program."</p>
+
+  <p>The paper makes two claims about Sacramento that sit a few paragraphs apart in the same publication. Per Table 1: <a class="inline" href="https://link.springer.com/article/10.1007/s11524-022-00660-4">"The percent change from pre-pandemic to pandemic periods ranged from + 39% in Stockton and Sacramento to + 6.4% in Richmond."</a><sup class="cite"><a href="#src19">19</a></sup></p>
+
+  <p>Per the same paper's headline finding: a 5 to 52 percent decrease in gun homicides during the 2020 to 2021 period compared to the 2018 to 2019 period for neighborhoods with a gun violence prevention program operating there.</p>
+
+  <p>The first finding says citywide gun violence in Sacramento increased 39 percent during the pandemic period while Advance Peace was operating. The second finding says specific Advance Peace neighborhoods showed a decrease compared to the prior period. Both findings are in the same paper. The first one almost never traveled.</p>
+
+  <div class="bignum-grid">
+    <div class="bignum">
+      <div class="bignum-label">In the abstract</div>
+      <div class="bignum-value">&minus;5% to &minus;52%</div>
+      <div class="bignum-cap">Reported decrease in gun homicides in AP zones, 2020 to 2021 vs. 2018 to 2019</div>
+    </div>
+    <div class="bignum">
+      <div class="bignum-label">In Table 1</div>
+      <div class="bignum-value red">+39%</div>
+      <div class="bignum-cap">Citywide change pre-pandemic to pandemic, Sacramento and Stockton</div>
+    </div>
+  </div>
+
+  <p>Which of these two numbers describes Sacramento as a city? The peer-reviewed answer, in Table 1 of the program's own evaluation: gun violence in Sacramento increased 39 percent. The author of the paper that reports this is the same author who reports the favorable neighborhood-level numbers in the same paper. The findings are not in conflict mathematically; they describe different geographic units. They are in conflict rhetorically; only one was promoted.</p>
+</section>
+
+<a href="#s8" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">The fiscal sponsor</div>
+</a>
+
+<section id="s8">
+  <span class="section-num">&sect; 08 &middot; Where the money comes through</span>
+  <h2>One nonprofit. <em>Two roles.</em></h2>
+
+  <p class="lead">A subtle structural feature of California's gun violence intervention funding produces a conflict of interest that has not been publicly examined. The same nonprofit that frames Black violence as caused by white institutions also receives state funds and acts as the legal pass-through for the cash that pays individual Black men.</p>
+
+  <p>The Center at Sierra Health Foundation, EIN 45-5282243, describes its work as supporting "programs that work to improve health and racial equity in California."<sup class="cite"><a href="#src20">20</a></sup> Its parent foundation lists racial equity and racial justice among its core program areas.</p>
+
+  <p>The same Center is the fiscal sponsor for Advance Peace. Confirmed in the BSCC CalVIP Cohort 3 final evaluation report, June 2024, in language describing the Youth Peacemaker Fellowship Project's contractual structure: <a class="inline" href="https://www.bscc.ca.gov/wp-content/uploads/2024/06/BSCC-CalVIP-Local-Evaluation-Report-FINAL-w-Appendices.pdf">"The Center at Sierra Health Foundation served as the fiscal sponsor for Advanced Peace, who would manage primary service provision for the program."</a><sup class="cite"><a href="#src21">21</a></sup></p>
+
+  <p>This means the Center is not a passive grantmaker to Advance Peace. The state writes checks to the Center. The Center pays Advance Peace. Advance Peace pays the fellows. The Center's racial equity framing supplies the moral case for the program. The Center's pass-through function supplies the operational mechanism. The same institution does both jobs.</p>
+
+  <p>Per IRS records, the Center had FY2024 revenue of approximately $197.5 million, almost all of it from government grants passing through to programs in California. Advance Peace itself, EIN 81-3858984, files separately as a 501(c)(3); revenue and compensation figures are available via the IRS Tax-Exempt Organization Search.<sup class="cite"><a href="#src22">22</a></sup></p>
+
+  <div class="note">
+    The Center's nonprofit infrastructure also collects substantial revenue from California's opioid settlement allocation, the state's opioid response programs, and Department of Health Care Services contracts. The fiscal sponsor relationship with Advance Peace is one line item in a much larger architecture. A separate investigation at this site documents that architecture in detail.
+  </div>
+
+  <p>Federal funding flows separately. The Bureau of Justice Assistance awarded Advance Peace the "National Peacemakers Network" Community Violence Intervention grant, supporting program operations in Stockton, Vallejo, Antioch, Fresno, Pomona, Richmond, Woodland (CA); Fort Worth (TX); Lansing (MI); and Rochester (NY).<sup class="cite"><a href="#src23">23</a></sup> Arnold Ventures funds Corburn's evaluation work across multiple cities.<sup class="cite"><a href="#src24">24</a></sup> The funding ecosystem is national. The methodology that produced the original Sacramento numbers is the methodology being applied across all of those cities.</p>
+</section>
+
+<a href="#s9" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">The non-renewal</div>
+</a>
+
+<section id="s9">
+  <span class="section-num">&sect; 09 &middot; What the city actually said</span>
+  <h2>Sacramento ended it. <em>Without a public reason.</em></h2>
+
+  <p class="lead">Sacramento city officials did not publicly explain why they declined to renew the Advance Peace contract at the end of 2021.</p>
+
+  <p>The non-renewal itself is documented. Per The Appeal, August 2022: <a class="inline" href="https://theappeal.org/advance-peace-stockton-gun-violence-prevention/">"In Sacramento, for example, officials opted not to renew Advance Peace in 2021 after the end of its four-year pilot."</a><sup class="cite"><a href="#src13">13</a></sup></p>
+
+  <p>Per CapRadio, April 2022, three months after the contract expired and just weeks after Sacramento's deadliest mass shooting in city history on K Street: <a class="inline" href="https://www.capradio.org/articles/2022/04/26/after-sacramentos-deadliest-mass-shooting-officials-plan-to-ask-voters-to-pay-for-more-youth-programs/">"Advance Peace, which is based in the Bay Area, previously had contracted to work with the city, but its partnership ended in 2021. It's unclear why it wasn't renewed."</a><sup class="cite"><a href="#src25">25</a></sup></p>
+
+  <p>"It's unclear why it wasn't renewed" is itself the finding. As of April 2022, four months after the contract expired, the City Manager's office had not publicly articulated a reason for ending a program billed as evidence-based. Advance Peace itself, on its Sacramento website, posted only this: <a class="inline" href="https://sacramento.advancepeace.org/">"Advance Peace and the Peacemaker Fellowship is no longer operative in Sacramento. The City of Sacramento and its leadership has made a formal decision to no longer support the Advance Peace model there."</a><sup class="cite"><a href="#src26">26</a></sup></p>
+
+  <p>Subsequent political messaging filled the silence. Mayoral candidate and former Sacramento County public health official Dr. Flojaune Cofer, in 2024 campaign materials, framed the non-renewal as a betrayal: politicians cut a working program and children died as a result. The framing depends on a counterfactual: that Advance Peace would have prevented the 2022, 2023, and post-program killings if it had been continued. The data does not support that counterfactual. While the program was operational, in 2020 and 2021, Sacramento recorded 41 and 58 homicides respectively. The 58-homicide year was the deadliest the city had seen in fifteen years. The post-program counterfactual the campaign messaging requires is a counterfactual to a program that was demonstrably underperforming during its own operational window.</p>
+
+  <p>The simplest explanation for the non-renewal is also the most consistent with the data the city had access to in late 2021: the program did not deliver what the contract promised, and the city's leadership decided not to publicly say so.</p>
+</section>
+
+<a href="#s10" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">Reading carefully</div>
+</a>
+
+<section id="s10">
+  <span class="section-num">&sect; 10 &middot; The structure of the claim</span>
+  <h2>Nobody had to lie.</h2>
+
+  <p class="lead">Each step in the construction of the Advance Peace narrative was, by itself, defensible. The cumulative drift was substantial.</p>
+
+  <p>The lead evaluator had a choice of comparison windows and statistical methods that produced a range of headline numbers between roughly 8 percent and roughly 39 percent. He included multiple of these figures in the same documents. He chose to lead with the largest in the abstracts and press releases. The press releases did the natural thing and propagated the largest. Allied institutions cited the press release figures rather than the peer-reviewed table numbers. Politicians simplified the press release figures into single sentences. By the time the claim arrived in a 2024 campaign, the underlying ten percent finding from the program's own working paper was no longer visible anywhere in the public record.</p>
+
+  <p>The structural racism framing supplied the moral cover. The pay-the-fellows mechanism supplied the operational legitimacy. Together they made the program politically untouchable for several years. When the city quietly declined to renew the contract, the same framing was deployed to attribute the post-program violence to the non-renewal rather than to the program's own underperformance.</p>
+
+  <p>External academic evaluators, including those broadly sympathetic to the model, have flagged the underlying evidence problem in plainer terms. The John Jay College Research and Evaluation Center, in its 2020 review of police-alternative violence reduction programs, wrote that <a class="inline" href="https://johnjayrec.nyc/2020/11/09/av2020/">"studies of Cure Violence and similar models (e.g. California's Advance Peace) continue to produce promising, but less than definitive evidence of program effects."</a><sup class="cite"><a href="#src27">27</a></sup> "Less than definitive" is the careful academic phrasing. The Sacramento contract was specific. The Sacramento data is specific. The gap between the two is also specific.</p>
+
+  <p>For Advance Peace specifically, the relevance is this. The contract metric, a 20 to 25 percent citywide reduction in gun-related assaults and homicides, was about the operational mechanism. The metric was not met. The political defense of the program shifted to the moral framing instead. That is the pattern.</p>
+
+  <p>Sacramento ended the program. Sacramento's homicides during the program's final year were the highest the city had seen since 2006. Both of those facts are in the same record. They have not yet been read together.</p>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="sources-title">Sources</div>
+    <ol class="sources-list">
+      <li id="src1">City of Sacramento, Resolution 2017-00851, "Authorizing the City Manager to Execute an Agreement with Advance Peace." Adopted August 29, 2017. Vote: 9-0. Legislation text via Sacramento Granicus archive. <a href="https://sacramento.granicus.com/MetaViewer.php?view_id=22&clip_id=4034&meta_id=501120">sacramento.granicus.com</a></li>
+
+      <li id="src2">"Controversial 'Advance Peace' contract signed in hopes of reducing gun violence." ABC10 News, December 2017. <a href="https://www.abc10.com/article/news/local/controversial-advance-peace-contract-signed-in-hopes-of-reducing-gun-violence/103-498716367">abc10.com</a></li>
+
+      <li id="src3">"Sacramento City Council overwhelmingly approves new gun violence reduction strategy." City of Sacramento Express, August 28, 2017. <a href="https://sacramentocityexpress.com/2017/08/28/sacramento-city-council-to-consider-a-new-gun-violence-reduction-strategy-at-tuesday-nights-council-meeting/">sacramentocityexpress.com</a></li>
+
+      <li id="src4">"Sacramento City Council Approves 'Advance Peace' Program." Fox40, August 30, 2017. Quoting Councilwoman Angelique Ashby on the resolution-vs-contract term discrepancy. <a href="https://fox40.com/news/sacramento-city-council-approves-advance-peace-program/">fox40.com</a></li>
+
+      <li id="src5">"Sacramento 2021 crime statistics: City sees highest number of homicides since 2006." ABC10, January 2022, citing Sacramento Police Department year-end video release. <a href="https://www.abc10.com/article/news/local/sacramento/sacamento-crime-statistics-2021/103-6885d8a8-9f25-4c9c-b640-a32186d95730">abc10.com</a></li>
+
+      <li id="src6">California Board of State and Community Corrections, CalVIP Cohort 3 Final Local Evaluation Report, "Youth Peacemaker Fellowship Project," June 2024. <a href="https://www.bscc.ca.gov/wp-content/uploads/2024/06/BSCC-CalVIP-Local-Evaluation-Report-FINAL-w-Appendices.pdf">bscc.ca.gov</a></li>
+
+      <li id="src7">Corburn, Jason and Amanda Fukutome-Lopez. "Outcome Evaluation of Advance Peace Sacramento, 2018-19." UC Berkeley Center for Global Healthy Cities, March 2020. <a href="https://www.advancepeace.org/wp-content/uploads/2020/04/Corburn-and-F-Lopez-Advance-Peace-Sacramento-2-Year-Evaluation-03-2020.pdf">advancepeace.org</a></li>
+
+      <li id="src8">Corburn, Jason; Yael Nidam; Amanda Fukutome-Lopez. "The Art and Science of Urban Gun Violence Reduction: Evidence from the Advance Peace Program in Sacramento, California." <em>Urban Science</em> 6(1):6, February 2, 2022. <a href="https://www.mdpi.com/2413-8851/6/1/6">mdpi.com</a></li>
+
+      <li id="src9">Corburn, Jason; DeVone Boggan; Khaalid Muttaqi; et al. "A healing-centered approach to preventing urban gun violence: The Advance Peace Model." <em>Humanities and Social Sciences Communications</em> 8:142, June 9, 2021. Nature Portfolio. <a href="https://www.nature.com/articles/s41599-021-00820-y">nature.com</a></li>
+
+      <li id="src10">Hwang, Susan. "Berkeley study: California gun violence program saves lives, taxpayers millions." UC Berkeley News, March 17, 2021. <a href="https://news.berkeley.edu/2021/03/17/berkeley-study-california-gun-violence-program-saves-lives-taxpayers-millions/">news.berkeley.edu</a></li>
+
+      <li id="src11">"Controversial California program offers cash to reduce gun crimes." PBS NewsHour Weekend. Boggan interview. <a href="https://www.pbs.org/newshour/show/controversial-california-program-offers-cash-to-reduce-gun-crimes">pbs.org</a></li>
+
+      <li id="src12">"An end to urban gun violence?" UC Berkeley School of Public Health, undated, promoting the 2025 MIT Press book by Corburn and Boggan. <a href="https://publichealth.berkeley.edu/articles/spotlight/faculty/an-end-to-urban-gun-violence">publichealth.berkeley.edu</a></li>
+
+      <li id="src13">Sentil, Sruthi. "Advancing Peace, Against the Odds." The Appeal, August 2022. Interview with Khaalid Muttaqi. <a href="https://theappeal.org/advance-peace-stockton-gun-violence-prevention/">theappeal.org</a></li>
+
+      <li id="src14">"Operation No Fly Zone." Office of California Attorney General Rob Bonta, joint announcement with Fresno PD and Fresno County DA, April 2022. Coverage: ABC30 Fresno. <a href="https://abc30.com/post/no-fly-zone-operation-fresno/11770401/">abc30.com</a></li>
+
+      <li id="src15">"Fresno pulls support of controversial gang program after staff arrested in gang sweep, made threats against lawmakers." San Joaquin Valley Sun, 2022. Quoting Fresno Police Chief Paco Balderrama. <a href="https://sjvsun.com/news/fresno/fresno-pulls-support-of-advance-peace-over-staff-arrests-in-gang-sweep-threats-against-lawmakers/">sjvsun.com</a></li>
+
+      <li id="src16">"Fresno city leaders address funding for Advance Peace, Mayor Jerry Dyer says he can't support current model." ABC30 Fresno. <a href="https://abc30.com/advance-peace-fresno-gun-violence-gang-mayor/11982407/">abc30.com</a></li>
+
+      <li id="src17">"NYC Public Advocate, Mayor Announce Pilot Program To 'Advance Peace,' Prevent Gun Violence." Office of NYC Public Advocate Jumaane Williams, March 15, 2021. <a href="https://advocate.nyc.gov/press/nyc-public-advocate-mayor-announce-pilot-program-advance-peace-prevent-gun-violence">advocate.nyc.gov</a></li>
+
+      <li id="src18">Sefiane, Champe. "What Happened to NYC's Advance Peace Violence Prevention Pilot?" The Trace, November 2022. <a href="https://www.thetrace.org/2022/11/new-york-gun-violence-advance-peace/">thetrace.org</a></li>
+
+      <li id="src19">Corburn, Jason; DeVone Boggan; Khaalid Muttaqi. "Preventing Urban Firearm Homicides during COVID-19: Preliminary Results from Three Cities with the Advance Peace Program." <em>Journal of Urban Health</em> 99:626-634, June 2022. <a href="https://link.springer.com/article/10.1007/s11524-022-00660-4">link.springer.com</a></li>
+
+      <li id="src20">"Programs - The Center at Sierra Health Foundation." <a href="https://www.shfcenter.org/programs-and-initiatives/">shfcenter.org</a></li>
+
+      <li id="src21">California Board of State and Community Corrections, CalVIP Cohort 3 Final Local Evaluation Report. (See source 06.) Confirms fiscal sponsorship arrangement.</li>
+
+      <li id="src22">IRS Tax-Exempt Organization Search. Center at Sierra Health Foundation EIN 45-5282243; Advance Peace EIN 81-3858984. <a href="https://apps.irs.gov/app/eos/">apps.irs.gov/app/eos</a></li>
+
+      <li id="src23">"Advance Peace National Peacemakers Network." Bureau of Justice Assistance grant 15PBJA-23-GG-05210-CVIP. <a href="https://bja.ojp.gov/funding/awards/15pbja-23-gg-05210-cvip">bja.ojp.gov</a></li>
+
+      <li id="src24">"Two years after violence intervention program launches in Fresno, gun-related crimes are cut by nearly half." UC Berkeley School of Public Health, August 2025. Funder attribution: Arnold Ventures. <a href="https://publichealth.berkeley.edu/articles/spotlight/research/fresno-gun-crimes-cut-by-nearly-half">publichealth.berkeley.edu</a></li>
+
+      <li id="src25">Romero, Pauline Bartolone. "After Sacramento's deadliest mass shooting, officials plan to ask voters to pay for more youth programs." CapRadio, April 26, 2022. <a href="https://www.capradio.org/articles/2022/04/26/after-sacramentos-deadliest-mass-shooting-officials-plan-to-ask-voters-to-pay-for-more-youth-programs/">capradio.org</a></li>
+
+      <li id="src26">Advance Peace Sacramento, official site. <a href="https://sacramento.advancepeace.org/">sacramento.advancepeace.org</a></li>
+
+      <li id="src27">Butts, Jeffrey A.; Wolff, Kevin T.; Misshula, Evan; Delgado, Sheyla A. "Reducing Violence Without Police: A Review of Research Evidence." John Jay College Research and Evaluation Center, City University of New York, November 9, 2020. <a href="https://johnjayrec.nyc/2020/11/09/av2020/">johnjayrec.nyc</a></li>
+    </ol>
+
+    <div class="colophon">
+      Published by <a href="https://dont-shoot-the-data.github.io/">dont-shoot-the-data</a>. All numerical claims trace to primary documents. The Corburn 2022 Urban Science paper, the Corburn-Boggan-Muttaqi 2021 Humanities and Social Sciences Communications paper, and the Corburn-Boggan-Muttaqi 2022 Journal of Urban Health paper are open access and may be downloaded in full from the publishers. Reader corrections are welcome. Reproduction permitted with attribution.
+    </div>
+  </div>
+</footer>
+
+<script>
+const tickFont = { family: 'JetBrains Mono', size: 11, weight: '500' };
+const axisColor = '#6b6259';
+const gridColor = 'rgba(201, 191, 172, 0.5)';
+Chart.defaults.font.family = 'Source Serif 4';
+Chart.defaults.color = '#3d3833';
+
+new Chart(document.getElementById('chartHomicidesAll'), {
+  type: 'bar',
+  data: {
+    labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+    datasets: [{
+      data: [41, 36, 36, 35, 41, 58, 47, 37],
+      backgroundColor: [
+        '#8a9c8d',
+        '#8a9c8d',
+        '#4a7a5d',
+        '#2d5a3d',
+        '#a83a3a',
+        '#8b1e1e',
+        '#8a9c8d',
+        '#8a9c8d',
+      ],
+      borderWidth: 0,
+      barThickness: 44,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1a1612',
+        titleFont: { family: 'JetBrains Mono', size: 11 },
+        bodyFont: { family: 'JetBrains Mono', size: 12, weight: '500' },
+        padding: 10,
+        callbacks: {
+          label: ctx => `${ctx.parsed.y} homicides`,
+          afterLabel: ctx => {
+            const yr = parseInt(ctx.label);
+            if (yr === 2018 || yr === 2019) return 'Original Peacemaker Fellowship';
+            if (yr === 2020 || yr === 2021) return 'Program continued (extension)';
+            if (yr < 2018) return 'Before Advance Peace';
+            return 'After Advance Peace';
+          }
+        }
+      }
+    },
+    scales: {
+      x: { ticks: { font: tickFont, color: axisColor }, grid: { display: false }, border: { color: '#1a1612' } },
+      y: {
+        ticks: { font: tickFont, color: axisColor, stepSize: 10 },
+        grid: { color: gridColor, lineWidth: 1 },
+        border: { display: false },
+        suggestedMin: 0, suggestedMax: 65,
+      }
+    }
+  }
+});
+
+new Chart(document.getElementById('chartFramings'), {
+  type: 'bar',
+  data: {
+    labels: [
+      ['10.1%', 'raw mean, citywide'],
+      ['18%', 'ITS, citywide'],
+      ['21%', '4-yr avg, citywide'],
+      ['22%', 'press release figure'],
+      ['27%', 'ITS counterfactual, AP zones'],
+      ['29%', 'max per-zone (peer-reviewed)'],
+      ['39%', 'Del Paso (press release only)']
+    ],
+    datasets: [{
+      data: [-10.1, -18, -21, -22, -27, -29, -39],
+      backgroundColor: [
+        '#a83a3a',
+        '#8b6e3a',
+        '#6e6e3a',
+        '#4a7a5d',
+        '#3a6e4a',
+        '#2d5a3d',
+        '#1a3a25',
+      ],
+      borderWidth: 0,
+      barThickness: 36,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1a1612',
+        titleFont: { family: 'JetBrains Mono', size: 11 },
+        bodyFont: { family: 'JetBrains Mono', size: 12, weight: '500' },
+        padding: 10,
+        callbacks: { label: ctx => `${ctx.parsed.x}%` }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { font: tickFont, color: axisColor, callback: v => v + '%' },
+        grid: { color: gridColor, lineWidth: 1 },
+        border: { color: '#1a1612' },
+        suggestedMin: -45, suggestedMax: 0,
+      },
+      y: { ticks: { font: tickFont, color: axisColor }, grid: { display: false }, border: { display: false } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
