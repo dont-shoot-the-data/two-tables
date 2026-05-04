@@ -41,7 +41,8 @@ No build step. Static HTML, two PNGs. Open `index.html` in any browser.
 | § 07 | The pandemic paper: Table 1 versus the abstract |
 | § 08 | Where the money comes through: the Sierra Health Foundation Center fiscal sponsorship |
 | § 09 | What the city actually said about the non-renewal |
-| § 10 | The structure of the claim |
+| § 10 | How the metric traveled: from contract to campaign |
+| § 11 | The structure of the claim |
 
 ---
 
