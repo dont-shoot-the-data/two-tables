@@ -323,6 +323,31 @@ em { font-style: italic; }
 .parallel-col.story1 .parallel-label { color: var(--accent); border-color: var(--accent); }
 .parallel-col.story2 .parallel-label { color: var(--good); border-color: var(--good); }
 
+.parallel-translation {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 18px;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 36;
+  border-bottom: 1px dashed var(--rule);
+  padding-bottom: 14px;
+}
+
+.parallel-col.story1 .parallel-translation { color: var(--accent); }
+.parallel-col.story2 .parallel-translation { color: var(--good); }
+
+.parallel-quote-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+
 .parallel-quote {
   font-family: var(--serif-display);
   font-weight: 400;
@@ -497,6 +522,28 @@ figure.shot {
   background: var(--bg-card);
   border: 1px solid var(--rule);
   padding: 20px;
+}
+
+figure.shot .shot-title {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 36;
+}
+
+figure.shot.cause .shot-title { color: var(--accent); }
+figure.shot.mechanism .shot-title { color: var(--good); }
+
+figure.shot .shot-subtitle {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
 }
 
 figure.shot a {
@@ -874,11 +921,15 @@ sup.cite a:hover { text-decoration: underline; }
   <div class="parallel">
     <div class="parallel-col story1">
       <div class="parallel-label">Story 1 &middot; The cause</div>
+      <div class="parallel-translation">White-controlled institutions caused this.</div>
+      <div class="parallel-quote-label">In their own words</div>
       <div class="parallel-quote">"The traumas from state-sanction violence, including heavy-handed policing, racially segregated neighborhoods, displacement, and lack of educational and economic opportunities, combine to contribute to urban gun violence and victimization."</div>
       <div class="parallel-attr">Corburn, Boggan &amp; Muttaqi (2021), Hum Soc Sci Commun 8:142, Introduction &middot; <a href="https://www.nature.com/articles/s41599-021-00820-y">nature.com</a></div>
     </div>
     <div class="parallel-col story2">
       <div class="parallel-label">Story 2 &middot; The mechanism</div>
+      <div class="parallel-translation">The way to fix it is to identify Black men and pay them.</div>
+      <div class="parallel-quote-label">In their own words</div>
       <div class="parallel-quote">"Once a fellow is working on their LifeMAP for at least 6 months and achieves 65% progress toward a goal (as determined by their NCA mentor and the AP leadership), that fellow is eligible for a milestone allowance of up to $1000 USD per month... the majority of fellows are indeed African&ndash;American males under 24 years old."</div>
       <div class="parallel-attr">Corburn, Boggan &amp; Muttaqi (2021), same paper, sections "Milestone allowance" and "Community-wide transformations" &middot; <a href="https://www.nature.com/articles/s41599-021-00820-y">nature.com</a></div>
     </div>
@@ -913,14 +964,18 @@ sup.cite a:hover { text-decoration: underline; }
 
   <p>UC Berkeley's School of Public Health, in promoting the 2025 MIT Press book co-authored by Corburn and Boggan, distills the same pattern. Corburn: "the root causes of urban gun violence include racism, discrimination, redlining, and eugenics." Boggan, in the same interview: "We've already solved 99% of the problem. Less than 1% of a city's population is at the center of driving gun violence."<sup class="cite"><a href="#src12">12</a></sup> The cause is structural and historical and racial. The solution is to find the one percent and pay them.</p>
 
-  <figure class="shot">
+  <figure class="shot cause">
+    <div class="shot-subtitle">Story 1 &middot; The cause</div>
+    <div class="shot-title">In the program's own academic paper: white-controlled institutions caused this.</div>
     <a href="https://www.nature.com/articles/s41599-021-00820-y" title="Open the Corburn, Boggan and Muttaqi 2021 paper at nature.com">
       <img src="corburn-2021-structural-racism.png" alt="Screenshot of Corburn, Boggan and Muttaqi 2021 paper showing the structural racism quote">
     </a>
     <figcaption><strong>Corburn, Boggan &amp; Muttaqi (2021)</strong> &middot; published in <em>Humanities and Social Sciences Communications</em>, a Nature Portfolio journal &middot; <a href="https://www.nature.com/articles/s41599-021-00820-y">read the full paper</a></figcaption>
   </figure>
 
-  <figure class="shot">
+  <figure class="shot mechanism">
+    <div class="shot-subtitle">Story 2 &middot; The mechanism</div>
+    <div class="shot-title">In the same program's press release: the way to fix it is to identify Black men and pay them.</div>
     <a href="https://news.berkeley.edu/2021/03/17/berkeley-study-california-gun-violence-program-saves-lives-taxpayers-millions/" title="Open the UC Berkeley News article">
       <img src="muttaqi-empower-quote.png" alt="Screenshot of UC Berkeley News article quoting Khaalid Muttaqi">
     </a>
@@ -1088,11 +1143,54 @@ sup.cite a:hover { text-decoration: underline; }
 <a href="#s10" class="divider">
   <div class="divider-line"></div>
   <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">How it traveled</div>
+</a>
+
+<!-- ============================================================ -->
+<section id="s10">
+  <span class="section-num">&sect; 10 &middot; How the metric traveled</span>
+  <h2>From contract <em>to campaign.</em></h2>
+
+  <p class="lead">A specific contractual commitment to reduce citywide gun violence by 20 to 25 percent became, by the 2024 mayoral campaign, a story about youth homicides and political betrayal. The metric was not changed by amendment. It was changed by repetition.</p>
+
+  <p>The original Sacramento contract, Resolution 2017-00851 in the Granicus archive, is explicit about what the program was being paid to do. Per the staff report on the legislation: <a class="inline" href="https://sacramento.granicus.com/MetaViewer.php?view_id=22&clip_id=4034&meta_id=501120">"The primary purpose of the Peacemaker Fellowship is to save lives by eliminating gun violence. The Fellowship will coordinate targeted intervention services to young adults identified as most likely to be perpetrators and/or victims of gun violence."</a><sup class="cite"><a href="#src1">01</a></sup></p>
+
+  <p>The word "youth" appears in the staff report only in references to the Mayor's strategic priority to "Invest in our Youth," not as a contracted deliverable. The program's contracted deliverable, as quoted by ABC10 at the December 2017 signing, was the 20 to 25 percent citywide reduction in gun-related assaults and homicides. There was no contractual commitment about juvenile or youth homicide rates.</p>
+
+  <p>Seven years later, in her 2024 mayoral campaign for the City of Sacramento, Dr. Flojaune Cofer published the following statement in her own Ballotpedia Candidate Connection survey, in answer to a public-safety question:</p>
+
+  <div class="receipt">
+    <div class="receipt-quote">"Did you know that Sacramento went two years without any youth homicides? During the pandemic, politicians cut the youth programs that prevented homicides, and we've seen a rise in youth violence since then."</div>
+    <div class="receipt-cite">Dr. Flojaune Cofer, 2024 Sacramento mayoral campaign &middot; Ballotpedia Candidate Connection survey &middot; <a href="#src28">source 28</a></div>
+  </div>
+
+  <p>Three of the claims in that statement are inconsistent with the documentary record.</p>
+
+  <p>First, "two years without any youth homicides" was not the program's contracted goal. The 20 to 25 percent citywide reduction in gun-related assaults and homicides was the goal. The youth-homicide framing was added to the program's marketing materials after the contract metric became unreachable.</p>
+
+  <p>Second, "politicians cut the youth programs" implies the program ended before its intended term. Sacramento operated Advance Peace continuously from mid-2018 through December 2021, the full term of the original contract plus a state-funded extension and a separately launched Youth Peacemaker Fellowship. The non-renewal at the end of 2021 came at the natural end of the funding cycle. The city declined to extend.</p>
+
+  <p>Third, "rise in youth violence since then" implies the rise occurred after the program ended. Sacramento Police recorded 58 homicides in 2021, the deadliest year since 2006, while the program was still operational. The 2022 and 2023 totals (47 and 37) were lower than 2021, not higher. The rise the campaign attributed to the program's absence had already happened during the program's presence.</p>
+
+  <h3>The local press</h3>
+
+  <p>The Sacramento Bee endorsed Cofer in the March 2024 Democratic primary for mayor.<sup class="cite"><a href="#src29">29</a></sup> She advanced to the November runoff and lost by 1.4 percentage points to Kevin McCarty.<sup class="cite"><a href="#src30">30</a></sup> Across the campaign, no published Bee article located in the open record challenged the youth-homicide framing against the underlying contract terms or the SacPD homicide statistics for 2020 and 2021.</p>
+
+  <p>The local print and broadcast coverage of Advance Peace from 2017 through 2024, taken as a whole, propagated the program's own claimed effects with limited scrutiny. The Sacramento News &amp; Review described early-stage results in 2019 with the framing "the most telling result: every participant is still alive,"<sup class="cite"><a href="#src31">31</a></sup> a characterization that does not contemplate the relevant counterfactual baseline (the one-year survival rate among similar men, in the same city, with no intervention). CapRadio's April 2022 reporting, three months after the program ended and weeks after the K Street mass shooting, noted that the non-renewal reason was "unclear"<sup class="cite"><a href="#src25">25</a></sup> without proceeding to the question of whether the underperformance documented in the program's own peer-reviewed evaluations was a factor.</p>
+
+  <p>The pattern is not unique to Sacramento. Local press in cities that have hosted Advance Peace expansions, including Stockton, Fresno, and New York, have generally framed the program's outcome claims through the lens of the press release figures rather than the peer-reviewed table numbers. The New York pilot's 19-month collapse, documented by The Trace in November 2022,<sup class="cite"><a href="#src18">18</a></sup> received a fraction of the press attention that the March 2021 launch announcement received.</p>
+
+  <p>This is what it means for a metric to travel. The contract said one thing. The press release said another thing. The local paper repeated the press release. A campaign repeated the local paper. The original contract terms, by the time the claim arrived in a runoff campaign, were no longer part of the conversation.</p>
+</section>
+
+<a href="#s11" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   <div class="divider-label">Reading carefully</div>
 </a>
 
-<section id="s10">
-  <span class="section-num">&sect; 10 &middot; The structure of the claim</span>
+<section id="s11">
+  <span class="section-num">&sect; 11 &middot; The structure of the claim</span>
   <h2>Nobody had to lie.</h2>
 
   <p class="lead">Each step in the construction of the Advance Peace narrative was, by itself, defensible. The cumulative drift was substantial.</p>
@@ -1167,6 +1265,14 @@ sup.cite a:hover { text-decoration: underline; }
       <li id="src26">Advance Peace Sacramento, official site. <a href="https://sacramento.advancepeace.org/">sacramento.advancepeace.org</a></li>
 
       <li id="src27">Butts, Jeffrey A.; Wolff, Kevin T.; Misshula, Evan; Delgado, Sheyla A. "Reducing Violence Without Police: A Review of Research Evidence." John Jay College Research and Evaluation Center, City University of New York, November 9, 2020. <a href="https://johnjayrec.nyc/2020/11/09/av2020/">johnjayrec.nyc</a></li>
+
+      <li id="src28">"Flojaune Cofer." Ballotpedia Candidate Connection survey, 2024 Sacramento mayoral race. <a href="https://ballotpedia.org/Flojaune_Cofer">ballotpedia.org/Flojaune_Cofer</a></li>
+
+      <li id="src29">"Sacramento Bee Endorsements," primary election March 5, 2024. Endorsement of Flojaune Cofer for Mayor of Sacramento. Catalog via Blue Voter Guide. <a href="https://bluevoterguide.org/endorser-org/Sacramento_Bee/CA/3041">bluevoterguide.org</a></li>
+
+      <li id="src30">"2024 Sacramento mayoral election." General election certified December 2, 2024. McCarty defeated Cofer by 1.4 percentage points. <a href="https://en.wikipedia.org/wiki/2024_Sacramento_mayoral_election">en.wikipedia.org</a></li>
+
+      <li id="src31">"The road to peace: New initiative sees signs of progress in combating gang killings in Sacramento." Sacramento News &amp; Review, April 23, 2019. <a href="https://sacblog.newsreview.com/2019/04/23/the-road-to-peace-advance-peace-initiative-sees-early-signs-of-progress-in-combating-gang-killings-in-sacramento/">sacblog.newsreview.com</a></li>
     </ol>
 
     <div class="colophon">
