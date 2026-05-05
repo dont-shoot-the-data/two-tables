@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Six numbers for one program: How Advance Peace Sacramento's evaluation produced a different headline for every audience</title>
-<meta name="description" content="An investigative read of the Advance Peace Sacramento evaluation record. The program's own peer-reviewed papers contain six different reduction percentages for the same intervention window. The contract called for 20 to 25 percent. Sacramento PD recorded its deadliest year since 2006 while the program was operating.">
+<title>Shifting Goalposts: How Advance Peace Sacramento survived a missed contract on a metric the public never saw</title>
+<meta name="description" content="Sacramento contracted with Advance Peace for a 20 to 25 percent citywide reduction in gun-related assaults and homicides by Year 2 and 50 percent by Year 4. The city missed both. Program allies replaced the contract metric with a juvenile-homicide claim contradicted by Sacramento Police Department&rsquo;s own homicide records of two juvenile victims of a 187(A) homicide on May 4, 2018, in an Advance Peace zone. The claim was repeated for five years by program staff, evaluators, lobbyists, the city&rsquo;s paper of record, and a 2024 mayoral candidate now running for County Supervisor. Nobody in the chain checked.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,6 +96,61 @@ header.masthead {
   margin-bottom: 80px;
 }
 
+/* Animated goalposts banner */
+.goalpost-banner {
+  height: 64px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 36px;
+  background: linear-gradient(180deg, #1f2d1f 0%, #2c3d2c 60%, #354935 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  max-width: 100%;
+}
+
+.goalpost-banner .field-line {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 12px;
+  height: 1px;
+  background: rgba(220, 230, 220, 0.12);
+}
+
+.goalpost-banner .post {
+  position: absolute;
+  bottom: 12px;
+  width: 26px;
+  height: 34px;
+  border: 2px solid rgba(220, 230, 220, 0.6);
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  pointer-events: none;
+}
+
+.goalpost-banner .post::after {
+  content: '';
+  position: absolute;
+  left: -7px; right: -7px;
+  bottom: -2px;
+  height: 2px;
+  background: rgba(220, 230, 220, 0.6);
+}
+
+@keyframes goalpost-drift {
+  from { transform: translateX(-40px); }
+  to { transform: translateX(calc(100vw + 40px)); }
+}
+
+.goalpost-banner .post-1 { animation: goalpost-drift 36s linear infinite; }
+.goalpost-banner .post-2 { animation: goalpost-drift 28s linear infinite; animation-delay: -9s; opacity: 0.7; }
+.goalpost-banner .post-3 { animation: goalpost-drift 44s linear infinite; animation-delay: -22s; opacity: 0.5; bottom: 22px; }
+.goalpost-banner .post-4 { animation: goalpost-drift 32s linear infinite; animation-delay: -16s; opacity: 0.6; bottom: 8px; }
+.goalpost-banner .post-5 { animation: goalpost-drift 40s linear infinite; animation-delay: -30s; opacity: 0.4; bottom: 18px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .goalpost-banner .post { animation: none; opacity: 0; }
+}
+
 .kicker {
   font-family: var(--mono);
   font-size: 12px;
@@ -128,8 +183,8 @@ h1.title em {
   font-size: 22px;
   line-height: 1.45;
   color: var(--ink-soft);
-  max-width: 620px;
-  margin: 0 auto 48px;
+  max-width: 640px;
+  margin: 0 auto 56px;
 }
 
 .byline {
@@ -142,6 +197,83 @@ h1.title em {
 }
 
 .byline strong { color: var(--ink); font-weight: 500; }
+
+/* The four-row hero stack: CONTRACTED / DELIVERED / CLAIMED INSTEAD / CONTRADICTED BY */
+.stack {
+  margin: 0 auto;
+  max-width: 680px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+}
+
+.stack-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 22px;
+  padding: 22px 0;
+  align-items: baseline;
+}
+
+.stack-row + .stack-row { border-top: 1px dashed var(--rule); }
+
+.stack-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-faint);
+  text-align: right;
+  padding-top: 6px;
+  white-space: nowrap;
+}
+
+.stack-row.contracted .stack-tag { color: var(--ink); }
+.stack-row.delivered .stack-tag { color: var(--accent); }
+.stack-row.claimed .stack-tag { color: var(--ink); }
+.stack-row.contradicted .stack-tag { color: var(--accent); }
+
+.stack-body {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 36;
+}
+
+.stack-row.delivered .stack-body { color: var(--ink); }
+.stack-row.contradicted .stack-body { color: var(--ink); font-weight: 500; }
+
+.stack-body .lead-line {
+  display: block;
+  font-weight: 600;
+  font-size: 21px;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.stack-row.delivered .lead-line { color: var(--accent); }
+.stack-row.contradicted .lead-line { color: var(--accent); }
+
+.stack-body .small {
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  font-weight: 400;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .stack-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+  .stack-tag { text-align: left; padding-top: 0; }
+  .stack-body .lead-line { font-size: 18px; }
+  .stack-body { font-size: 16px; }
+}
 
 section {
   margin-bottom: 100px;
@@ -289,93 +421,6 @@ em { font-style: italic; }
 
 @media (max-width: 600px) {
   .pull-text { font-size: 20px; }
-}
-
-.parallel {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  margin: 50px 0;
-  border: 2px solid var(--ink);
-  background: var(--bg-card);
-}
-
-.parallel-col {
-  padding: 32px 28px;
-  position: relative;
-}
-
-.parallel-col + .parallel-col { border-left: 2px solid var(--ink); }
-
-.parallel-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 18px;
-  display: inline-block;
-  padding: 4px 10px;
-  border: 1px solid var(--ink);
-  background: var(--bg);
-}
-
-.parallel-col.story1 .parallel-label { color: var(--accent); border-color: var(--accent); }
-.parallel-col.story2 .parallel-label { color: var(--good); border-color: var(--good); }
-
-.parallel-translation {
-  font-family: var(--serif-display);
-  font-weight: 600;
-  font-size: 17px;
-  line-height: 1.35;
-  color: var(--ink);
-  margin-bottom: 18px;
-  letter-spacing: -0.005em;
-  font-variation-settings: "opsz" 36;
-  border-bottom: 1px dashed var(--rule);
-  padding-bottom: 14px;
-}
-
-.parallel-col.story1 .parallel-translation { color: var(--accent); }
-.parallel-col.story2 .parallel-translation { color: var(--good); }
-
-.parallel-quote-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 8px;
-}
-
-.parallel-quote {
-  font-family: var(--serif-display);
-  font-weight: 400;
-  font-style: italic;
-  font-size: 17px;
-  line-height: 1.45;
-  color: var(--ink);
-  margin-bottom: 16px;
-  font-variation-settings: "opsz" 24;
-}
-
-.parallel-attr {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: var(--ink-faint);
-  line-height: 1.5;
-}
-
-.parallel-attr a {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid var(--accent);
-}
-
-@media (max-width: 700px) {
-  .parallel { grid-template-columns: 1fr; }
-  .parallel-col + .parallel-col { border-left: 0; border-top: 2px solid var(--ink); }
 }
 
 .table-wrap {
@@ -536,6 +581,7 @@ figure.shot .shot-title {
 
 figure.shot.cause .shot-title { color: var(--accent); }
 figure.shot.mechanism .shot-title { color: var(--good); }
+figure.shot.promise .shot-title { color: var(--ink); }
 
 figure.shot .shot-subtitle {
   font-family: var(--mono);
@@ -638,6 +684,83 @@ figure.shot figcaption a {
   margin: 28px 0;
 }
 
+/* Chain-of-repetition timeline */
+.chain {
+  margin: 40px 0;
+  border-left: 2px solid var(--rule);
+  padding-left: 28px;
+  position: relative;
+}
+
+.chain-step {
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.chain-step::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.chain-step.bridge::before { background: var(--accent); }
+
+.chain-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.chain-actor {
+  font-family: var(--serif-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin-bottom: 6px;
+  font-variation-settings: "opsz" 36;
+}
+
+.chain-actor a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: border-color 0.15s ease;
+}
+
+.chain-actor a:hover {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+.chain-text {
+  font-family: var(--serif-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.chain-text em {
+  font-style: italic;
+  color: var(--ink);
+}
+
+.chain-text a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
 footer {
   border-top: 2px solid var(--ink);
   margin-top: 120px;
@@ -717,13 +840,87 @@ sup.cite {
 
 sup.cite a { color: inherit; text-decoration: none; }
 sup.cite a:hover { text-decoration: underline; }
+
+/* Two children block */
+.children {
+  margin: 50px 0;
+  padding: 36px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  text-align: center;
+}
+
+.children-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.children-row:has(> .children-name:only-child) {
+  grid-template-columns: 1fr;
+}
+
+.children-name {
+  padding: 14px 12px;
+}
+
+.children-name + .children-name { border-left: 1px solid var(--rule); }
+
+.children-first {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+  font-variation-settings: "opsz" 100;
+}
+
+.children-last {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 12px;
+  font-variation-settings: "opsz" 100;
+}
+
+.children-age {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.children-where {
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .children-first, .children-last { font-size: 24px; }
+}
+
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <div class="wrap-wide masthead-inner">
-    <div class="masthead-title">Don't Shoot the Data</div>
+    <div class="masthead-title">Don&rsquo;t Shoot the Data</div>
     <div>An investigative read</div>
   </div>
 </header>
@@ -731,48 +928,156 @@ sup.cite a:hover { text-decoration: underline; }
 <div class="wrap">
 
 <div class="hero">
-  <div class="kicker">Sacramento &middot; Advance Peace &middot; The numbers</div>
-  <h1 class="title">Six numbers,<br>one <em>program.</em></h1>
-  <p class="dek">Sacramento contracted with Advance Peace for a 20 to 25 percent reduction in gun-related assaults and homicides over two years. The program's own evaluators have published at least six different reduction percentages for that window. Sacramento Police recorded the deadliest year since 2006 while the program was operating. Both stories belong to the same program.</p>
-  <div class="byline"><strong>dont-shoot-the-data</strong></div>
+  <div class="goalpost-banner" aria-hidden="true">
+    <div class="field-line"></div>
+    <div class="post post-1"></div>
+    <div class="post post-2"></div>
+    <div class="post post-3"></div>
+    <div class="post post-4"></div>
+    <div class="post post-5"></div>
+  </div>
+  <div class="kicker">Sacramento &middot; Advance Peace &middot; What was paid for, what was delivered</div>
+  <h1 class="title">Shifting <em>Goalposts.</em></h1>
+  <p class="dek">A program missed its contract. Its allies repeated a different claim for five years. The claim was contradicted by police records. Two children, ages 3 and 6, were shot to death inside the window. Nobody who promoted the program ever mentioned them.</p>
+
+  <div class="stack" aria-label="Summary of the contract, what was delivered, what was claimed instead, and what contradicts the claim">
+    <div class="stack-row contracted">
+      <div class="stack-tag">Contracted</div>
+      <div class="stack-body">
+        <span class="lead-line">20% by Year 2. 50% by Year 4.</span>
+        Reduction of gun-related assaults and homicides, citywide.
+        <span class="small">Signed Funding Agreement, December 2017. Document 2017&ndash;1473.</span>
+      </div>
+    </div>
+    <div class="stack-row delivered">
+      <div class="stack-tag">Delivered</div>
+      <div class="stack-body">
+        <span class="lead-line">+26 excess homicides during the program window.</span>
+        Year 2: &minus;1. Year 3: +5. Year 4: +22. Versus the 2017 baseline.
+        <span class="small">2021 was the deadliest year Sacramento had recorded since 2006. The program was operational the entire window.</span>
+      </div>
+    </div>
+    <div class="stack-row claimed">
+      <div class="stack-tag">Claimed instead</div>
+      <div class="stack-body">
+        <span class="lead-line">&ldquo;Two consecutive years without a single juvenile homicide.&rdquo;</span>
+        <span class="small">Repeated by program staff, evaluators, lobbyists, the city&rsquo;s paper of record, and a 2024 mayoral candidate now running for County Supervisor.</span>
+      </div>
+    </div>
+    <div class="stack-row contradicted">
+      <div class="stack-tag">Contradicted by</div>
+      <div class="stack-body">
+        <span class="lead-line">Two juvenile victims of a 187(A) homicide.</span>
+        Shot to death in an Advance Peace target zone, May 4, 2018.
+        <span class="small">Sacramento Police Department case 18&ndash;132511. Confirmed in two separate Public Records Act responses, PRA 24&ndash;391 (homicide person-level dataset) and PRA 26&ndash;1016 (response dated May 1, 2026). The two responses give different ages for the children. A third PRA filing requesting clarification is in progress.</span>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- ============================================================ -->
 <section id="s1">
-  <span class="section-num">&sect; 01 &middot; The pitch</span>
-  <h2>What the city was promised.</h2>
+  <span class="section-num">&sect; 01 &middot; What the records show. What the public was told.</span>
+  <h2>Two documents. <em>Same incident. Different facts.</em></h2>
 
-  <p class="lead">On August 29, 2017, the Sacramento City Council voted nine to zero to bring the Advance Peace Peacemaker Fellowship to Sacramento.<sup class="cite"><a href="#src1">01</a></sup> The contract was signed in December 2017. The first cohort of fellows began the program in mid-2018.</p>
+  <p class="lead">At 13:21 hours on May 4, 2018, a 187(A) homicide call came in to the Sacramento Police Department from 2380 Meadowview Road in South Sacramento. The Department&rsquo;s internal homicide records show two juvenile victims and at least one adult victim. The Department&rsquo;s same-day public press release describes none of them as deceased.</p>
 
-  <p>The program was sold on a specific number. ABC10 News, reporting on the December 2017 contract signing, quoted the city's own media materials: <a class="inline" href="https://www.abc10.com/article/news/local/controversial-advance-peace-contract-signed-in-hopes-of-reducing-gun-violence/103-498716367">"The Advance Peace organization has committed to a reduction of 20-25 percent in gun violence by the completion of the program by the first group of participants."</a><sup class="cite"><a href="#src2">02</a></sup></p>
+  <p>The case is identified in SacPD records as 18&ndash;132511 (also referenced as SA2018132511). The author has obtained two separate California Public Records Act responses about this case from the Department. The first, PRA 24&ndash;391, produced the Department&rsquo;s internal homicide person-level dataset titled GOPerson_09A2016_2019.<sup class="cite"><a href="#src19">19</a></sup> That dataset records two juvenile victims in this case, a Hispanic female and a Hispanic male. The second, PRA 26&ndash;1016, is a written narrative response signed May 1, 2026 by Anna Johnson of SacPD Transparency and Compliance.<sup class="cite"><a href="#src19">19</a></sup> That response identifies two children among the deceased victims of the case.</p>
 
-  <p>The City of Sacramento's own news service, in an August 2017 article previewing the council vote, was even more specific. It described the precedent the city was buying into: <a class="inline" href="https://sacramentocityexpress.com/2017/08/28/sacramento-city-council-to-consider-a-new-gun-violence-reduction-strategy-at-tuesday-nights-council-meeting/">"Richmond experienced a 50 percent reduction in firearm assaults and 54 percent reduction in related homicides over a five-year period after the program launch."</a><sup class="cite"><a href="#src3">03</a></sup></p>
+  <figure class="shot">
+    <div class="shot-subtitle">Sacramento Police Department, GOPerson_09A2016_2019 dataset &middot; case SA2018132511 rows</div>
+    <a href="https://docs.google.com/spreadsheets/d/12v74ELISTSU-iif157Y8cI5CXH8cSVZw/edit?usp=share_link&amp;ouid=114958884575485024365&amp;rtpof=true&amp;sd=true" title="Sacramento Police Department GOPerson_09A2016_2019 dataset, case SA2018132511 rows. Click to open the full dataset on Google Drive." target="_blank" rel="noopener">
+      <img src="goperson-case-rows.png" alt="Six rows from the Sacramento Police Department GOPerson_09A2016_2019 dataset, all for case number SA2018132511, all dated 5/4/18 at 13:21 hours, all classified as 187(A) HOMICIDE. Roles listed in order: VICTIM (Male), SUSPECT (Male), ARREST/CITE (Male), JUV-VICTIM (Female), JUV-VICTIM (Male), ARREST/CITE (Male).">
+    </a>
+    <figcaption>The six person-level records associated with case SA2018132511 in the Sacramento Police Department&rsquo;s internal homicide dataset, released to the author through California Public Records Act request PRA 24&ndash;391. Two of the six records are coded JUV-VICTIM. <a href="#src19">source 19</a></figcaption>
+  </figure>
 
-  <p>Two numbers, then. A 20 to 25 percent reduction by year two as the floor. A 50-plus percent reduction over five years as the destination.</p>
-
-  <div class="receipt">
-    <div class="receipt-quote">"The Advance Peace organization has committed to a reduction of 20-25 percent in gun violence by the completion of the program by the first group of participants."</div>
-    <div class="receipt-cite">ABC10 News, December 2017, quoting the City of Sacramento &middot; <a href="#src2">source 02</a></div>
+  <div class="children" aria-label="The juvenile victims in case 18-132511">
+    <div class="children-row">
+      <div class="children-name">
+        <span class="children-first">Two</span>
+        <span class="children-last">juvenile victims</span>
+        <span class="children-age">187(A) homicide</span>
+      </div>
+    </div>
+    <div class="children-where">
+      May 4, 2018 &middot; 2380 Meadowview Road, South Sacramento<br>
+      Sacramento Police Department case 18&ndash;132511
+    </div>
   </div>
 
-  <p>At the same August 2017 council meeting, then-Councilwoman Angelique Ashby flagged a discrepancy that would matter four years later. The resolution authorized a four-year agreement; the contract itself was written for three years. Per Fox40's coverage of the meeting: <a class="inline" href="https://fox40.com/news/sacramento-city-council-approves-advance-peace-program/">"In multiple places in the resolution, we say it's a four-year contract, in the contract, we call it a three-year contract, those are key critical terms, they don't agree."</a><sup class="cite"><a href="#src4">04</a></sup> The discrepancy was never publicly resolved. The program ended in December 2021, roughly four calendar years after the contract was signed but with city funding flowing for closer to three.</p>
+  <p>The two SacPD responses give different ages for the juvenile victims. The GOPerson dataset records the children as ages 10 and 13. The May 1, 2026 narrative response identifies them as ages 3 and 6. The Department has not, in either response, addressed or reconciled the discrepancy. A third Public Records Act request asking the Department to clarify the children&rsquo;s ages is in progress as of publication. This article uses the framing both documents agree on: two juvenile victims, killed in case 18&ndash;132511, on May 4, 2018, in a 187(A) homicide. The exact ages are pending the Department&rsquo;s clarification. The age discrepancy itself, between two responses about the same case, is part of the institutional record this article documents.</p>
+
+  <p>The third victim was Joseph Coln, age 34. On May 31, 2018, two adults were arrested in connection with the case: Charlie Wong (DOB 12/16/1996) and Kendrick Glenn (DOB 3/21/1997). Both were charged with first-degree murder under California Penal Code &sect; 187(A), among other charges including a probation violation, felon in possession of a firearm, voluntary manslaughter, and possession of a weapon in a penal institution. Both were held without bail at Sacramento County Main Jail.<sup class="cite"><a href="#src19">19</a></sup></p>
+
+  <p>2380 Meadowview Road is in Meadowview, in South Sacramento, one of the three named target neighborhoods of the Advance Peace Peacemaker Fellowship. May 4, 2018 falls four months and five days after the City of Sacramento&rsquo;s first $250,000 contract payment to Advance Peace, dated December 29, 2017.<sup class="cite"><a href="#src2">02</a></sup> The program was contractually active and paid. The fellowship had not yet enrolled its first cohort. The juvenile victims were children under 18. They died in the City of Sacramento, in 2018, in one of the program&rsquo;s named target zones.</p>
+
+  <h3>What the public was told</h3>
+
+  <p>The Sacramento Police Department issued one press release about the incident. Reference number 20180504-045, dated Friday, May 4, 2018, titled &ldquo;Shooting Investigation &ndash; 24th Street and Meadowview Road.&rdquo;<sup class="cite"><a href="#src20">20</a></sup> The text of the release describes one victim, alive at the time of writing:</p>
+
+  <div class="receipt">
+    <div class="receipt-quote">Officers arrived on-scene and located a male adult with multiple gunshot wounds. The Sacramento Fire Department responded to provide medical-aid and transported the victim to a local area hospital for life-threatening injuries.<br><br>Officers conducted an initial canvas of the area for witnesses and evidence. Due to the severity of the injuries, Homicide Detectives and Crime Scene investigators have been called to the scene to take over the investigation. At this time, a motive for the shooting has not been determined. Currently, the victim is in critical condition.</div>
+    <div class="receipt-cite">SacPD press release No. 20180504-045 &middot; Friday, May 4, 2018 &middot; <a href="#src20">source 20</a></div>
+  </div>
+
+  <p>The release describes one victim. Adult. Male. In critical condition at a local hospital. Alive. The release does not mention two children. It does not mention anyone dying. It also confirms that <em>Homicide Detectives</em> were called to the scene because of <em>the severity of the injuries.</em><sup class="cite"><a href="#src20">20</a></sup> Sacramento Police Department dispatches Homicide Detectives when an incident is, or is likely to be, a homicide. The release confirms in its own text that the department had reason to treat this as a homicide investigation at the time of writing, while reporting one critical-condition victim and no fatalities. The closing line of the release reads: <em>&ldquo;Additional details will be released as they become available.&rdquo;</em><sup class="cite"><a href="#src20">20</a></sup> No follow-up press release was ever issued. As of May 1, 2026, the original release remains the only public-facing SacPD account of the incident.</p>
+
+  <p>The release&rsquo;s framing propagated to local television the same day. ABC10 Sacramento ran video coverage on May 4, 2018, headlined &ldquo;Sacramento Police investigate shooting near Meadowview,&rdquo; with the caption: <em>&ldquo;Police confirm that the victim was transported and is in critical condition.&rdquo;</em><sup class="cite"><a href="#src20">20</a></sup> Singular victim. Critical condition. Alive. The same misrepresentation, in the same language, in a major local news outlet on the day of the shooting. No follow-up coverage of the case, and no obituary or funeral notice that the author has been able to associate with this case, has been located in any Sacramento outlet in the public record.</p>
+
+  <p>The internal record and the public-facing record describe the same incident at the same address on the same date, and they describe different facts. The internal record shows three pronounced deceased on scene, including a 3-year-old girl and a 6-year-old boy. The public-facing record shows one adult male, hospitalized, with no fatalities reported. Both documents originated inside the Sacramento Police Department. Both are signed by department officials. Eight years passed between them. During those eight years, no member of the public, no reporter, and no city official asked the department to reconcile what its case file showed against what its press release said.</p>
+
+  <p>The natural-language reading of the press release, the only reading available to the public, is that one adult was shot in Meadowview on May 4, 2018, and was being treated at a hospital. That reading produced no follow-up coverage in any local outlet located in the open record. The children&rsquo;s deaths did not enter the public record. The silence between the two documents is what made the next eight years possible.</p>
 </section>
 
 <a href="#s2" class="divider">
   <div class="divider-line"></div>
   <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="divider-label">The number</div>
+  <div class="divider-label">What was paid for</div>
 </a>
 
+<!-- ============================================================ -->
 <section id="s2">
-  <span class="section-num">&sect; 02 &middot; The number that did not move</span>
-  <h2>One fewer homicide. <em>Then it spiked.</em></h2>
+  <span class="section-num">&sect; 02 &middot; What the city paid for</span>
+  <h2>The contract was specific.</h2>
 
-  <p class="lead">Before working through the academic tables and per-zone breakdowns, look at the simplest possible test: did Sacramento have fewer murders during the program than before it?</p>
+  <p class="lead">On August 29, 2017, the Sacramento City Council voted nine to zero to bring the Advance Peace Peacemaker Fellowship to Sacramento.<sup class="cite"><a href="#src1">01</a></sup> The Funding Agreement was signed in December 2017 by City Manager Howard Chan, Safe Passages CEO Josefina Alvarado&ndash;Mena, and Advance Peace Founder and CEO DeVone Boggan.<sup class="cite"><a href="#src2">02</a></sup></p>
 
-  <p>The Sacramento Police Department's own homicide records, including the department's January 2022 video news release on 2021 crime statistics, are unambiguous. Per SacPD spokesperson Sgt. Chad Lewis on that release: <a class="inline" href="https://www.abc10.com/article/news/local/sacramento/sacamento-crime-statistics-2021/103-6885d8a8-9f25-4c9c-b640-a32186d95730">"In 2021, there were 58 homicides in Sacramento which was the highest number of homicides in the city since 2006."</a><sup class="cite"><a href="#src5">05</a></sup></p>
+  <p>The contract is eight pages. Section 5, subsection b, item 5 sets the program&rsquo;s contractual benchmark in plain language:</p>
+
+  <div class="receipt">
+    <div class="receipt-quote">data demonstrating at least a 20&ndash;25% reduction of gun-related assaults and homicides during the first two years of the program (and at the end of the Extended Term, if any, data demonstrating a 50% reduction).</div>
+    <div class="receipt-cite">City of Sacramento, Advance Peace, and Safe Passages &middot; Funding Agreement 2017&ndash;1473 &middot; Section 5(b)(5) &middot; <a href="#src2">source 02</a></div>
+  </div>
+
+  <figure class="shot">
+    <div class="shot-subtitle">City of Sacramento Funding Agreement 2017&ndash;1473 &middot; Section 5(b)(5)</div>
+    <a href="https://sacramento.granicus.com/MetaViewer.php?view_id=22&amp;clip_id=4034&amp;meta_id=501120" title="City of Sacramento Funding Agreement 2017-1473, Section 5(b)(5). Click to open original document on sacramento.granicus.com" target="_blank" rel="noopener">
+      <img src="ap-contract-section-5b5.png" alt="Screenshot of Section 5(b)(5) of City of Sacramento Funding Agreement 2017-1473. Text reads: '25% reduction of gun-related assaults and homicides during the first two years of the program (and at the end of the Extended Term, if any, data demonstrating a 50% reduction), provide a detailed evaluation of findings of the 18-month cohort, information should include, but not be limited to:'">
+    </a>
+    <figcaption><strong>Section 5(b)(5)</strong> of Funding Agreement 2017&ndash;1473. The clause continues from the prior page where the requirement reads &ldquo;at least a 20&ndash;&rdquo;. The combined clause requires &ldquo;at least a 20&ndash;25% reduction&rdquo; in the original two-year term and &ldquo;a 50% reduction&rdquo; at the end of the Extended Term. <a href="#src2">source 02</a></figcaption>
+  </figure>
+
+  <p>The unit is gun-related assaults and homicides combined, citywide. The floor is 20 percent by Year 2 and 50 percent by Year 4. Two numbers, signed by three parties, on city letterhead.</p>
+
+  <p>The phrase &ldquo;juvenile homicide&rdquo; does not appear anywhere in the contract.<sup class="cite"><a href="#src2">02</a></sup> Neither does &ldquo;youth homicide.&rdquo; The word &ldquo;youth&rdquo; appears in the staff report only as a reference to the Mayor&rsquo;s general strategic priority to &ldquo;Invest in our Youth.&rdquo; The metric the program was hired to move was citywide gun-related assault and homicide reduction. Not a juvenile-specific subset. Not a stranger-killing subset. Not a per-100,000-children rate. The contracted unit is the unit that appears in the eight pages everyone signed.</p>
+</section>
+
+<a href="#s3" class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="divider-label">What happened</div>
+</a>
+
+<!-- ============================================================ -->
+<section id="s3">
+  <span class="section-num">&sect; 03 &middot; What happened to homicides</span>
+  <h2>The contracted metric was missed in the original term. The city extended anyway. <em>The extended-term metric was missed worse.</em></h2>
+
+  <p class="lead">The simplest possible test of whether the program worked is whether Sacramento had fewer murders during the contracted window than before it. The Sacramento Police Department&rsquo;s own homicide totals are not in dispute.</p>
 
   <div class="table-wrap">
-    <div class="table-cap"><strong>Sacramento homicides, 2016 to 2023.</strong> Total cases, citywide, by calendar year.</div>
+    <div class="table-cap"><strong>Sacramento homicides, 2016 to 2023.</strong> Citywide, by calendar year. Program window shaded.</div>
     <table>
       <thead>
         <tr>
@@ -785,425 +1090,284 @@ sup.cite a:hover { text-decoration: underline; }
       <tbody>
         <tr><td>2016</td><td class="num">41</td><td>Before AP</td><td class="num neutral">+5</td></tr>
         <tr><td>2017</td><td class="num">36</td><td>Before AP (baseline year)</td><td class="num neutral">0</td></tr>
-        <tr><td>2018</td><td class="num">36</td><td>AP launched July (partial year)</td><td class="num neutral">0</td></tr>
+        <tr class="highlight"><td>2018</td><td class="num">36</td><td>AP launched July (partial year)</td><td class="num neutral">0</td></tr>
         <tr class="highlight"><td>2019</td><td class="num">35</td><td>Original Peacemaker Fellowship full year</td><td class="num"><span class="neg">&minus;1</span></td></tr>
-        <tr><td>2020</td><td class="num">41</td><td>State-funded extension; Youth Fellowship begins</td><td class="num"><span class="pos">+5</span></td></tr>
-        <tr class="highlight"><td>2021</td><td class="num">58</td><td>Final year of program; city funding expires Dec 31</td><td class="num"><span class="pos">+22</span></td></tr>
+        <tr class="highlight"><td>2020</td><td class="num">41</td><td>State-funded extension; Youth Fellowship begins</td><td class="num"><span class="pos">+5</span></td></tr>
+        <tr class="highlight"><td>2021</td><td class="num">58</td><td>Final program year; city funding expires Dec 31</td><td class="num"><span class="pos">+22</span></td></tr>
         <tr><td>2022</td><td class="num">47</td><td>After AP</td><td class="num"><span class="pos">+11</span></td></tr>
         <tr><td>2023</td><td class="num">37</td><td>After AP</td><td class="num"><span class="pos">+1</span></td></tr>
       </tbody>
     </table>
   </div>
 
-  <p>Sacramento had 36 homicides in 2017, the year before Advance Peace launched. It had 35 homicides in 2019, the final year of the original 18-month Peacemaker Fellowship. The change was one fewer killing.</p>
+  <h3>The original two-year term: 20-25% required, ~1% delivered.</h3>
+
+  <p>The contract&rsquo;s original term ran from December 15, 2017 to December 31, 2019. Section 5(b)(5) required, at minimum, a 20 to 25 percent reduction in citywide gun-related assaults and homicides during the first two years of the program. The 2017 baseline was 36 homicides. A 20 percent reduction would mean 29 or fewer homicides in 2018 and again in 2019. A 25 percent reduction would mean 27 or fewer.</p>
+
+  <p>The program&rsquo;s actual two-year output: 36 homicides in 2018, 35 in 2019. Across the original two-year term, Sacramento had 71 homicides versus the 72 the 2017 baseline would have predicted. The contracted reduction was approximately 1.4 percent. The contract&rsquo;s minimum required reduction was missed by roughly nineteen to twenty-four percentage points.</p>
+
+  <p>Under Section 5(c) of the contract, the City had &ldquo;sole discretion&rdquo; to extend the program into Years 3 and 4. The contract metric had visibly failed in the original term. The City exercised the extension anyway.</p>
+
+  <h3>The extended term: 50% required, +27 cumulative excess delivered.</h3>
+
+  <p>The extended-term standard, per Section 5(b)(5), increases the required reduction to 50 percent. By the 2017 baseline of 36, that means 18 or fewer homicides in 2020 and again in 2021. The program&rsquo;s actual extended-term output: 41 in 2020, 58 in 2021. The 2020 number missed the 50 percent target by 23 homicides. The 2021 number missed it by 40. Across the two-year extended term, Sacramento had 99 homicides versus the 36 the 50 percent target would have allowed.<sup class="cite"><a href="#src3">03</a></sup> The extended-term metric was missed by a margin that, expressed as a percentage of baseline, runs in the opposite direction: instead of falling 50 percent, citywide homicides rose more than 30 percent above the baseline.</p>
+
+  <p>Per Sacramento Police Department spokesperson Sgt. Chad Lewis on the department&rsquo;s January 2022 year-end news release: <a class="inline" href="https://www.abc10.com/article/news/local/sacramento/sacamento-crime-statistics-2021/103-6885d8a8-9f25-4c9c-b640-a32186d95730">&ldquo;In 2021, there were 58 homicides in Sacramento which was the highest number of homicides in the city since 2006.&rdquo;</a><sup class="cite"><a href="#src4">04</a></sup> The deadliest year Sacramento had recorded in fifteen years happened during Advance Peace&rsquo;s final contractually-paid operational year.</p>
 
   <div class="bignum-grid">
     <div class="bignum">
-      <div class="bignum-label">Required by contract</div>
-      <div class="bignum-value">20&ndash;25%</div>
-      <div class="bignum-cap">Reduction in gun-related assaults and homicides over two years, per the December 2017 contract announcement</div>
+      <div class="bignum-label">Original term: required</div>
+      <div class="bignum-value">20-25%</div>
+      <div class="bignum-cap">Minimum citywide reduction in gun-related assaults and homicides, 2018-2019.</div>
     </div>
     <div class="bignum">
-      <div class="bignum-label">Actual change in homicides</div>
-      <div class="bignum-value red">&minus;1</div>
-      <div class="bignum-cap">36 in 2017, 35 in 2019. Roughly 2.8 percent. Below noise.</div>
+      <div class="bignum-label">Original term: delivered</div>
+      <div class="bignum-value red">~1%</div>
+      <div class="bignum-cap">Net change in citywide homicides across the original two-year term. Missed by ~19-24 points.</div>
+    </div>
+    <div class="bignum">
+      <div class="bignum-label">Extended term: required</div>
+      <div class="bignum-value">50%</div>
+      <div class="bignum-cap">Minimum citywide reduction by end of extended term, 2020-2021.</div>
+    </div>
+    <div class="bignum">
+      <div class="bignum-label">Extended term: delivered</div>
+      <div class="bignum-value red">+27</div>
+      <div class="bignum-cap">Cumulative excess homicides above the 2017 baseline across 2020-2021. Year 4 was the deadliest in fifteen years.</div>
     </div>
   </div>
-
-  <p>One fewer homicide is roughly 2.8 percent. The contract called for 20 to 25 percent. The shortfall is approximately an order of magnitude.</p>
-
-  <p>Then the trajectory inverted. In 2020, while Advance Peace was still operating in Sacramento under a state-funded extension and a newly launched Youth Peacemaker Fellowship,<sup class="cite"><a href="#src6">06</a></sup> homicides climbed to 41. In 2021, the program's final operational year, they climbed to 58. That is the highest single-year homicide count Sacramento has recorded since 2006, and it happened during the program, not after it.</p>
 
   <div class="chart-wrap">
     <div class="chart-title"><strong>Sacramento homicides, 2016 through 2023.</strong></div>
-    <div class="chart-sub">The Advance Peace program operated continuously from mid-2018 through December 2021. The deadliest year of the period falls inside that window.</div>
+    <div class="chart-sub">Advance Peace operated continuously from mid-2018 through December 2021. The deadliest year of the period falls inside that window.</div>
     <div class="chart-container"><canvas id="chartHomicidesAll"></canvas></div>
-    <div class="chart-source">Source: Sacramento Police Department crime statistics; ABC10 reporting on the SacPD 2021 year-end release.</div>
+    <div class="chart-source">Source: Sacramento Police Department crime statistics; ABC10 reporting on the SacPD 2021 year-end news release.</div>
   </div>
 
-  <p>The narrative that survived in public memory was that Sacramento had two consecutive years without a juvenile homicide in 2018 and 2019, that the program produced this result, and that politicians abandoned the program just as it was working. The narrative does not survive contact with 2020 and 2021. If the program was responsible for the flat homicide line in 2018 and 2019, the program is also responsible for the spike to 58 in 2021. The program was operational the entire time.</p>
+  <h3>The narrower test, in the program&rsquo;s own zones.</h3>
 
-  <p>Defenders did not present 2020 and 2021 as a program failure. They continued to cite the 2018 and 2019 number as evidence of program success and described the December 2021 non-renewal as the cause of post-program violence. The post-program violence, by the time the program ended, had already happened.</p>
-</section>
+  <p>A program-friendly reading of the contract metric would judge the program against the three neighborhoods where it actually operated, rather than citywide. That reading is in the program&rsquo;s own first-year report. Page 8 of the Advance Peace Sacramento 2018 Year-End Progress Report, published January 2019 by the program&rsquo;s UC Berkeley evaluators, contains a chart titled &ldquo;Gun Homicides in Sacramento Advance Peace Neighborhoods,&rdquo; broken out by year for Del Paso Heights, Oak Park, and South Sacramento.<sup class="cite"><a href="#src5">05</a></sup></p>
 
-<a href="#s3" class="divider">
-  <div class="divider-line"></div>
-  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="divider-label">Six numbers</div>
-</a>
+  <figure class="shot">
+    <div class="shot-subtitle">Advance Peace Sacramento 2018 Year-End Progress Report &middot; page 8 &middot; published January 2019 by UC Berkeley evaluators</div>
+    <a href="https://web.archive.org/web/2021/https://www.advancepeace.org/wp-content/uploads/2020/02/Advance-Peace-Sacramento-2018-Progress-Report-final.pdf" title="Advance Peace 2018 Year-End Progress Report. Click to open archived original document on web.archive.org" target="_blank" rel="noopener">
+      <img src="ap-zone-homicides-2015-2018.png" alt="Bar chart titled 'Gun Homicides in Sacramento Advance Peace Neighborhoods,' showing yearly counts in Del Paso Heights, Oak Park, and South Sacramento for 2015, 2016, 2017, and 2018. Del Paso Heights: 8, 5, 5, 12. Oak Park: 2, 4, 6, 2. South Sacramento: 7, 5, 7, 4.">
+    </a>
+    <figcaption>Advance Peace Sacramento 2018 Year-End Progress Report, page 8. Published January 2019 by the program&rsquo;s UC Berkeley evaluators. <a href="#src5">source 05</a></figcaption>
+  </figure>
 
-<section id="s3">
-  <span class="section-num">&sect; 03 &middot; The menu</span>
-  <h2>Six numbers <em>for one program.</em></h2>
+  <p>Add the bars. The three Advance Peace zones combined had 18 gun homicides in 2017 (the year before the program started) and 18 gun homicides in 2018 (the program&rsquo;s first year). Zero net change in the program zones in Year 1.</p>
 
-  <p class="lead">The strongest documentation that the Advance Peace evaluation has been mathematically negotiated rather than methodologically determined sits inside the program's own evaluation documents. The same intervention window has been reported with at least six different reduction percentages, depending on which document the reader is holding.</p>
+  <p>The within-zone distribution is its own finding. Del Paso Heights went from 5 in 2017 to 12 in 2018, a 140 percent year-over-year increase and the highest single zone-year on the chart. Oak Park dropped from 6 to 2, returning to the level it had been at in 2015. South Sacramento dropped from 7 to 4, one below its 2016 low. The two declines fall within the regional variation the chart already shows in 2015 and 2016. The one increase is the largest data point on the chart. The program&rsquo;s evaluators selected 2015 as the chart&rsquo;s starting year, which is the year that allows the 2018 numbers in Oak Park and South Sacramento to look like continuations of pre-program variation. Even on that baseline, the chart shows the program&rsquo;s first operational year producing the worst single zone-year in the four-year window the evaluators chose to publish. The program&rsquo;s evaluators stopped publishing comparable zone-level breakdowns after this report.</p>
 
-  <p>All seven figures below describe the same calendar period, the same program, the same city, and the same evaluator. None of them are wrong on their face. They simply produce different headlines for different audiences.</p>
+  <p>The program&rsquo;s 2022 peer-reviewed paper in <em>Urban Science</em>, with Jason Corburn as lead author, reports a citywide gun-violence reduction of approximately 8 percent during the two-year fellowship period.<sup class="cite"><a href="#src6">06</a></sup> Eight percent is the cleanest peer-reviewed number the program has published. The contracted floor was 20. The Year 4 contracted goal of 50 percent never came within reach.</p>
 
-  <div class="table-wrap">
-    <div class="table-cap"><strong>Reported reductions in Sacramento gun violence, July 2018 through December 2019.</strong> Same program, same window, same lead author.</div>
-    <table>
-      <thead>
-        <tr>
-          <th>Reported figure</th>
-          <th>Methodology</th>
-          <th>Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="num"><span class="neg">10.1%</span></td>
-          <td>Raw mean monthly comparison, citywide</td>
-          <td>Corburn &amp; Fukutome-Lopez, March 2020 working paper<sup class="cite"><a href="#src7">07</a></sup></td>
-        </tr>
-        <tr>
-          <td class="num"><span class="neg">18%</span></td>
-          <td>Interrupted time series, citywide</td>
-          <td>Corburn et al. 2022, Urban Science abstract<sup class="cite"><a href="#src8">08</a></sup></td>
-        </tr>
-        <tr>
-          <td class="num"><span class="neg">21%</span></td>
-          <td>Eighteen-month treatment vs. 4-year pre-period average</td>
-          <td>Corburn et al. 2021, Humanities and Social Sciences Communications<sup class="cite"><a href="#src9">09</a></sup></td>
-        </tr>
-        <tr>
-          <td class="num"><span class="neg">22%</span></td>
-          <td>Per Berkeley News attribution to "March 2020 study"</td>
-          <td>UC Berkeley News, March 17, 2021<sup class="cite"><a href="#src10">10</a></sup></td>
-        </tr>
-        <tr>
-          <td class="num"><span class="neg">27%</span></td>
-          <td>Interrupted time series counterfactual, AP zones only</td>
-          <td>Corburn &amp; Fukutome-Lopez 2020 working paper<sup class="cite"><a href="#src7">07</a></sup></td>
-        </tr>
-        <tr>
-          <td class="num"><span class="neg">29%</span></td>
-          <td>Maximum per-zone reduction reported in peer-reviewed paper</td>
-          <td>Corburn et al. 2022, Urban Science abstract<sup class="cite"><a href="#src8">08</a></sup></td>
-        </tr>
-        <tr class="highlight">
-          <td class="num"><span class="neg">39%</span></td>
-          <td>Reduction "in Del Paso Heights"</td>
-          <td>UC Berkeley News, March 17, 2021<sup class="cite"><a href="#src10">10</a></sup></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p>The 39 percent figure is the one that traveled. It anchored the press release. It anchored the case for renewing and expanding the program. It does not appear in the peer-reviewed paper that the press release was promoting. The peer-reviewed paper says the maximum reduction in any single neighborhood was 29 percent.</p>
-
-  <div class="chart-wrap">
-    <div class="chart-title"><strong>The same intervention. The same window. Seven different headlines.</strong></div>
-    <div class="chart-sub">Each bar represents a percentage reported by Advance Peace's own evaluators or its host institution for the July 2018 to December 2019 window in Sacramento.</div>
-    <div class="chart-container"><canvas id="chartFramings"></canvas></div>
-    <div class="chart-source">Sources: Corburn &amp; Fukutome-Lopez 2020 working paper; Corburn et al. 2021 Humanities and Social Sciences Communications; Corburn et al. 2022 Urban Science; UC Berkeley News, March 17, 2021.</div>
-  </div>
-
-  <p>This pattern, of selecting the comparison window and the geographic unit and the statistical method that produces the largest favorable number, is sometimes called HARKing in the methodology literature, short for Hypothesizing After the Results are Known. In the Advance Peace literature, the hypothesis was settled by contract: a 20 to 25 percent reduction citywide. None of the figures above that come from peer-reviewed sources reach the contractual threshold using the contractual scope. The figures that do reach it are the ones in the press release.</p>
+  <p>The contract metric was missed in the original term. The city extended anyway. The extended-term metric was missed worse.</p>
 </section>
 
 <a href="#s4" class="divider">
   <div class="divider-line"></div>
   <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="divider-label">Two stories</div>
+  <div class="divider-label">A different metric</div>
 </a>
 
+<!-- ============================================================ -->
 <section id="s4">
-  <span class="section-num">&sect; 04 &middot; Two stories, same paper</span>
-  <h2>White institutions caused this. <em>Pay these Black men.</em></h2>
+  <span class="section-num">&sect; 04 &middot; A different claim</span>
+  <h2>The metric the public heard <em>was not the metric on the slide.</em></h2>
 
-  <p class="lead">The strangest feature of the Advance Peace literature is that it tells two completely different stories about the cause of urban gun violence, and both stories appear in the same paper, by the same authors, on the same pages.</p>
+  <p class="lead">By 2020, the contracted reduction had failed in the original two-year term. The City had extended anyway, raising the contractual floor to 50 percent. The extended-term floor was visibly trending toward catastrophic failure. A different claim emerged. It was not in the contract. It was constructed in stages, formalized at one specific City Council presentation, and then stripped of every qualifier on its way to a 2024 mayoral campaign.</p>
 
-  <p>The 2021 paper in <em>Humanities and Social Sciences Communications</em>, a Nature Portfolio journal, is the program's flagship academic publication. Its authors include Jason Corburn (the lead evaluator), DeVone Boggan (Advance Peace founder and CEO), Khaalid Muttaqi (Advance Peace COO and former Sacramento Director of Gang Prevention), and program managers from Sacramento, Stockton, and Richmond. Per the paper's own abstract, the program is described as serving "Black and brown communities that have been ravaged by racism, incarceration, and heavy-handed state violence."</p>
+  <p>The earliest public version of the claim shows up in January 2019, in a CBS13 segment republished by Newsweek under the headline &ldquo;No Children Were Murdered in Sacramento Last Year for the First Time in 35 Years.&rdquo; In that segment, Kindra Montgomery&ndash;Block, identified as a youth worker affiliated with Sierra Health Foundation, told the camera: <a class="inline" href="https://www.newsweek.com/sacramento-youth-violence-homicide-california-community-outreach-1299914">&ldquo;This 2018 and no child deaths, juvenile deaths in the city of Sacramento, is absolutely the blessing on top.&rdquo;</a><sup class="cite"><a href="#src7">07</a></sup> Sierra Health Foundation is the same foundation that runs the Black Child Legacy Campaign, sat on the Mayor&rsquo;s Gang Prevention and Intervention Task Force that oversaw the Advance Peace contract, and served as fiscal sponsor for related Advance Peace funding streams. The originating speaker was inside the institutional network that had a direct stake in the program&rsquo;s continued funding.</p>
 
-  <p>That is story one. Story two is the operational mechanism, described later in the same paper.</p>
+  <p>By July 21, 2020, eighteen months into the program and seven months before the contract&rsquo;s extended term concluded, Sierra Health Foundation took the same claim to the Sacramento City Council in a formal presentation. The presentation, filed as Supplemental Material for the Special Meeting of that date under Item 25 (file ID 2020&ndash;00860, &ldquo;Black Child Legacy Campaign and Advance Peace Progress Report&rdquo;), is titled &ldquo;Healing the Hood.&rdquo;<sup class="cite"><a href="#src8">08</a></sup> One slide carries the entire methodological weight of the claim that would later travel into the Bee endorsement and the Cofer mayoral campaign. The slide is titled &ldquo;3rd Party Youth Homicides.&rdquo;</p>
 
-  <div class="parallel">
-    <div class="parallel-col story1">
-      <div class="parallel-label">Story 1 &middot; The cause</div>
-      <div class="parallel-translation">White-controlled institutions caused this.</div>
-      <div class="parallel-quote-label">In their own words</div>
-      <div class="parallel-quote">"The traumas from state-sanction violence, including heavy-handed policing, racially segregated neighborhoods, displacement, and lack of educational and economic opportunities, combine to contribute to urban gun violence and victimization."</div>
-      <div class="parallel-attr">Corburn, Boggan &amp; Muttaqi (2021), Hum Soc Sci Commun 8:142, Introduction &middot; <a href="https://www.nature.com/articles/s41599-021-00820-y">nature.com</a></div>
-    </div>
-    <div class="parallel-col story2">
-      <div class="parallel-label">Story 2 &middot; The mechanism</div>
-      <div class="parallel-translation">The way to fix it is to identify Black men and pay them.</div>
-      <div class="parallel-quote-label">In their own words</div>
-      <div class="parallel-quote">"Once a fellow is working on their LifeMAP for at least 6 months and achieves 65% progress toward a goal (as determined by their NCA mentor and the AP leadership), that fellow is eligible for a milestone allowance of up to $1000 USD per month... the majority of fellows are indeed African&ndash;American males under 24 years old."</div>
-      <div class="parallel-attr">Corburn, Boggan &amp; Muttaqi (2021), same paper, sections "Milestone allowance" and "Community-wide transformations" &middot; <a href="https://www.nature.com/articles/s41599-021-00820-y">nature.com</a></div>
-    </div>
-  </div>
-
-  <p>Both passages are in the same paper. The cause is structural and historical and racial, enacted by state institutions ravaging Black communities. The mechanism is identifying African-American men under 24 and paying them up to $1,000 a month if a mentor signs off on their progress. The same authors describe both the cause and the mechanism. They do not reconcile them.</p>
-
-  <p>If the cause is structural racism enacted by white-controlled institutions, the operational solution should target those institutions. Defund the police, redistribute housing and educational resources, prosecute discrimination. The Advance Peace operational mechanism does none of those things. It identifies, in each city, the small number of individual men most likely to shoot. It enrolls them in an 18-month fellowship. After six months of compliance, fellows become eligible for monthly stipends of up to $1,000.<sup class="cite"><a href="#src9">09</a></sup></p>
-
-  <p>The two stories cannot both be operative. Either the violence is caused by structural conditions that affect everyone in the affected community equally, in which case targeting individual men cannot address the cause; or the violence is caused by the choices of a small number of individual men, in which case structural racism is not the operative variable. They are deployed simultaneously anyway, because they serve different purposes. The structural framing supplies the moral case for the program: communities have been wronged, this is a remedy. The individual-targeting mechanism supplies the operational case: violence is concentrated, we know how to interrupt it. Together they let the program claim moral authority and operational legitimacy without ever having to choose.</p>
-
-  <h3>The same pivot, in the press release</h3>
-
-  <p>What the Nature paper says in academic language, the UC Berkeley News press release of March 17, 2021 says more directly. The press release was written to promote the Sacramento evaluation, and quotes the same authors:</p>
-
-  <div class="receipt">
-    <div class="receipt-quote">"The foundation of that racist structure in American law enforcement... contributes to the underfunding of programs like Advance Peace, as cities have historically been beholden to funding their police departments and police unions over investing in Black communities."</div>
-    <div class="receipt-cite">Jason Corburn, lead evaluator &middot; UC Berkeley News, March 17, 2021 &middot; <a href="#src10">source 10</a></div>
-  </div>
-
-  <div class="receipt">
-    <div class="receipt-quote">"A program like Advance Peace can be somewhat of a litmus test for whether cities really believe Black lives matter. We empower Black and Brown men to put the public at the center of public safety."</div>
-    <div class="receipt-cite">Khaalid Muttaqi, COO Advance Peace &middot; UC Berkeley News, March 17, 2021 &middot; <a href="#src10">source 10</a></div>
-  </div>
-
-  <div class="receipt">
-    <div class="receipt-quote">"Success to us is not whether or not he becomes a model citizen. Success, to us, is about whether or not he uses a firearm to address conflict."</div>
-    <div class="receipt-cite">DeVone Boggan, Founder/CEO Advance Peace &middot; PBS NewsHour &middot; <a href="#src11">source 11</a></div>
-  </div>
-
-  <p>Three speakers in three publications, framing the program along the same axis. Corburn names the cause as racist policing. Muttaqi names the mechanism as paying Black and Brown men. Boggan names the success criterion as whether an individual man chooses not to fire a gun. Each speaker is consistent with himself. The combination of the three is incoherent.</p>
-
-  <p>UC Berkeley's School of Public Health, in promoting the 2025 MIT Press book co-authored by Corburn and Boggan, distills the same pattern. Corburn: "the root causes of urban gun violence include racism, discrimination, redlining, and eugenics." Boggan, in the same interview: "We've already solved 99% of the problem. Less than 1% of a city's population is at the center of driving gun violence."<sup class="cite"><a href="#src12">12</a></sup> The cause is structural and historical and racial. The solution is to find the one percent and pay them.</p>
-
-  <figure class="shot cause">
-    <div class="shot-subtitle">Story 1 &middot; The cause</div>
-    <div class="shot-title">In the program's own academic paper: white-controlled institutions caused this.</div>
-    <a href="https://www.nature.com/articles/s41599-021-00820-y" title="Open the Corburn, Boggan and Muttaqi 2021 paper at nature.com">
-      <img src="corburn-2021-structural-racism.png" alt="Screenshot of Corburn, Boggan and Muttaqi 2021 paper showing the structural racism quote">
+  <figure class="shot promise">
+    <div class="shot-subtitle">Sierra Health Foundation, Black Child Legacy Campaign &middot; Sacramento City Council, July 21, 2020</div>
+    <div class="shot-title">The constructed metric, in its original form: a 3-year rolling average, per 100,000 children, combining city and county data.</div>
+    <a href="#src8" title="Sierra Health Foundation Black Child Legacy Campaign presentation, Sacramento City Council July 21 2020">
+      <img src="bclc-3rd-party-youth-homicides-slide.png" alt="Slide titled '3rd Party Youth Homicides' from the Sierra Health Foundation Black Child Legacy Campaign presentation to the Sacramento City Council on July 21, 2020. Bar chart shows values 4.5, 2.7, 1.8, 5.3, 0, 0 for the years 2014 through 2019. Footnotes read: '3-year rolling averages, per 100,000 children' and 'Both city and county is reflected in data.'">
     </a>
-    <figcaption><strong>Corburn, Boggan &amp; Muttaqi (2021)</strong> &middot; published in <em>Humanities and Social Sciences Communications</em>, a Nature Portfolio journal &middot; <a href="https://www.nature.com/articles/s41599-021-00820-y">read the full paper</a></figcaption>
+    <figcaption><strong>&ldquo;3rd Party Youth Homicides&rdquo;</strong> &middot; Sierra Health Foundation, Healing the Hood presentation &middot; Sacramento City Council, July 21, 2020 &middot; file ID 2020&ndash;00860 &middot; <a href="#src8">source 08</a></figcaption>
   </figure>
 
-  <figure class="shot mechanism">
-    <div class="shot-subtitle">Story 2 &middot; The mechanism</div>
-    <div class="shot-title">In the same program's press release: the way to fix it is to identify Black men and pay them.</div>
-    <a href="https://news.berkeley.edu/2021/03/17/berkeley-study-california-gun-violence-program-saves-lives-taxpayers-millions/" title="Open the UC Berkeley News article">
-      <img src="muttaqi-empower-quote.png" alt="Screenshot of UC Berkeley News article quoting Khaalid Muttaqi">
-    </a>
-    <figcaption><strong>UC Berkeley News, March 17, 2021</strong> &middot; quoting Khaalid Muttaqi, then Chief Operating Officer of Advance Peace &middot; <a href="https://news.berkeley.edu/2021/03/17/berkeley-study-california-gun-violence-program-saves-lives-taxpayers-millions/">read the full article</a></figcaption>
-  </figure>
+  <p>The slide reports values of 4.5, 2.7, 1.8, 5.3, 0, and 0 for the years 2014 through 2019. The two footnotes specify what the numbers measure. The first reads, in italic at the bottom of the slide: <em>&ldquo;3-year rolling averages, per 100,000 children.&rdquo;</em> The second reads: <em>&ldquo;Both city and county is reflected in data.&rdquo;</em><sup class="cite"><a href="#src8">08</a></sup> The metric is not a count of dead children. It is a three-year rolling average, expressed as a rate per 100,000 children, over the combined city and county population, and restricted to a category labeled &ldquo;3rd Party.&rdquo; The closing slide of the same presentation asks the City Council for <em>&ldquo;a commitment of $2 million in CARES Act funding for 2020.&rdquo;</em><sup class="cite"><a href="#src8">08</a></sup></p>
+
+  <p>The rolling-average construction does additional work the public was not told about. A three-year rolling average reported for 2018 mathematically includes the 2016 and 2017 values. Advance Peace did not exist in Sacramento in 2016. The contract was not signed until December 2017. The metric the program later cited as evidence of its success credits the program for two years before it began operating, then averages those years against the program&rsquo;s actual operational year. The per-100,000-children denominator across a combined city-county population then dilutes any individual incident toward a value that rounds to zero on a slide.</p>
+
+  <p>The slide is the bridge document. It is the only place in the public record where the constructed metric appears with its operational definition attached. Every public retelling of the claim that came after this presentation dropped the qualifiers. The phrase &ldquo;3rd party&rdquo; never appears in any subsequent media account, lobbying letter, candidate questionnaire, or campaign interview located in the public record. Neither does &ldquo;rolling average,&rdquo; &ldquo;per 100,000 children,&rdquo; or &ldquo;city and county.&rdquo; The claim that traveled was the headline number on the slide. The methodology that produced it stayed in the slide deck.</p>
+
+  <h3>The chain of repetition</h3>
+
+  <div class="chain">
+
+    <div class="chain-step">
+      <div class="chain-date">January 2019</div>
+      <div class="chain-actor"><a href="#src7">Kindra Montgomery&ndash;Block (Sierra Health Foundation)</a></div>
+      <div class="chain-text">To CBS13 and Newsweek: <em>&ldquo;no child deaths, juvenile deaths in the city of Sacramento.&rdquo;</em><sup class="cite"><a href="#src7">07</a></sup> The originating natural-language version of the claim. No qualifiers attached. The juvenile homicide victims of case 18&ndash;132511 had been killed eight months earlier, in the city of Sacramento, in one of the program&rsquo;s named target zones.</div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">April 2019</div>
+      <div class="chain-actor"><a href="#src9">Sacramento News &amp; Review</a></div>
+      <div class="chain-text">Citing the program&rsquo;s draft first-year progress report: <a href="https://sacblog.newsreview.com/2019/04/23/the-road-to-peace-advance-peace-initiative-sees-early-signs-of-progress-in-combating-gang-killings-in-sacramento/">&ldquo;In 2018, the city of Sacramento managed to escape a grim statistic: It made it 12 months without a child being murdered.&rdquo;</a><sup class="cite"><a href="#src9">09</a></sup> Local trade press, no fact-check.</div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">January 30, 2020</div>
+      <div class="chain-actor"><a href="#src20">ABC10 Sacramento</a></div>
+      <div class="chain-text">Story headlined &ldquo;There were zero youth homicides reported in Sacramento for 2 years. What changed?&rdquo; reports: <em>&ldquo;No teenager living in Sacramento was a victim of homicide in the past two years.&rdquo;</em> Cites &ldquo;a review of data by the Sacramento Bee&rdquo; for the 2007&ndash;2017 baseline; the more recent &ldquo;zero&rdquo; claim runs without explicit data attribution. Quotes Sierra Health Foundation Senior Program Officer Kindra Montgomery&ndash;Block on the program.<sup class="cite"><a href="#src20">20</a></sup> A major local TV station running the qualifier-free claim. Eighteen months before SHF would back-fill methodology onto the same number. Twenty months after the juvenile homicide victims of case 18&ndash;132511 were killed in Meadowview.</div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">July 9, 2020</div>
+      <div class="chain-actor"><a href="#src21">Dr. Flojaune Cofer, Sacramento News &amp; Review op-ed</a></div>
+      <div class="chain-text">Cofer publishes &ldquo;The wrong questions&rdquo; the morning after a contentious police-budget hearing. The op-ed praises Advance Peace and other community programs for giving Sacramento <em>&ldquo;nearly two years with no juvenile homicides,&rdquo;</em> and attacks SacPD: <em>&ldquo;The Sacramento Police Department has a budget 150 times that of Advance Peace and has never achieved anything near this feat of prevention.&rdquo;</em><sup class="cite"><a href="#src21">21</a></sup> Cofer is, at this point, a program-affiliated workshop facilitator who ran two trainings for Advance Peace fellows in March 2020.<sup class="cite"><a href="#src10">10</a></sup> She is attacking SacPD&rsquo;s effectiveness for failing to do what her own program affiliates were claiming credit for. The records that would contradict her central claim were sitting inside SacPD&rsquo;s case file system at the time of writing.</div>
+    </div>
+
+    <div class="chain-step bridge">
+      <div class="chain-date">July 21, 2020</div>
+      <div class="chain-actor"><a href="#src8">Sierra Health Foundation, to Sacramento City Council</a></div>
+      <div class="chain-text"><em>&ldquo;3rd Party Youth Homicides&rdquo;</em> slide formalizes the metric: 3-year rolling averages, per 100,000 children, combining city and county. Closing slide asks for $2 million in CARES Act funding.<sup class="cite"><a href="#src8">08</a></sup> File ID 2020&ndash;00860. <strong>This is the only public document where the operational definition is published.</strong></div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">August 10, 2020</div>
+      <div class="chain-actor"><a href="#src10">Corburn &amp; Fukutome&ndash;Lopez, CalVIP Final Local Evaluation Report</a></div>
+      <div class="chain-text">Submitted to the California Board of State and Community Corrections. Executive Summary: <em>&ldquo;There were no juvenile homicides in the City of Sacramento during the two-year project period.&rdquo;</em><sup class="cite"><a href="#src10">10</a></sup> The qualifiers from the SHF slide are gone. The claim has now entered the formal grant evaluation record.</div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">January 7, 2021</div>
+      <div class="chain-actor"><a href="#src22">Chief Daniel Hahn, on the record to ABC10</a></div>
+      <div class="chain-text">Story headlined &ldquo;Sacramento homicides surge by 26% in 2020, ending streak of zero youth deaths.&rdquo; ABC10 reports the streak ended in 2020, names 9-year-old Makalah Brent (shot at Mama Marks Park) as one of four 2020 juvenile victims, and quotes Chief Daniel Hahn directly: <em>&ldquo;So, it&rsquo;s definitely a reversal of what we&rsquo;ve seen over the last couple of years.&rdquo;</em><sup class="cite"><a href="#src22">22</a></sup> The Chief of the Sacramento Police Department, on the record, confirming his own department&rsquo;s false baseline. The records that contradicted that baseline were inside his department&rsquo;s case file system. Either he did not know what was in his own department&rsquo;s case files, or he confirmed a statistic he had reason to know was incomplete. The article does not resolve which.</div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">March 23, 2021</div>
+      <div class="chain-actor"><a href="#src11">Julius Thibodeaux (Advance Peace Sacramento Strategy Program Manager)</a></div>
+      <div class="chain-text">To RealClearPolicy: <em>&ldquo;There hadn&rsquo;t been any juvenile homicides in Sacramento for the previous two years.&rdquo;</em><sup class="cite"><a href="#src11">11</a></sup> No methodology referenced. The claim is now Advance Peace Sacramento&rsquo;s own line.</div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">May 10, 2021</div>
+      <div class="chain-actor"><a href="#src12">Brittany Nieto (Giffords Law Center to Prevent Gun Violence), to City Council</a></div>
+      <div class="chain-text">Letter to Mayor Steinberg, City Manager Howard Chan, and the Sacramento City Council, urging continued funding: <em>&ldquo;After initiating the AP strategy in 2018, the city experienced two consecutive years without a single juvenile homicide.&rdquo;</em><sup class="cite"><a href="#src12">12</a></sup> Filed as official correspondence for the May 11, 2021 Budget and Audit Committee meeting (File ID 2021&ndash;00225). At 1:40 AM the next morning, hours before the committee opened, Thibodeaux replied with the City Manager and Council staff copied: <em>&ldquo;Thank you all for your unwavering support!&rdquo;</em><sup class="cite"><a href="#src12">12</a></sup></div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">March 2024</div>
+      <div class="chain-actor"><a href="#src13">Dr. Flojaune Cofer, Sacramento mayoral candidate, in Jacobin</a></div>
+      <div class="chain-text">The most specific public version, with an explicit date range: <em>&ldquo;Right here in Sacramento, we went two years with no youth homicides. Between 2017 and the beginning of 2020, we funded a network of violence prevention and intervention specialists. That got us two years with no youth homicides.&rdquo;</em><sup class="cite"><a href="#src13">13</a></sup> May 4, 2018 falls inside that window.</div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">March 5, 2024</div>
+      <div class="chain-actor"><a href="#src14">The Sacramento Bee</a></div>
+      <div class="chain-text">Endorses Cofer in the Democratic primary for Mayor of Sacramento.<sup class="cite"><a href="#src14">14</a></sup> The endorsement does not address the contracted Advance Peace metric. The Bee did not file a CPRA. Cofer advances to the November runoff and loses by 1.4 percentage points to Kevin McCarty.<sup class="cite"><a href="#src15">15</a></sup></div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">2024 campaign</div>
+      <div class="chain-actor"><a href="#src16">Cofer, Ballotpedia and Sacramento Observer</a></div>
+      <div class="chain-text">Ballotpedia Candidate Connection, under the heading PUBLIC SAFETY: <em>&ldquo;Sacramento went two years without any youth homicides.&rdquo;</em><sup class="cite"><a href="#src16">16</a></sup> Sacramento Observer, October 22, 2024: <em>&ldquo;Sacramento went two years without youth homicides, before they were cut by our politicians.&rdquo;</em><sup class="cite"><a href="#src17">17</a></sup> The qualifier-free claim is now the centerpiece of a major-city mayoral campaign.</div>
+    </div>
+
+    <div class="chain-step">
+      <div class="chain-date">January 20, 2026</div>
+      <div class="chain-actor"><a href="#src18">Cofer, candidate for Sacramento County Board of Supervisors District 1</a></div>
+      <div class="chain-text">Cofer announces her candidacy for the District 1 seat, vacated by Phil Serna after nearly sixteen years.<sup class="cite"><a href="#src18">18</a></sup> The 2024 campaign&rsquo;s central public-safety claim is now the centerpiece of a 2026 county-level campaign. As of this writing, she is an active candidate.</div>
+    </div>
+
+  </div>
+
+  <p>Each public retelling named a window. The Newsweek headline named &ldquo;Last Year&rdquo; (2018). The ABC10 January 2020 story named &ldquo;the past two years.&rdquo; The CalVIP Final Local Evaluation Report named &ldquo;the two-year project period.&rdquo; The Giffords letter named &ldquo;After initiating the AP strategy in 2018&rdquo; for &ldquo;two consecutive years.&rdquo; Cofer&rsquo;s Jacobin interview named &ldquo;Between 2017 and the beginning of 2020.&rdquo; The Ballotpedia survey named &ldquo;two years.&rdquo; The Observer profile named &ldquo;two years without youth homicides.&rdquo; May 4, 2018 falls inside every one of those windows. Two children were killed in case 18&ndash;132511 on that date. They died inside every window the public chain of repetition described.</p>
+
+  <p>At no step were the qualifiers from the SHF slide reattached. The reader of the Bee endorsement, the Ballotpedia survey, the Jacobin interview, the Observer profile, and the Giffords letter had access to the natural-language reading and only the natural-language reading. The operational definition stayed on the slide. The case stayed in the file.</p>
 </section>
 
 <a href="#s5" class="divider">
   <div class="divider-line"></div>
   <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="divider-label">Inside the program</div>
+  <div class="divider-label">Nobody checked</div>
 </a>
 
+<!-- ============================================================ -->
 <section id="s5">
-  <span class="section-num">&sect; 05 &middot; What happened inside the program</span>
-  <h2>Five gun arrests. <em>One dead fellow.</em></h2>
+  <span class="section-num">&sect; 05 &middot; Nobody checked</span>
+  <h2>The contradiction was inside the same building.</h2>
 
-  <p class="lead">Marketing materials for Advance Peace lead with system-level statistics. Inside the program, the operational reality was less abstract.</p>
+  <p class="lead">From May 4, 2018 forward, the press release and the case file existed inside the same Sacramento Police Department. From January 2019 forward, the false statistic was circulating in major media with SacPD attribution. Every institution that read those stories, that received those budget letters, that endorsed the candidate who repeated the claim, had the means to ask the department which document was correct. None of them asked.</p>
 
-  <p>Per Khaalid Muttaqi in an August 2022 interview with The Appeal, summarizing fellow outcomes during the original Sacramento Peacemaker Fellowship: <a class="inline" href="https://theappeal.org/advance-peace-stockton-gun-violence-prevention/">"In Sacramento, five fellows were arrested on gun-related charges during the 18-month fellowship. More than half were arrested on other charges. One fellow was shot and killed."</a><sup class="cite"><a href="#src13">13</a></sup></p>
+  <h3>The Sacramento Police Department</h3>
 
-  <div class="bignum-grid three">
-    <div class="bignum">
-      <div class="bignum-label">Sacramento fellows</div>
-      <div class="bignum-value small">50</div>
-      <div class="bignum-cap">Per cohort, identified as the most likely to shoot or be shot</div>
-    </div>
-    <div class="bignum">
-      <div class="bignum-label">Arrested on gun charges</div>
-      <div class="bignum-value small red">5</div>
-      <div class="bignum-cap">During the 18-month fellowship</div>
-    </div>
-    <div class="bignum">
-      <div class="bignum-label">Shot and killed</div>
-      <div class="bignum-value small red">1</div>
-      <div class="bignum-cap">A program participant, during the program</div>
-    </div>
-  </div>
+  <p>The department is the lead institutional actor. Three documents tell the story together. The May 4, 2018 press release described one critical-condition victim in a hospital and confirmed Homicide Detectives had been dispatched, while the department&rsquo;s own internal homicide records record two juvenile victims and at least one adult victim of the same case as deceased.<sup class="cite"><a href="#src19">19</a></sup><sup class="cite"><a href="#src20">20</a></sup> No follow-up release was ever issued.<sup class="cite"><a href="#src20">20</a></sup> The press release&rsquo;s framing propagated to ABC10 video coverage the same day, with the same singular-victim, alive-in-hospital language, and produced no further coverage of the case in any local outlet.<sup class="cite"><a href="#src20">20</a></sup> Two and a half years later, on January 7, 2021, Chief Daniel Hahn gave ABC10 the on-the-record quote: <em>&ldquo;So, it&rsquo;s definitely a reversal of what we&rsquo;ve seen over the last couple of years.&rdquo;</em><sup class="cite"><a href="#src22">22</a></sup> The first-person plural places the false 2018&ndash;2019 baseline as the institutional view of the Sacramento Police Department.</p>
 
-  <p>Muttaqi's framing in the same interview: "They're hard to reach. And to be quite honest with you, they can be very hard to serve." This is the program's COO, describing the program's participants. The "98% alive at evaluation" headline figure that appeared in many press accounts of Advance Peace Sacramento is consistent with this picture only because the alternative reference class (men identified by police as most likely to be shot, in a city with a stable annual homicide rate) was already characterized by very high one-year survival, before any intervention.</p>
+  <p>The case file that contradicted that institutional view was inside the department on the day the Chief was quoted. The press release that had omitted the juvenile victims had been sitting on the department&rsquo;s public-facing site since May 4, 2018. No correction was ever published. The article does not resolve the question of whether the Chief knew the statistic he was confirming was incomplete, or whether the press release&rsquo;s omissions were deliberate at the time of writing. The open record supports a different and sufficient finding: the department issued an incomplete press release in 2018, did not correct it, did not contradict the qualifier-stripped public retellings of the resulting incomplete picture as they accumulated through 2019 and 2020, and confirmed the false baseline through its Chief in January 2021.</p>
 
-  <p>Across the four-year Sacramento program, no published evaluation has reconciled these participant-level outcomes with the program's claimed 21 percent citywide reduction. Five fellows arrested for gun charges during a fellowship designed to interrupt their gun use is not a small number relative to the program's scale.</p>
+  <p>A separate institutional-records problem appears in the same case file. The author has obtained two California Public Records Act responses from the Sacramento Police Department about case 18&ndash;132511, and the two responses contain different demographic information about the same incident. PRA 24&ndash;391 produced the Department&rsquo;s internal homicide person-level dataset, GOPerson_09A2016_2019, which records the case&rsquo;s two juvenile victims as ages 10 and 13.<sup class="cite"><a href="#src19">19</a></sup> PRA 26&ndash;1016, signed May 1, 2026 by Anna Johnson of SacPD Transparency and Compliance, identifies the juvenile victims as ages 3 and 6.<sup class="cite"><a href="#src19">19</a></sup> The Department has not addressed or reconciled the discrepancy in either response. A third Public Records Act request, asking the Department to confirm which of its own prior responses is correct, has been filed and is pending as of this writing. The fact that the Department has produced two contradictory responses about the same case, and that the contradiction was identified by the requester, is itself part of the institutional record this article documents.</p>
 
-  <p>In Fresno, the program's operational mechanism produced a more direct failure mode. In April 2022, Leonard Smith, a Neighborhood Change Agent for Advance Peace Fresno, was arrested in a multi-agency gang takedown announced by California Attorney General Rob Bonta. Court documents allege Smith leaked information to gang members about a police murder investigation and conspired in two murders.<sup class="cite"><a href="#src14">14</a></sup></p>
+  <h3>The Sacramento Bee</h3>
 
-  <p>Fresno Police Chief Paco Balderrama, per the city's official statement: <a class="inline" href="https://sjvsun.com/news/fresno/fresno-pulls-support-of-advance-peace-over-staff-arrests-in-gang-sweep-threats-against-lawmakers/">"Due to the criminal indictment of an Advance Peace member for conspiracy to commit murder, threats made to at least one city council member, and the misuse of sensitive information provided to Advance Peace, Fresno PD could no longer partner, share information, or work with Advance Peace under the current model."</a><sup class="cite"><a href="#src15">15</a></sup></p>
+  <p>The Bee endorsed Cofer for Mayor of Sacramento in the March 5, 2024 Democratic primary.<sup class="cite"><a href="#src14">14</a></sup> Her campaign&rsquo;s central public-safety claim was that Sacramento went two years without any youth homicides under the program she defended. The endorsement did not file a CPRA. It did not match the candidate&rsquo;s claim against SacPD records. It did not reconcile the candidate&rsquo;s framing with the natural-language reading of the press release the department had issued the day case 18&ndash;132511 was opened. When the editorial board of a major regional newspaper endorses a candidate without verifying her central public-safety claim against the records of the police department in the city she is running to lead, the endorsement is functioning as something other than journalism.</p>
 
-  <p>Mayor Jerry Dyer, who had supported the program at launch, told ABC30 he could not continue to support it under the current model.<sup class="cite"><a href="#src16">16</a></sup> Fresno's Advance Peace contract was terminated in 2022.</p>
+  <h3>CapRadio, KCRA, ABC10, the Observer, Sacramento News &amp; Review</h3>
 
-  <p>The Fresno failure is structural, not idiosyncratic. The program's core operational premise is to hire formerly incarcerated people with gang-adjacent credibility to mentor active gang members. The credibility that makes the model work is the same credibility that creates the conditions in which an active employee can leak police information to gang members. There is no version of Advance Peace that resolves this without becoming a different program.</p>
+  <p>Each of these outlets covered the Advance Peace program or the Cofer campaign, in some cases for years. Each repeated the &ldquo;two years no juvenile homicides&rdquo; framing or its variants. None, in coverage located in the open record, filed a CPRA against SacPD for the underlying case file. None asked the program or the candidate to publish the operational definition of &ldquo;juvenile homicide.&rdquo; ABC10 ran the SacPD-attributed claim twice, in January 2020 and January 2021, without verification beyond the department&rsquo;s own attribution.<sup class="cite"><a href="#src20">20</a></sup><sup class="cite"><a href="#src22">22</a></sup> The April 2019 Sacramento News &amp; Review writeup published the claim as a settled fact about 2018, eight months after the juvenile homicide victims of case 18&ndash;132511 were killed in South Sacramento.<sup class="cite"><a href="#src9">09</a></sup> The first published doubt about the claim, in any local outlet, has not been located in the open record.</p>
+
+  <h3>The Mayor&rsquo;s Gang Prevention and Intervention Task Force</h3>
+
+  <p>The Task Force oversaw the Advance Peace contract. Its members included Sierra Health Foundation, the California Endowment, Kaiser Permanente, the California Wellness Foundation, and senior city staff. The contract&rsquo;s named project manager, Khaalid Muttaqi, simultaneously held a senior position at Advance Peace.<sup class="cite"><a href="#src1">01</a></sup> In March 2020, while the contracted metric was visibly failing, Muttaqi formally moved from the city-side oversight role into Advance Peace national as Chief Operating Officer. The contracted metric was a 20 to 25 percent citywide reduction in gun-related assaults and homicides. The Task Force did not publicly challenge the program&rsquo;s pivot from the contracted metric to the constructed juvenile-homicide claim, and did not publicly note that the constructed claim used a different unit of measurement than the contract.</p>
+
+  <h3>Sierra Health Foundation</h3>
+
+  <p>Sierra Health Foundation occupies a structurally distinctive position in the record. The foundation&rsquo;s employees and program directors sat on the Task Force that oversaw the contract. The foundation served as fiscal sponsor for related Advance Peace funding streams. The foundation runs the Black Child Legacy Campaign, which originated the public claim through Kindra Montgomery&ndash;Block&rsquo;s January 2019 CBS13 segment and formalized the claim into the &ldquo;3rd Party Youth Homicides&rdquo; metric in the July 21, 2020 City Council presentation that requested $2 million in CARES Act funding.<sup class="cite"><a href="#src8">08</a></sup> Sierra Health was operationally inside the program, inside the metric production, and inside the funding ask, simultaneously. The foundation did not publicly correct the qualifier-stripped public retellings of its own constructed metric.</p>
+
+  <h3>The UC Berkeley evaluators</h3>
+
+  <p>The signed Funding Agreement, in Section 4(a), names UC Berkeley faculty as the evaluators of the program before the program began.<sup class="cite"><a href="#src2">02</a></sup> Jason Corburn, the lead evaluator and lead author on the program&rsquo;s peer-reviewed papers and progress reports, was pre-selected by the parties to the contract. Corburn co-authored the program&rsquo;s 2021 Nature-portfolio paper with Advance Peace founder DeVone Boggan and city-side project manager Khaalid Muttaqi. The CalVIP Final Local Evaluation Report, signed by Corburn and Fukutome&ndash;Lopez and submitted to the Board of State and Community Corrections in August 2020, repeated the &ldquo;no juvenile homicides&rdquo; framing without specifying its operational definition.<sup class="cite"><a href="#src10">10</a></sup> The independent academic verification the program cites in its public-facing materials was performed by an evaluator the program selected.</p>
+
+  <h3>Flojaune Cofer</h3>
+
+  <p>The 2020 CalVIP Final Local Evaluation Report, on page 7, records: <em>&ldquo;In March 2020 the program held two workshops that included fellows from Oak Park, Del Paso Heights, and South Sacramento without incident. The workshop was facilitated by Dr. Flojaune Cofer, and focused on trauma-informed emotional intelligence, conflict resolution and developing professional on the job work etiquette.&rdquo;</em><sup class="cite"><a href="#src10">10</a></sup> The Flojaune Cofer who facilitated workshops for Advance Peace fellows in March 2020 is the same Flojaune Cofer who, four months later in July 2020, published an SN&amp;R op-ed praising the program for &ldquo;nearly two years with no juvenile homicides&rdquo; while attacking SacPD&rsquo;s effectiveness.<sup class="cite"><a href="#src21">21</a></sup> The op-ed&rsquo;s author bio identifies her as <em>&ldquo;senior director of policy at Public Health Advocates and chairperson of Sacramento&rsquo;s Measure U Community Advisory Committee.&rdquo;</em><sup class="cite"><a href="#src21">21</a></sup> The bio does not disclose the AP workshop facilitator role recorded in the CalVIP report. The same Cofer ran for Sacramento mayor in 2024 on a campaign anchored by the same &ldquo;two consecutive years zero juvenile homicides&rdquo; framing, and announced her candidacy for Sacramento County Board of Supervisors District 1 in January 2026.<sup class="cite"><a href="#src18">18</a></sup> She was program-affiliated when she repeated the claim in 2020, and program-affiliated when she campaigned on the claim in 2024. The Bee endorsement did not disclose the affiliation either.</p>
+
+  <h3>Giffords Law Center</h3>
+
+  <p>Giffords is a national gun-violence-prevention organization with a research staff and a policy staff. Its May 10, 2021 letter to Sacramento City Council used the &ldquo;two consecutive years without a single juvenile homicide&rdquo; framing in support of continued funding for Advance Peace.<sup class="cite"><a href="#src12">12</a></sup> The letter does not contain the operational definition of &ldquo;juvenile homicide.&rdquo; The letter does not name SHF&rsquo;s &ldquo;3rd Party Youth Homicides&rdquo; methodology. Thibodeaux thanked Nieto in writing at 1:40 AM the next morning, with the City Manager and Council staff copied.<sup class="cite"><a href="#src12">12</a></sup> The lobbying document and the program acknowledgment are in the same email thread, in the official Council correspondence record.</p>
+
+  <h3>The Sacramento City Council</h3>
+
+  <p>The City Council voted to extend funding for the program. The Council received the Sierra Health Foundation presentation on July 21, 2020 with the &ldquo;3rd Party Youth Homicides&rdquo; methodology slide and the $2 million CARES Act funding ask attached.<sup class="cite"><a href="#src8">08</a></sup> The Council received the Giffords letter as official correspondence for the May 11, 2021 Budget and Audit Committee meeting.<sup class="cite"><a href="#src12">12</a></sup> No member of the Council, in materials located in the open record, asked the program to reconcile the constructed metric against the contracted metric, or against SacPD records of homicides involving minors during the program window.</p>
+
+  <h3>What unifies the chain</h3>
+
+  <p>This article does not assert that any of these institutions consciously knew the public claim was contradicted by police records and chose to cover it up. That assertion would require evidence the open record does not provide. What the open record does support is a different finding, and a sufficient one. Each of these institutions had a professional obligation to verify a major public-safety claim before repeating it, before endorsing the candidate who repeated it, before funding the program that benefited from it. None of them met that obligation. The cumulative result is that a constructed statistical claim, sourced through the police department&rsquo;s own data attribution and confirmed on the record by its Chief, circulated for five years and powered a major-city mayoral campaign.</p>
+
+  <p>The chain runs through institutions that share a progressive ideological orientation. The Sacramento Bee. CapRadio. ABC10. KCRA. The Sacramento Observer. Sacramento News &amp; Review. Newsweek. Jacobin. Giffords Law Center to Prevent Gun Violence. UC Berkeley. The California Endowment. Kaiser Permanente. The California Wellness Foundation. Sierra Health Foundation. The Mayor&rsquo;s office under Darrell Steinberg. The City Council&rsquo;s Democratic majority. Both finalists in the 2024 mayoral runoff, Cofer and Mayor Kevin McCarty, who did not contest the claim during the campaign. The unifying institutional feature is not race. It is that each of these institutions had professional, financial, or political reasons to treat questioning a Black-led community-based program defending Black neighborhoods as costlier than not verifying it. The verification cost a Public Records Act filing and a phone call. None of them paid it.</p>
+
+  <p>The records were available the whole time. The case had a number. The number was 18&ndash;132511.</p>
 </section>
 
 <a href="#s6" class="divider">
   <div class="divider-line"></div>
   <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="divider-label">NYC</div>
-</a>
-
-<section id="s6">
-  <span class="section-num">&sect; 06 &middot; The expansion that did not happen</span>
-  <h2>New York City: <em>zero participants.</em></h2>
-
-  <p class="lead">In March 2021, Mayor Bill de Blasio and Public Advocate Jumaane Williams announced that New York City would launch a five-precinct Advance Peace pilot.</p>
-
-  <p>The press release leading the announcement cited Sacramento's evaluated outcomes as the basis for the expansion: <a class="inline" href="https://advocate.nyc.gov/press/nyc-public-advocate-mayor-announce-pilot-program-advance-peace-prevent-gun-violence">"A peer-reviewed study of the implementation of Advance Peace in Sacramento demonstrates a 27% reduction in gun violence in the program's catchment area over 2 years."</a><sup class="cite"><a href="#src17">17</a></sup></p>
-
-  <p>The 27 percent figure is the AP-zone-only interrupted time series counterfactual estimate from the 2020 working paper. It is one of seven figures in the menu above. It is not the citywide figure. It was selected because it produced the strongest case for expansion.</p>
-
-  <p>Nineteen months later, in November 2022, The Trace published a follow-up. Per its reporting:</p>
-
-  <div class="receipt">
-    <div class="receipt-quote">"More than 19 months since New York officials said the city would be launching the pilot, and there's little progress to show for it. No participants have been enrolled, and Advance Peace is pulling out of New York City altogether after what Boggan called a 'toxic' experience."</div>
-    <div class="receipt-cite">The Trace, November 2022 &middot; <a href="#src18">source 18</a></div>
-  </div>
-
-  <p>Boggan's withdrawal letter to the New York City Mayor's Office of Criminal Justice, dated September 2022 and quoted by The Trace: <a class="inline" href="https://www.thetrace.org/2022/11/new-york-gun-violence-advance-peace/">"We have decided to forego any payment from the city of New York. We have experienced a process that has lacked good character and integrity as to the intention of your local government."</a></p>
-
-  <p>The pilot was sold on Sacramento's outcome. The pilot enrolled no one. The collapse received a fraction of the press coverage that the launch received. The 27 percent figure remains in circulation.</p>
-</section>
-
-<a href="#s7" class="divider">
-  <div class="divider-line"></div>
-  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="divider-label">The pandemic table</div>
-</a>
-
-<section id="s7">
-  <span class="section-num">&sect; 07 &middot; The pandemic paper</span>
-  <h2>Plus thirty-nine percent. <em>In the same paper.</em></h2>
-
-  <p class="lead">In June 2022, Corburn, Boggan and Muttaqi published a follow-up paper in the Journal of Urban Health, titled "Preventing Urban Firearm Homicides during COVID-19: Preliminary Results from Three Cities with the Advance Peace Program."</p>
-
-  <p>The paper makes two claims about Sacramento that sit a few paragraphs apart in the same publication. Per Table 1: <a class="inline" href="https://link.springer.com/article/10.1007/s11524-022-00660-4">"The percent change from pre-pandemic to pandemic periods ranged from + 39% in Stockton and Sacramento to + 6.4% in Richmond."</a><sup class="cite"><a href="#src19">19</a></sup></p>
-
-  <p>Per the same paper's headline finding: a 5 to 52 percent decrease in gun homicides during the 2020 to 2021 period compared to the 2018 to 2019 period for neighborhoods with a gun violence prevention program operating there.</p>
-
-  <p>The first finding says citywide gun violence in Sacramento increased 39 percent during the pandemic period while Advance Peace was operating. The second finding says specific Advance Peace neighborhoods showed a decrease compared to the prior period. Both findings are in the same paper. The first one almost never traveled.</p>
-
-  <div class="bignum-grid">
-    <div class="bignum">
-      <div class="bignum-label">In the abstract</div>
-      <div class="bignum-value">&minus;5% to &minus;52%</div>
-      <div class="bignum-cap">Reported decrease in gun homicides in AP zones, 2020 to 2021 vs. 2018 to 2019</div>
-    </div>
-    <div class="bignum">
-      <div class="bignum-label">In Table 1</div>
-      <div class="bignum-value red">+39%</div>
-      <div class="bignum-cap">Citywide change pre-pandemic to pandemic, Sacramento and Stockton</div>
-    </div>
-  </div>
-
-  <p>Which of these two numbers describes Sacramento as a city? The peer-reviewed answer, in Table 1 of the program's own evaluation: gun violence in Sacramento increased 39 percent. The author of the paper that reports this is the same author who reports the favorable neighborhood-level numbers in the same paper. The findings are not in conflict mathematically; they describe different geographic units. They are in conflict rhetorically; only one was promoted.</p>
-</section>
-
-<a href="#s8" class="divider">
-  <div class="divider-line"></div>
-  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="divider-label">The fiscal sponsor</div>
-</a>
-
-<section id="s8">
-  <span class="section-num">&sect; 08 &middot; Where the money comes through</span>
-  <h2>One nonprofit. <em>Two roles.</em></h2>
-
-  <p class="lead">A subtle structural feature of California's gun violence intervention funding produces a conflict of interest that has not been publicly examined. The same nonprofit that frames Black violence as caused by white institutions also receives state funds and acts as the legal pass-through for the cash that pays individual Black men.</p>
-
-  <p>The Center at Sierra Health Foundation, EIN 45-5282243, describes its work as supporting "programs that work to improve health and racial equity in California."<sup class="cite"><a href="#src20">20</a></sup> Its parent foundation lists racial equity and racial justice among its core program areas.</p>
-
-  <p>The same Center is the fiscal sponsor for Advance Peace. Confirmed in the BSCC CalVIP Cohort 3 final evaluation report, June 2024, in language describing the Youth Peacemaker Fellowship Project's contractual structure: <a class="inline" href="https://www.bscc.ca.gov/wp-content/uploads/2024/06/BSCC-CalVIP-Local-Evaluation-Report-FINAL-w-Appendices.pdf">"The Center at Sierra Health Foundation served as the fiscal sponsor for Advanced Peace, who would manage primary service provision for the program."</a><sup class="cite"><a href="#src21">21</a></sup></p>
-
-  <p>This means the Center is not a passive grantmaker to Advance Peace. The state writes checks to the Center. The Center pays Advance Peace. Advance Peace pays the fellows. The Center's racial equity framing supplies the moral case for the program. The Center's pass-through function supplies the operational mechanism. The same institution does both jobs.</p>
-
-  <p>Per IRS records, the Center had FY2024 revenue of approximately $197.5 million, almost all of it from government grants passing through to programs in California. Advance Peace itself, EIN 81-3858984, files separately as a 501(c)(3); revenue and compensation figures are available via the IRS Tax-Exempt Organization Search.<sup class="cite"><a href="#src22">22</a></sup></p>
-
-  <div class="note">
-    The Center's nonprofit infrastructure also collects substantial revenue from California's opioid settlement allocation, the state's opioid response programs, and Department of Health Care Services contracts. The fiscal sponsor relationship with Advance Peace is one line item in a much larger architecture. A separate investigation at this site documents that architecture in detail.
-  </div>
-
-  <p>Federal funding flows separately. The Bureau of Justice Assistance awarded Advance Peace the "National Peacemakers Network" Community Violence Intervention grant, supporting program operations in Stockton, Vallejo, Antioch, Fresno, Pomona, Richmond, Woodland (CA); Fort Worth (TX); Lansing (MI); and Rochester (NY).<sup class="cite"><a href="#src23">23</a></sup> Arnold Ventures funds Corburn's evaluation work across multiple cities.<sup class="cite"><a href="#src24">24</a></sup> The funding ecosystem is national. The methodology that produced the original Sacramento numbers is the methodology being applied across all of those cities.</p>
-</section>
-
-<a href="#s9" class="divider">
-  <div class="divider-line"></div>
-  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="divider-label">The non-renewal</div>
-</a>
-
-<section id="s9">
-  <span class="section-num">&sect; 09 &middot; What the city actually said</span>
-  <h2>Sacramento ended it. <em>Without a public reason.</em></h2>
-
-  <p class="lead">Sacramento city officials did not publicly explain why they declined to renew the Advance Peace contract at the end of 2021.</p>
-
-  <p>The non-renewal itself is documented. Per The Appeal, August 2022: <a class="inline" href="https://theappeal.org/advance-peace-stockton-gun-violence-prevention/">"In Sacramento, for example, officials opted not to renew Advance Peace in 2021 after the end of its four-year pilot."</a><sup class="cite"><a href="#src13">13</a></sup></p>
-
-  <p>Per CapRadio, April 2022, three months after the contract expired and just weeks after Sacramento's deadliest mass shooting in city history on K Street: <a class="inline" href="https://www.capradio.org/articles/2022/04/26/after-sacramentos-deadliest-mass-shooting-officials-plan-to-ask-voters-to-pay-for-more-youth-programs/">"Advance Peace, which is based in the Bay Area, previously had contracted to work with the city, but its partnership ended in 2021. It's unclear why it wasn't renewed."</a><sup class="cite"><a href="#src25">25</a></sup></p>
-
-  <p>"It's unclear why it wasn't renewed" is itself the finding. As of April 2022, four months after the contract expired, the City Manager's office had not publicly articulated a reason for ending a program billed as evidence-based. Advance Peace itself, on its Sacramento website, posted only this: <a class="inline" href="https://sacramento.advancepeace.org/">"Advance Peace and the Peacemaker Fellowship is no longer operative in Sacramento. The City of Sacramento and its leadership has made a formal decision to no longer support the Advance Peace model there."</a><sup class="cite"><a href="#src26">26</a></sup></p>
-
-  <p>Subsequent political messaging filled the silence. Mayoral candidate and former Sacramento County public health official Dr. Flojaune Cofer, in 2024 campaign materials, framed the non-renewal as a betrayal: politicians cut a working program and children died as a result. The framing depends on a counterfactual: that Advance Peace would have prevented the 2022, 2023, and post-program killings if it had been continued. The data does not support that counterfactual. While the program was operational, in 2020 and 2021, Sacramento recorded 41 and 58 homicides respectively. The 58-homicide year was the deadliest the city had seen in fifteen years. The post-program counterfactual the campaign messaging requires is a counterfactual to a program that was demonstrably underperforming during its own operational window.</p>
-
-  <p>The simplest explanation for the non-renewal is also the most consistent with the data the city had access to in late 2021: the program did not deliver what the contract promised, and the city's leadership decided not to publicly say so.</p>
-</section>
-
-<a href="#s10" class="divider">
-  <div class="divider-line"></div>
-  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="divider-label">How it traveled</div>
-</a>
-
-<!-- ============================================================ -->
-<section id="s10">
-  <span class="section-num">&sect; 10 &middot; How the metric traveled</span>
-  <h2>From contract <em>to campaign.</em></h2>
-
-  <p class="lead">A specific contractual commitment to reduce citywide gun violence by 20 to 25 percent became, by the 2024 mayoral campaign, a story about youth homicides and political betrayal. The metric was not changed by amendment. It was changed by repetition.</p>
-
-  <p>The original Sacramento contract, Resolution 2017-00851 in the Granicus archive, is explicit about what the program was being paid to do. Per the staff report on the legislation: <a class="inline" href="https://sacramento.granicus.com/MetaViewer.php?view_id=22&clip_id=4034&meta_id=501120">"The primary purpose of the Peacemaker Fellowship is to save lives by eliminating gun violence. The Fellowship will coordinate targeted intervention services to young adults identified as most likely to be perpetrators and/or victims of gun violence."</a><sup class="cite"><a href="#src1">01</a></sup></p>
-
-  <p>The word "youth" appears in the staff report only in references to the Mayor's strategic priority to "Invest in our Youth," not as a contracted deliverable. The program's contracted deliverable, as quoted by ABC10 at the December 2017 signing, was the 20 to 25 percent citywide reduction in gun-related assaults and homicides. There was no contractual commitment about juvenile or youth homicide rates.</p>
-
-  <p>Seven years later, in her 2024 mayoral campaign for the City of Sacramento, Dr. Flojaune Cofer published the following statement in her own Ballotpedia Candidate Connection survey, in answer to a public-safety question:</p>
-
-  <div class="receipt">
-    <div class="receipt-quote">"Did you know that Sacramento went two years without any youth homicides? During the pandemic, politicians cut the youth programs that prevented homicides, and we've seen a rise in youth violence since then."</div>
-    <div class="receipt-cite">Dr. Flojaune Cofer, 2024 Sacramento mayoral campaign &middot; Ballotpedia Candidate Connection survey &middot; <a href="#src28">source 28</a></div>
-  </div>
-
-  <p>Three of the claims in that statement are inconsistent with the documentary record.</p>
-
-  <p>First, "two years without any youth homicides" was not the program's contracted goal. The 20 to 25 percent citywide reduction in gun-related assaults and homicides was the goal. The youth-homicide framing was added to the program's marketing materials after the contract metric became unreachable.</p>
-
-  <p>Second, "politicians cut the youth programs" implies the program ended before its intended term. Sacramento operated Advance Peace continuously from mid-2018 through December 2021, the full term of the original contract plus a state-funded extension and a separately launched Youth Peacemaker Fellowship. The non-renewal at the end of 2021 came at the natural end of the funding cycle. The city declined to extend.</p>
-
-  <p>Third, "rise in youth violence since then" implies the rise occurred after the program ended. Sacramento Police recorded 58 homicides in 2021, the deadliest year since 2006, while the program was still operational. The 2022 and 2023 totals (47 and 37) were lower than 2021, not higher. The rise the campaign attributed to the program's absence had already happened during the program's presence.</p>
-
-  <h3>The local press</h3>
-
-  <p>The Sacramento Bee endorsed Cofer in the March 2024 Democratic primary for mayor.<sup class="cite"><a href="#src29">29</a></sup> She advanced to the November runoff and lost by 1.4 percentage points to Kevin McCarty.<sup class="cite"><a href="#src30">30</a></sup> Across the campaign, no published Bee article located in the open record challenged the youth-homicide framing against the underlying contract terms or the SacPD homicide statistics for 2020 and 2021.</p>
-
-  <p>The local print and broadcast coverage of Advance Peace from 2017 through 2024, taken as a whole, propagated the program's own claimed effects with limited scrutiny. The Sacramento News &amp; Review described early-stage results in 2019 with the framing "the most telling result: every participant is still alive,"<sup class="cite"><a href="#src31">31</a></sup> a characterization that does not contemplate the relevant counterfactual baseline (the one-year survival rate among similar men, in the same city, with no intervention). CapRadio's April 2022 reporting, three months after the program ended and weeks after the K Street mass shooting, noted that the non-renewal reason was "unclear"<sup class="cite"><a href="#src25">25</a></sup> without proceeding to the question of whether the underperformance documented in the program's own peer-reviewed evaluations was a factor.</p>
-
-  <p>The pattern is not unique to Sacramento. Local press in cities that have hosted Advance Peace expansions, including Stockton, Fresno, and New York, have generally framed the program's outcome claims through the lens of the press release figures rather than the peer-reviewed table numbers. The New York pilot's 19-month collapse, documented by The Trace in November 2022,<sup class="cite"><a href="#src18">18</a></sup> received a fraction of the press attention that the March 2021 launch announcement received.</p>
-
-  <p>This is what it means for a metric to travel. The contract said one thing. The press release said another thing. The local paper repeated the press release. A campaign repeated the local paper. The original contract terms, by the time the claim arrived in a runoff campaign, were no longer part of the conversation.</p>
-</section>
-
-<a href="#s11" class="divider">
-  <div class="divider-line"></div>
-  <div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   <div class="divider-label">Reading carefully</div>
 </a>
 
-<section id="s11">
-  <span class="section-num">&sect; 11 &middot; The structure of the claim</span>
+<!-- ============================================================ -->
+<section id="s6">
+  <span class="section-num">&sect; 06 &middot; The structure of the claim</span>
   <h2>Nobody had to lie.</h2>
 
-  <p class="lead">Each step in the construction of the Advance Peace narrative was, by itself, defensible. The cumulative drift was substantial.</p>
+  <p class="lead">Each step in the construction of the Advance Peace narrative was, by itself, defensible. The cumulative result was not.</p>
 
-  <p>The lead evaluator had a choice of comparison windows and statistical methods that produced a range of headline numbers between roughly 8 percent and roughly 39 percent. He included multiple of these figures in the same documents. He chose to lead with the largest in the abstracts and press releases. The press releases did the natural thing and propagated the largest. Allied institutions cited the press release figures rather than the peer-reviewed table numbers. Politicians simplified the press release figures into single sentences. By the time the claim arrived in a 2024 campaign, the underlying ten percent finding from the program's own working paper was no longer visible anywhere in the public record.</p>
+  <p>A program contracted with the City of Sacramento to reduce citywide gun-related assaults and homicides by at least 20 percent in two years and 50 percent in four. The program reduced citywide gun violence by approximately 8 percent in its first two years, by its own peer-reviewed measure, then presided over 26 cumulative excess homicides across its operational window, with 2021&rsquo;s 58 homicides marking the deadliest year Sacramento had recorded in fifteen years. Sacramento got more homicides during the program, not fewer. The contracted reduction was not delivered in either direction.</p>
 
-  <p>The structural racism framing supplied the moral cover. The pay-the-fellows mechanism supplied the operational legitimacy. Together they made the program politically untouchable for several years. When the city quietly declined to renew the contract, the same framing was deployed to attribute the post-program violence to the non-renewal rather than to the program's own underperformance.</p>
+  <p>A different claim took its place. Sierra Health Foundation formalized a three-year rolling average of &ldquo;3rd Party Youth Homicides&rdquo; per 100,000 children, combined across city and county, and presented it to City Council on July 21, 2020 alongside a $2 million CARES Act funding request. The Sacramento Police Department itself supplied the qualifier-free public version of the same statistic to two ABC10 stories, in January 2020 and January 2021. Chief Daniel Hahn confirmed the false baseline on the record. The methodology stayed on the SHF slide. The qualifier-free claim circulated for five years through media coverage, lobbying letters, peer-reviewed papers, candidate questionnaires, and an editorial endorsement by the Sacramento Bee of a program-affiliated mayoral candidate. That candidate lost the runoff by 1.4 percentage points and is now an active candidate for Sacramento County Board of Supervisors District 1.</p>
 
-  <p>External academic evaluators, including those broadly sympathetic to the model, have flagged the underlying evidence problem in plainer terms. The John Jay College Research and Evaluation Center, in its 2020 review of police-alternative violence reduction programs, wrote that <a class="inline" href="https://johnjayrec.nyc/2020/11/09/av2020/">"studies of Cure Violence and similar models (e.g. California's Advance Peace) continue to produce promising, but less than definitive evidence of program effects."</a><sup class="cite"><a href="#src27">27</a></sup> "Less than definitive" is the careful academic phrasing. The Sacramento contract was specific. The Sacramento data is specific. The gap between the two is also specific.</p>
+  <p>Two children were killed at 2380 Meadowview Road in South Sacramento, one of the program&rsquo;s named target zones, on May 4, 2018, four months and five days after the city&rsquo;s first contract payment landed in the program&rsquo;s account. Their deaths are confirmed in the Sacramento Police Department&rsquo;s own internal homicide records and in two separate Public Records Act responses the Department has provided to the author. The Sacramento Police Department issued a single press release that day. The release named one adult victim, transported to the hospital, alive. The release did not name the children. The release did not say anyone died. No follow-up was ever issued. The department&rsquo;s internal records show two juvenile victims of the same case. Both documents originated inside the same building. Eight years passed between them. Every institution that promoted the program had the means to ask which document was correct. None of them did. None of them ever named the children. The Department&rsquo;s own two responses do not, as of this writing, agree with each other on the children&rsquo;s exact ages. A third Public Records Act request, asking the Department to clarify, is pending.</p>
 
-  <p>For Advance Peace specifically, the relevance is this. The contract metric, a 20 to 25 percent citywide reduction in gun-related assaults and homicides, was about the operational mechanism. The metric was not met. The political defense of the program shifted to the moral framing instead. That is the pattern.</p>
-
-  <p>Sacramento ended the program. Sacramento's homicides during the program's final year were the highest the city had seen since 2006. Both of those facts are in the same record. They have not yet been read together.</p>
+  <p>The story is the silence. The story is the children. The story is the lie that the silence made possible.</p>
 </section>
 
 </div>
@@ -1212,71 +1376,55 @@ sup.cite a:hover { text-decoration: underline; }
   <div class="wrap">
     <div class="sources-title">Sources</div>
     <ol class="sources-list">
-      <li id="src1">City of Sacramento, Resolution 2017-00851, "Authorizing the City Manager to Execute an Agreement with Advance Peace." Adopted August 29, 2017. Vote: 9-0. Legislation text via Sacramento Granicus archive. <a href="https://sacramento.granicus.com/MetaViewer.php?view_id=22&clip_id=4034&meta_id=501120">sacramento.granicus.com</a></li>
 
-      <li id="src2">"Controversial 'Advance Peace' contract signed in hopes of reducing gun violence." ABC10 News, December 2017. <a href="https://www.abc10.com/article/news/local/controversial-advance-peace-contract-signed-in-hopes-of-reducing-gun-violence/103-498716367">abc10.com</a></li>
+      <li id="src1">City of Sacramento, Resolution 2017&ndash;00851, &ldquo;Authorizing the City Manager to Execute an Agreement with Advance Peace.&rdquo; Adopted August 29, 2017. Council vote: 9&ndash;0. Legislation text via Sacramento Granicus archive. <a href="https://sacramento.granicus.com/MetaViewer.php?view_id=22&amp;clip_id=4034&amp;meta_id=501120">sacramento.granicus.com</a></li>
 
-      <li id="src3">"Sacramento City Council overwhelmingly approves new gun violence reduction strategy." City of Sacramento Express, August 28, 2017. <a href="https://sacramentocityexpress.com/2017/08/28/sacramento-city-council-to-consider-a-new-gun-violence-reduction-strategy-at-tuesday-nights-council-meeting/">sacramentocityexpress.com</a></li>
+      <li id="src2">City of Sacramento, Advance Peace, and Safe Passages. Funding Agreement, document number 2017&ndash;1473. Signed December 11 to 15, 2017 by Howard Chan (City Manager), Josefina Alvarado&ndash;Mena (CEO, Safe Passages), and DeVone Boggan (Founder and CEO, Advance Peace), with approval as to form by Senior Deputy City Attorney Michael Fry. Section 5(b)(5) requires &ldquo;data demonstrating at least a 20&ndash;25% reduction of gun-related assaults and homicides during the first two years of the program (and at the end of the Extended Term, if any, data demonstrating a 50% reduction).&rdquo; Section 2 schedules three payments of $500,000, beginning with the first $250,000 tranche dated December 29, 2017. Available through the City of Sacramento Granicus archive at <a href="https://sacramento.granicus.com/MetaViewer.php?view_id=22&amp;clip_id=4034&amp;meta_id=501120">sacramento.granicus.com</a>.</li>
 
-      <li id="src4">"Sacramento City Council Approves 'Advance Peace' Program." Fox40, August 30, 2017. Quoting Councilwoman Angelique Ashby on the resolution-vs-contract term discrepancy. <a href="https://fox40.com/news/sacramento-city-council-approves-advance-peace-program/">fox40.com</a></li>
+      <li id="src3">California Board of State and Community Corrections, CalVIP Cohort 3 Final Local Evaluation Report, &ldquo;Youth Peacemaker Fellowship Project,&rdquo; June 2024. Confirms the 2020 launch of the Youth Peacemaker Fellowship as a state-funded extension of the original program. <a href="https://www.bscc.ca.gov/wp-content/uploads/2024/06/BSCC-CalVIP-Local-Evaluation-Report-FINAL-w-Appendices.pdf">bscc.ca.gov</a></li>
 
-      <li id="src5">"Sacramento 2021 crime statistics: City sees highest number of homicides since 2006." ABC10, January 2022, citing Sacramento Police Department year-end video release. <a href="https://www.abc10.com/article/news/local/sacramento/sacamento-crime-statistics-2021/103-6885d8a8-9f25-4c9c-b640-a32186d95730">abc10.com</a></li>
+      <li id="src4">&ldquo;Sacramento 2021 crime statistics: City sees highest number of homicides since 2006.&rdquo; ABC10, January 2022, citing Sacramento Police Department year-end video news release. <a href="https://www.abc10.com/article/news/local/sacramento/sacamento-crime-statistics-2021/103-6885d8a8-9f25-4c9c-b640-a32186d95730">abc10.com</a></li>
 
-      <li id="src6">California Board of State and Community Corrections, CalVIP Cohort 3 Final Local Evaluation Report, "Youth Peacemaker Fellowship Project," June 2024. <a href="https://www.bscc.ca.gov/wp-content/uploads/2024/06/BSCC-CalVIP-Local-Evaluation-Report-FINAL-w-Appendices.pdf">bscc.ca.gov</a></li>
+      <li id="src5">Corburn, Jason and Amanda Fukutome. &ldquo;Learning &amp; Evaluation: 2018 Year-End Progress Report, Sacramento.&rdquo; Published by Advance Peace, January 2019. UC Berkeley Institute of Urban and Regional Development. The chart on page 8, &ldquo;Gun Homicides in Sacramento Advance Peace Neighborhoods,&rdquo; reports gun homicides by year in Del Paso Heights, Oak Park, and South Sacramento. The PDF is no longer available at the original URL on advancepeace.org; archived copies remain accessible via the Wayback Machine at <a href="https://web.archive.org/web/2021/https://www.advancepeace.org/wp-content/uploads/2020/02/Advance-Peace-Sacramento-2018-Progress-Report-final.pdf">web.archive.org</a>.</li>
 
-      <li id="src7">Corburn, Jason and Amanda Fukutome-Lopez. "Outcome Evaluation of Advance Peace Sacramento, 2018-19." UC Berkeley Center for Global Healthy Cities, March 2020. <a href="https://www.advancepeace.org/wp-content/uploads/2020/04/Corburn-and-F-Lopez-Advance-Peace-Sacramento-2-Year-Evaluation-03-2020.pdf">advancepeace.org</a></li>
+      <li id="src6">Corburn, Jason; Yael Nidam; Amanda Fukutome&ndash;Lopez. &ldquo;The Art and Science of Urban Gun Violence Reduction: Evidence from the Advance Peace Program in Sacramento, California.&rdquo; <em>Urban Science</em> 6(1):6, February 2, 2022. Open access. Reports an approximate 8 percent citywide reduction in gun-related assaults and homicides over the two-year fellowship period, against a four-year pre-program baseline. <a href="https://www.mdpi.com/2413-8851/6/1/6">mdpi.com</a></li>
 
-      <li id="src8">Corburn, Jason; Yael Nidam; Amanda Fukutome-Lopez. "The Art and Science of Urban Gun Violence Reduction: Evidence from the Advance Peace Program in Sacramento, California." <em>Urban Science</em> 6(1):6, February 2, 2022. <a href="https://www.mdpi.com/2413-8851/6/1/6">mdpi.com</a></li>
+      <li id="src7">Newsweek. &ldquo;No Children Were Murdered in Sacramento Last Year for the First Time in 35 Years.&rdquo; January 22, 2019. Quotes Kindra Montgomery&ndash;Block, identified as a youth worker affiliated with Sierra Health Foundation, in a CBS13 segment: &ldquo;This 2018 and no child deaths, juvenile deaths in the city of Sacramento, is absolutely the blessing on top.&rdquo; <a href="https://www.newsweek.com/sacramento-youth-violence-homicide-california-community-outreach-1299914">newsweek.com</a></li>
 
-      <li id="src9">Corburn, Jason; DeVone Boggan; Khaalid Muttaqi; et al. "A healing-centered approach to preventing urban gun violence: The Advance Peace Model." <em>Humanities and Social Sciences Communications</em> 8:142, June 9, 2021. Nature Portfolio. <a href="https://www.nature.com/articles/s41599-021-00820-y">nature.com</a></li>
+      <li id="src8">Sierra Health Foundation, &ldquo;Black Child Legacy Campaign: Healing the Hood.&rdquo; PowerPoint presentation to the Sacramento City Council Special Meeting, July 21, 2020. Filed as Supplemental Material under Item 25 (file ID 2020&ndash;00860, &ldquo;Black Child Legacy Campaign and Advance Peace Progress Report&rdquo;) by the Office of the City Clerk. The slide titled &ldquo;3rd Party Youth Homicides&rdquo; reports values of 4.5, 2.7, 1.8, 5.3, 0, 0 for 2014 through 2019, with two footnotes specifying the metric: &ldquo;3-year rolling averages, per 100,000 children&rdquo; and &ldquo;Both city and county is reflected in data.&rdquo; The closing slide of the same presentation requests &ldquo;a commitment of $2 million in CARES Act funding for 2020.&rdquo; Distributed via the Sacramento City Clerk records system at <a href="https://sacramento.granicus.com/">sacramento.granicus.com</a>.</li>
 
-      <li id="src10">Hwang, Susan. "Berkeley study: California gun violence program saves lives, taxpayers millions." UC Berkeley News, March 17, 2021. <a href="https://news.berkeley.edu/2021/03/17/berkeley-study-california-gun-violence-program-saves-lives-taxpayers-millions/">news.berkeley.edu</a></li>
+      <li id="src9">&ldquo;The road to peace: New initiative sees signs of progress in combating gang killings in Sacramento.&rdquo; Sacramento News &amp; Review, April 23, 2019. <a href="https://sacblog.newsreview.com/2019/04/23/the-road-to-peace-advance-peace-initiative-sees-early-signs-of-progress-in-combating-gang-killings-in-sacramento/">sacblog.newsreview.com</a></li>
 
-      <li id="src11">"Controversial California program offers cash to reduce gun crimes." PBS NewsHour Weekend. Boggan interview. <a href="https://www.pbs.org/newshour/show/controversial-california-program-offers-cash-to-reduce-gun-crimes">pbs.org</a></li>
+      <li id="src10">Corburn, Jason and Amanda Fukutome&ndash;Lopez. &ldquo;City of Sacramento/Advance Peace Sacramento, Youth Peacemaker Fellowship Program: CalVIP, BSCC Final Local Evaluation Report.&rdquo; University of California, Berkeley. Submitted August 10, 2020 to the California Board of State and Community Corrections. Executive Summary: &ldquo;There were no juvenile homicides in the City of Sacramento during the two-year project period.&rdquo; Page 7 records that &ldquo;In March 2020 the program held two workshops&hellip; The workshop was facilitated by Dr. Flojaune Cofer, and focused on trauma-informed emotional intelligence, conflict resolution and developing professional on the job work etiquette.&rdquo; Available at <a href="https://www.bscc.ca.gov/wp-content/uploads/2024/06/City-of-Sacramento-CalVIP-856-17-FLER-FINAL-3.pdf">bscc.ca.gov</a>.</li>
 
-      <li id="src12">"An end to urban gun violence?" UC Berkeley School of Public Health, undated, promoting the 2025 MIT Press book by Corburn and Boggan. <a href="https://publichealth.berkeley.edu/articles/spotlight/faculty/an-end-to-urban-gun-violence">publichealth.berkeley.edu</a></li>
+      <li id="src11">RealClearPolicy. &ldquo;Why Did the US Homicide Rate Spike in 2020?&rdquo; March 23, 2021. Quotes Julius Thibodeaux, Advance Peace Sacramento Strategy Program Manager: &ldquo;There hadn&rsquo;t been any juvenile homicides in Sacramento for the previous two years.&rdquo; <a href="https://www.realclearpolicy.com/2021/03/23/why_did_the_us_homicide_rate_spike_in_2020_769334.html">realclearpolicy.com</a></li>
 
-      <li id="src13">Sentil, Sruthi. "Advancing Peace, Against the Odds." The Appeal, August 2022. Interview with Khaalid Muttaqi. <a href="https://theappeal.org/advance-peace-stockton-gun-violence-prevention/">theappeal.org</a></li>
+      <li id="src12">Nieto, Brittany. &ldquo;Letter in Support of Continued Funding for Advance Peace Sacramento.&rdquo; Sent on behalf of Giffords Law Center to Prevent Gun Violence to Mayor Darrell Steinberg, City Manager Howard Chan, and members of the Sacramento City Council, May 10, 2021. Filed as official correspondence for the May 11, 2021 Budget and Audit Committee meeting (File ID 2021&ndash;00225). Quote: &ldquo;In the Sacramento community, the Advance Peace strategy is already having an impact. After initiating the AP strategy in 2018, the city experienced two consecutive years without a single juvenile homicide.&rdquo; Reply email from Julius Thibodeaux, Strategy Program Manager, The Advance Peace Organization of Sacramento, sent May 11, 2021 at 1:40 AM, with Howard Chan, Kelly F. Rivas, Amy Williams, and Public Comment copied: &ldquo;Thank you all for your unwavering support!&rdquo; Available through the City of Sacramento Granicus archive at <a href="https://sacramento.granicus.com/MetaViewer.php?view_id=22&amp;clip_id=4881&amp;meta_id=613001">sacramento.granicus.com</a>.</li>
 
-      <li id="src14">"Operation No Fly Zone." Office of California Attorney General Rob Bonta, joint announcement with Fresno PD and Fresno County DA, April 2022. Coverage: ABC30 Fresno. <a href="https://abc30.com/post/no-fly-zone-operation-fresno/11770401/">abc30.com</a></li>
+      <li id="src13">Jacobin. &ldquo;Mayoral Hopeful Flo Cofer Envisions a Democratic Sacramento.&rdquo; Interview published March 2024. Verbatim Cofer quote: &ldquo;Right here in Sacramento, we went two years with no youth homicides. Between 2017 and the beginning of 2020, we funded a network of violence prevention and intervention specialists. That got us two years with no youth homicides, no young people hanging RIP on a banner on the fence at their high school.&rdquo; <a href="https://jacobin.com/2024/03/flo-cofer-sacramento-mayor-homelessness-policing">jacobin.com</a></li>
 
-      <li id="src15">"Fresno pulls support of controversial gang program after staff arrested in gang sweep, made threats against lawmakers." San Joaquin Valley Sun, 2022. Quoting Fresno Police Chief Paco Balderrama. <a href="https://sjvsun.com/news/fresno/fresno-pulls-support-of-advance-peace-over-staff-arrests-in-gang-sweep-threats-against-lawmakers/">sjvsun.com</a></li>
+      <li id="src14">&ldquo;Sacramento Bee Endorsements,&rdquo; primary election March 5, 2024. Endorsement of Flojaune Cofer for Mayor of Sacramento. Catalog via Blue Voter Guide. <a href="https://bluevoterguide.org/endorser-org/Sacramento_Bee/CA/3041">bluevoterguide.org</a></li>
 
-      <li id="src16">"Fresno city leaders address funding for Advance Peace, Mayor Jerry Dyer says he can't support current model." ABC30 Fresno. <a href="https://abc30.com/advance-peace-fresno-gun-violence-gang-mayor/11982407/">abc30.com</a></li>
+      <li id="src15">&ldquo;2024 Sacramento mayoral election.&rdquo; General election certified December 2, 2024. Kevin McCarty defeated Flojaune Cofer by 1.4 percentage points. <a href="https://en.wikipedia.org/wiki/2024_Sacramento_mayoral_election">en.wikipedia.org</a></li>
 
-      <li id="src17">"NYC Public Advocate, Mayor Announce Pilot Program To 'Advance Peace,' Prevent Gun Violence." Office of NYC Public Advocate Jumaane Williams, March 15, 2021. <a href="https://advocate.nyc.gov/press/nyc-public-advocate-mayor-announce-pilot-program-advance-peace-prevent-gun-violence">advocate.nyc.gov</a></li>
+      <li id="src16">Cofer, Flojaune. &ldquo;Flojaune Cofer.&rdquo; Ballotpedia Candidate Connection, 2024 Sacramento mayoral race. Verbatim quote under PUBLIC SAFETY: &ldquo;Sacramento went two years without any youth homicides.&rdquo; Repeated in rhetorical form: &ldquo;Did you know that Sacramento went two years without any youth homicides?&rdquo; <a href="https://ballotpedia.org/Flojaune_Cofer">ballotpedia.org</a></li>
 
-      <li id="src18">Sefiane, Champe. "What Happened to NYC's Advance Peace Violence Prevention Pilot?" The Trace, November 2022. <a href="https://www.thetrace.org/2022/11/new-york-gun-violence-advance-peace/">thetrace.org</a></li>
+      <li id="src17">Sacramento Observer. &ldquo;Sacramento Mayoral Candidate Cofer&rsquo;s Plan For A Safer, More Inclusive City.&rdquo; October 22, 2024. Verbatim Cofer quote: &ldquo;We&rsquo;ve already seen these programs work. Sacramento went two years without youth homicides, before they were cut by our politicians.&rdquo; <a href="https://sacobserver.com/2024/10/sacramento-mayoral-candidate-cofers-plan-for-a-safer-more-inclusive-city/">sacobserver.com</a></li>
 
-      <li id="src19">Corburn, Jason; DeVone Boggan; Khaalid Muttaqi. "Preventing Urban Firearm Homicides during COVID-19: Preliminary Results from Three Cities with the Advance Peace Program." <em>Journal of Urban Health</em> 99:626-634, June 2022. <a href="https://link.springer.com/article/10.1007/s11524-022-00660-4">link.springer.com</a></li>
+      <li id="src18">CapRadio. &ldquo;Flojaune Cofer officially running for District 1 Sacramento County supervisor.&rdquo; January 20, 2026. Documents Cofer&rsquo;s announcement of her candidacy for the District 1 seat on the Sacramento County Board of Supervisors, the seat vacated by Phil Serna after nearly sixteen years. <a href="https://www.capradio.org/articles/2026/01/20/flojaune-cofer-officially-running-for-district-1-sacramento-county-supervisor/">capradio.org</a></li>
 
-      <li id="src20">"Programs - The Center at Sierra Health Foundation." <a href="https://www.shfcenter.org/programs-and-initiatives/">shfcenter.org</a></li>
+      <li id="src19">Sacramento Police Department, two California Public Records Act responses about case 18&ndash;132511 (also referenced as SA2018132511; date of occurrence: May 4, 2018; time: 13:21 hours; location: 2380 Meadowview Road, Sacramento). The two responses contain different demographic information about the same case. <strong>(a) PRA 24&ndash;391:</strong> the Department&rsquo;s internal homicide person-level dataset titled &ldquo;GOPerson_09A2016_2019,&rdquo; covering Sacramento homicide cases from 2016 through 2019. The dataset records case SA2018132511 as a 187(A) homicide on May 4, 2018, and identifies six associated person records: one adult VICTIM (Black non-Hispanic male, age 41), two JUV-VICTIM records (Hispanic female age 10 and Hispanic male age 13), one SUSPECT record (Black male, age unrecorded), and two ARREST/CITE records (both age 28, of differing ethnicity). The full dataset is available at <a href="https://docs.google.com/spreadsheets/d/12v74ELISTSU-iif157Y8cI5CXH8cSVZw/edit?usp=share_link&amp;ouid=114958884575485024365&amp;rtpof=true&amp;sd=true">docs.google.com</a>. <strong>(b) PRA 26&ndash;1016:</strong> a written narrative response signed May 1, 2026 by Anna Johnson, Transparency and Compliance, Sacramento Police Department, released under California Government Code &sect;&sect; 7923.610 to 7923.615. The response identifies three deceased victims (Joseph Coln, age 34; and two juvenile decedents identified as Davina Ibarra, age 3, and Valentino Ibarra, age 6), and two arrestees (Charlie Wong, DOB 12/16/1996, and Kendrick Glenn, DOB 3/21/1997, each charged under California Penal Code &sect; 187(A) among other charges, held without bail at Sacramento County Main Jail, with arrest dates of May 31, 2018). The two responses do not match on the ages of the juvenile victims, the ethnicity of the adult victim, or the demographic details of the arrestees. The Department has not addressed or reconciled the discrepancy in either response. <strong>(c) Third request, pending:</strong> the author has filed a third Public Records Act request asking the Department to confirm which of its prior responses is correct. As of this writing, no response has been received. Both prior responses are on file in the Department&rsquo;s NextRequest portal.</li>
 
-      <li id="src21">California Board of State and Community Corrections, CalVIP Cohort 3 Final Local Evaluation Report. (See source 06.) Confirms fiscal sponsorship arrangement.</li>
+      <li id="src20">Sacramento Police Department press release No. 20180504-045, &ldquo;Shooting Investigation &ndash; 24th Street and Meadowview Road,&rdquo; dated Friday, May 4, 2018. Describes a single victim (&ldquo;a male adult with multiple gunshot wounds&rdquo;) transported to a local area hospital with life-threatening injuries, and confirms that Homicide Detectives and Crime Scene investigators were called to the scene due to the severity of the injuries. Reports that the victim is &ldquo;in critical condition.&rdquo; Does not name any victim. Does not report any fatality. Closes with &ldquo;Additional details will be released as they become available.&rdquo; No follow-up press release in this case has been located in the open record. The release describes the same incident at the same address on the same date as the case 18&ndash;132511 internal record (source 19) and reports a different set of facts. Press release available at <a href="https://apps.sacpd.org/Releases/liveview.aspx?reference=20180504-045">apps.sacpd.org</a>. The release&rsquo;s framing propagated to local television the same day: ABC10 Sacramento, &ldquo;Sacramento Police investigate shooting near Meadowview,&rdquo; published May 4, 2018, captioned &ldquo;Police confirm that the victim was transported and is in critical condition,&rdquo; available at <a href="https://www.abc10.com/video/news/sacramento-police-investigate-shooting-near-meadowview/103-8118207">abc10.com</a>. Subsequent ABC10 coverage repeating the &ldquo;zero youth homicides&rdquo; framing for the 2018&ndash;2019 period: ABC10, &ldquo;There were zero youth homicides reported in Sacramento for 2 years. What changed?&rdquo; January 30, 2020 (citing &ldquo;a review of data by the Sacramento Bee&rdquo; for the 2007&ndash;2017 baseline and quoting Sierra Health Foundation Senior Program Officer Kindra Montgomery&ndash;Block), available at <a href="https://www.abc10.com/article/news/local/sacramento/zero-youth-homicides-reported-in-sacramento-for-2-years-what-changed/103-e7021375-3c74-4040-b853-d8a5b9169227">abc10.com</a>.</li>
 
-      <li id="src22">IRS Tax-Exempt Organization Search. Center at Sierra Health Foundation EIN 45-5282243; Advance Peace EIN 81-3858984. <a href="https://apps.irs.gov/app/eos/">apps.irs.gov/app/eos</a></li>
+      <li id="src21">Cofer, Flojaune G. &ldquo;The wrong questions.&rdquo; Sacramento News &amp; Review, July 9, 2020. Cofer, identified in the op-ed&rsquo;s author bio as <em>&ldquo;senior director of policy at Public Health Advocates and chairperson of Sacramento&rsquo;s Measure U Community Advisory Committee,&rdquo;</em> writes that Advance Peace and other community programs <em>&ldquo;gave Sacramento nearly two years with no juvenile homicides,&rdquo;</em> and that <em>&ldquo;The Sacramento Police Department has a budget 150 times that of Advance Peace and has never achieved anything near this feat of prevention.&rdquo;</em> The op-ed&rsquo;s author bio does not disclose that the CalVIP Final Local Evaluation Report (source 10) records, on page 7, that Cofer facilitated two trauma-informed workshops for Advance Peace fellows in March 2020, four months before the op-ed&rsquo;s publication. <a href="https://sacramento.newsreview.com/2020/07/09/the-wrong-questions/">sacramento.newsreview.com</a></li>
 
-      <li id="src23">"Advance Peace National Peacemakers Network." Bureau of Justice Assistance grant 15PBJA-23-GG-05210-CVIP. <a href="https://bja.ojp.gov/funding/awards/15pbja-23-gg-05210-cvip">bja.ojp.gov</a></li>
+      <li id="src22">ABC10 Sacramento. &ldquo;Sacramento homicides surge by 26% in 2020, ending streak of zero youth deaths.&rdquo; January 7, 2021. Reports that homicides in Sacramento were up by 26 percent in 2020 (attribution: &ldquo;Sacramento Police say&rdquo;) and that, after &ldquo;two full years without any youth homicides,&rdquo; four juveniles were killed in 2020. Names 9-year-old Makalah Brent (shot at Mama Marks Park) as one of the four 2020 juvenile victims. Quotes Sacramento Police Chief Daniel Hahn directly: <em>&ldquo;So, it&rsquo;s definitely a reversal of what we&rsquo;ve seen over the last couple of years.&rdquo;</em> The first-person plural (&ldquo;we&rsquo;ve seen&rdquo;) places the false 2018&ndash;2019 baseline as the institutional view of the Sacramento Police Department. <a href="https://www.abc10.com/article/news/crime/sacramento-homicides-surge-by-26-in-2020-ending-streak-of-zero-youth-deaths/103-0cc968d5-ec19-42a7-bccc-34e0c8484e8a">abc10.com</a></li>
 
-      <li id="src24">"Two years after violence intervention program launches in Fresno, gun-related crimes are cut by nearly half." UC Berkeley School of Public Health, August 2025. Funder attribution: Arnold Ventures. <a href="https://publichealth.berkeley.edu/articles/spotlight/research/fresno-gun-crimes-cut-by-nearly-half">publichealth.berkeley.edu</a></li>
-
-      <li id="src25">Romero, Pauline Bartolone. "After Sacramento's deadliest mass shooting, officials plan to ask voters to pay for more youth programs." CapRadio, April 26, 2022. <a href="https://www.capradio.org/articles/2022/04/26/after-sacramentos-deadliest-mass-shooting-officials-plan-to-ask-voters-to-pay-for-more-youth-programs/">capradio.org</a></li>
-
-      <li id="src26">Advance Peace Sacramento, official site. <a href="https://sacramento.advancepeace.org/">sacramento.advancepeace.org</a></li>
-
-      <li id="src27">Butts, Jeffrey A.; Wolff, Kevin T.; Misshula, Evan; Delgado, Sheyla A. "Reducing Violence Without Police: A Review of Research Evidence." John Jay College Research and Evaluation Center, City University of New York, November 9, 2020. <a href="https://johnjayrec.nyc/2020/11/09/av2020/">johnjayrec.nyc</a></li>
-
-      <li id="src28">"Flojaune Cofer." Ballotpedia Candidate Connection survey, 2024 Sacramento mayoral race. <a href="https://ballotpedia.org/Flojaune_Cofer">ballotpedia.org/Flojaune_Cofer</a></li>
-
-      <li id="src29">"Sacramento Bee Endorsements," primary election March 5, 2024. Endorsement of Flojaune Cofer for Mayor of Sacramento. Catalog via Blue Voter Guide. <a href="https://bluevoterguide.org/endorser-org/Sacramento_Bee/CA/3041">bluevoterguide.org</a></li>
-
-      <li id="src30">"2024 Sacramento mayoral election." General election certified December 2, 2024. McCarty defeated Cofer by 1.4 percentage points. <a href="https://en.wikipedia.org/wiki/2024_Sacramento_mayoral_election">en.wikipedia.org</a></li>
-
-      <li id="src31">"The road to peace: New initiative sees signs of progress in combating gang killings in Sacramento." Sacramento News &amp; Review, April 23, 2019. <a href="https://sacblog.newsreview.com/2019/04/23/the-road-to-peace-advance-peace-initiative-sees-early-signs-of-progress-in-combating-gang-killings-in-sacramento/">sacblog.newsreview.com</a></li>
     </ol>
 
     <div class="colophon">
-      Published by <a href="https://dont-shoot-the-data.github.io/">dont-shoot-the-data</a>. All numerical claims trace to primary documents. The Corburn 2022 Urban Science paper, the Corburn-Boggan-Muttaqi 2021 Humanities and Social Sciences Communications paper, and the Corburn-Boggan-Muttaqi 2022 Journal of Urban Health paper are open access and may be downloaded in full from the publishers. Reader corrections are welcome. Reproduction permitted with attribution.
+      Published by <a href="https://dont-shoot-the-data.github.io/">dont-shoot-the-data</a>. All numerical claims trace to primary documents cited above. The Sierra Health Foundation Black Child Legacy Campaign presentation, the City of Sacramento Funding Agreement, the Sacramento Police Department CPRA response, the Giffords Law Center letter, and the candidate&rsquo;s public statements are matters of public record. Reader corrections are welcome. Reproduction permitted with attribution.
     </div>
   </div>
 </footer>
@@ -1287,6 +1435,24 @@ const axisColor = '#6b6259';
 const gridColor = 'rgba(201, 191, 172, 0.5)';
 Chart.defaults.font.family = 'Source Serif 4';
 Chart.defaults.color = '#3d3833';
+
+const valueLabels = {
+  id: 'valueLabels',
+  afterDatasetsDraw(chart) {
+    const { ctx } = chart;
+    ctx.save();
+    const meta = chart.getDatasetMeta(0);
+    chart.data.datasets[0].data.forEach((value, index) => {
+      const bar = meta.data[index];
+      ctx.fillStyle = '#1a1612';
+      ctx.font = "700 13px 'JetBrains Mono'";
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(value, bar.x, bar.y - 8);
+    });
+    ctx.restore();
+  }
+};
 
 new Chart(document.getElementById('chartHomicidesAll'), {
   type: 'bar',
@@ -1310,6 +1476,7 @@ new Chart(document.getElementById('chartHomicidesAll'), {
   },
   options: {
     responsive: true, maintainAspectRatio: false,
+    layout: { padding: { top: 18 } },
     plugins: {
       legend: { display: false },
       tooltip: {
@@ -1335,62 +1502,11 @@ new Chart(document.getElementById('chartHomicidesAll'), {
         ticks: { font: tickFont, color: axisColor, stepSize: 10 },
         grid: { color: gridColor, lineWidth: 1 },
         border: { display: false },
-        suggestedMin: 0, suggestedMax: 65,
+        suggestedMin: 0, suggestedMax: 70,
       }
     }
-  }
-});
-
-new Chart(document.getElementById('chartFramings'), {
-  type: 'bar',
-  data: {
-    labels: [
-      ['10.1%', 'raw mean, citywide'],
-      ['18%', 'ITS, citywide'],
-      ['21%', '4-yr avg, citywide'],
-      ['22%', 'press release figure'],
-      ['27%', 'ITS counterfactual, AP zones'],
-      ['29%', 'max per-zone (peer-reviewed)'],
-      ['39%', 'Del Paso (press release only)']
-    ],
-    datasets: [{
-      data: [-10.1, -18, -21, -22, -27, -29, -39],
-      backgroundColor: [
-        '#a83a3a',
-        '#8b6e3a',
-        '#6e6e3a',
-        '#4a7a5d',
-        '#3a6e4a',
-        '#2d5a3d',
-        '#1a3a25',
-      ],
-      borderWidth: 0,
-      barThickness: 36,
-    }]
   },
-  options: {
-    indexAxis: 'y',
-    responsive: true, maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        backgroundColor: '#1a1612',
-        titleFont: { family: 'JetBrains Mono', size: 11 },
-        bodyFont: { family: 'JetBrains Mono', size: 12, weight: '500' },
-        padding: 10,
-        callbacks: { label: ctx => `${ctx.parsed.x}%` }
-      }
-    },
-    scales: {
-      x: {
-        ticks: { font: tickFont, color: axisColor, callback: v => v + '%' },
-        grid: { color: gridColor, lineWidth: 1 },
-        border: { color: '#1a1612' },
-        suggestedMin: -45, suggestedMax: 0,
-      },
-      y: { ticks: { font: tickFont, color: axisColor }, grid: { display: false }, border: { display: false } }
-    }
-  }
+  plugins: [valueLabels]
 });
 </script>
 
