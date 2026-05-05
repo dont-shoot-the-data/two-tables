@@ -3,8 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>Shifting Goalposts: How Advance Peace Sacramento survived a missed contract on a metric the public never saw</title>
 <meta name="description" content="Sacramento contracted with Advance Peace for a 20 to 25 percent citywide reduction in gun-related assaults and homicides by Year 2 and 50 percent by Year 4. The city missed both. Program allies replaced the contract metric with a juvenile-homicide claim contradicted by Sacramento Police Department&rsquo;s own homicide records of two juvenile victims of a 187(A) homicide on May 4, 2018, in an Advance Peace zone. The claim was repeated for five years by program staff, evaluators, lobbyists, the city&rsquo;s paper of record, and a 2024 mayoral candidate now running for County Supervisor. Nobody in the chain checked.">
+
+<!-- Open Graph (Facebook, iMessage, Slack, LinkedIn) -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://dont-shoot-the-data.github.io/two-tables/">
+<meta property="og:title" content="The metric the city paid for. The claim the city heard instead.">
+<meta property="og:description" content="Sacramento contracted Advance Peace for a 20-25% citywide reduction in gun homicides. The city got roughly 1% across the contracted two-year term, then extended the program anyway and missed the 50% target by an even wider margin. Program allies replaced the contract metric with a juvenile-homicide claim contradicted by SacPD's own records.">
+<meta property="og:image" content="https://dont-shoot-the-data.github.io/two-tables/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="dont-shoot-the-data">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://dont-shoot-the-data.github.io/two-tables/">
+<meta name="twitter:title" content="The metric the city paid for. The claim the city heard instead.">
+<meta name="twitter:description" content="Sacramento contracted Advance Peace for a 20-25% citywide reduction in gun homicides. The city got roughly 1%, then extended the program anyway. Program allies replaced the contract metric with a juvenile-homicide claim contradicted by SacPD's own records.">
+<meta name="twitter:image" content="https://dont-shoot-the-data.github.io/two-tables/og-image.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,7 +100,7 @@ header.masthead {
 .masthead-inner {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -87,7 +108,20 @@ header.masthead {
   color: var(--ink-faint);
 }
 
-.masthead-title { font-weight: 500; color: var(--ink); }
+.masthead-title {
+  font-weight: 500;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.masthead-logo {
+  width: 28px;
+  height: 28px;
+  display: block;
+  flex-shrink: 0;
+}
 
 .hero {
   text-align: center;
@@ -919,7 +953,20 @@ sup.cite a:hover { text-decoration: underline; }
 
 <header class="masthead">
   <div class="wrap-wide masthead-inner">
-    <div class="masthead-title">Don&rsquo;t Shoot the Data</div>
+    <div class="masthead-title">
+      <svg class="masthead-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="48" fill="#0a0a14"/>
+        <rect x="18" y="58" width="12" height="22" fill="#1e78ff"/>
+        <rect x="33" y="44" width="12" height="36" fill="#1e78ff"/>
+        <rect x="48" y="30" width="12" height="50" fill="#1e78ff"/>
+        <rect x="63" y="18" width="12" height="62" fill="#1e78ff"/>
+        <circle cx="50" cy="48" r="28" fill="none" stroke="#00c850" stroke-width="2.5" opacity="0.9"/>
+        <line x1="50" y1="14" x2="50" y2="82" stroke="#00c850" stroke-width="2" opacity="0.9"/>
+        <line x1="16" y1="48" x2="84" y2="48" stroke="#00c850" stroke-width="2" opacity="0.9"/>
+        <line x1="10" y1="88" x2="90" y2="8" stroke="#ff2828" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      Don&rsquo;t Shoot the Data
+    </div>
     <div>An investigative read</div>
   </div>
 </header>
